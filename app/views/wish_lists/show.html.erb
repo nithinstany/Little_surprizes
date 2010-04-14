@@ -1,0 +1,45 @@
+<% if @wish_list.nil? %>
+   Wish list does not exist.
+<%else%>
+
+<% if !@categories.blank? %>
+ <div class ="wishlist_container container">
+  <% if current_user == @wish_list.user %>
+     <h2>Items in your wishlist.</h2>  
+  <%else%>
+     <h2> <%=fb_name(@facebook_id)%> 's  wishlist.</h2>
+  <%end%>
+
+
+ 
+    <% @counter = 0 %>
+    
+      <% @categories.each do |category| %>
+       <div class="outer-box">
+		 <div class="box">
+      <% @counter = @counter + 1 %>
+      <div class="heading"> <%=h category.name %> </div>
+      <div class="box_lt"><center><%= image_tag category.avatar.url(:thumb)%></center></div>
+
+         <div class="box_rt">
+				<p><%=h category.description %></p>
+				<a><%=h category.url %></a>
+         </div>
+      
+      <% if @counter == 3 %>
+      
+      <% @counter = 0 %> 
+      <%end%>
+  </div>
+	</div>
+   <% end %>
+  </div>
+  
+<%else%> 
+  <p>There are no items in your wishlist 
+<%end%>
+
+<%end%>
+<div class="clear"></div>
+ 
+

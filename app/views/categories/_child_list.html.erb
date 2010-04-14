@@ -1,0 +1,13 @@
+<li><%=image_tag("file-icon.gif") %>
+  <input id="category_parent_id" name="category[parent_id]" value= '<%=category.id %>' type="radio">
+  <%=category.name%>
+                   
+
+   <% unless category.children.empty? %>
+<ul><%= render :partial => 'child_list', :collection => category.children, :as => :category %></ul>
+<% end %>
+</li>
+
+
+
+

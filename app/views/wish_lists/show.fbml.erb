@@ -1,0 +1,68 @@
+<% content_for :wish_list_tab do %>
+    <% unless (@wish_list.blank?) %>
+       <% if @current_user != @wish_list.user%>
+          <%= fb_tab_item "#{@wish_list.user.name}'s wishlist", wish_list_path(@wish_list.id) %>
+       <% end -%>
+       <% unless(@current_user.wish_list.blank?) %>
+         <% unless(@current_user == @wish_list.user)  %>
+            <%= fb_tab_item "View my wishlist", wish_list_path(@current_user.wish_list.id) %>
+         <%end%>  
+       <%end%>
+    <%end%>
+<% end %>
+
+<% if @wish_list.nil? %>
+   Wish list does not exist.
+<%else%>
+  
+<% if !@categories.blank? %>
+ <div class ="facebook_container container">
+   <% if @current_user == @wish_list.user %>
+     
+      <div class = 'top_links'> 
+        <b><%=link_to "Publish", publish_to_friends_wish_list_path(:id => @wish_list.id, :category => @category) ,:confirm => 'Allow your friends to view your wishlist?'%> </b>  |  <b><%= link_to 'Edit my wishlist', edit_wish_list_path(@wish_list)%></b>  |  <b><%= link_to 'Delete my wishlist', wish_list_path(:id => @wish_list.id), :confirm => 'your wishlist will be deleted', :method => :delete %></b>
+      </div>
+         <h4>Items in your wishlist.</h4> 
+         <hr /> 
+  <%else%>
+        <h4> <%= @wish_list.user.name %> 's  wishlist: <%= @wish_list.name %></h4>
+        <hr />
+  <%end%>
+     <% @counter = 0 %>
+     
+     <% @categories.each do |category| %>
+	 <div class="list">
+    			<% @counter = @counter + 1 %>
+      
+          		<div class="name"><center><%=h category.name %></center></div>
+
+          		<div class="list_box">
+				<center><%= image_tag category.avatar.url(:thumb)%></center>
+			</div>        
+                        <br />
+          		<% if @current_user == @wish_list.user %>
+          		<div class="description"><%= link_to 'Remove from wishlist', remove_category_wish_lists_path(:id => category.category_id), :confirm => "#{category.name} will be removed from your wishlist.", :method => :delete %>
+          		</div>
+        		 <% end %>
+       
+    			<% if @counter == 3 %>
+    			<% @counter = 0 %> 
+    			<%end%>
+		
+	</div>
+<% end %>  
+</div>
+<%else%> 
+  <% if @current_user == @wish_list.user %>
+  <div class = 'top_links'> 
+        <b><%= link_to 'Delete my wishlist', wish_list_path(:id => @wish_list.id), :confirm => 'your wishlist will be deleted', :method => :delete %></b> 
+</div>
+  <p>There are no items in your wishlist: <b> <%= link_to 'Click here to Add Items', root_url %></b></p>
+<%else%>
+<p>There are no items in this wishlist</p>
+<%end%>
+<%end%>
+<br />
+<%end%>
+ 
+

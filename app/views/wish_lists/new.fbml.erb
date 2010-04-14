@@ -1,0 +1,44 @@
+<% facebook_form_for :wish_list, @wish_list, :url => wish_lists_path do |f| %>
+
+<% if flash[:notice] %>
+  <fb:success>
+     <fb:message><%= flash[:notice] %></fb:message>
+  </fb:success>
+<% end %>
+
+<% if flash[:error] %>
+  <fb:error>
+    <fb:message>
+      <%= flash[:error] %>
+    </fb:message>
+  </fb:error>
+<% end %>
+  <%= f.text_field :name, :label=>"Wishlist name" %>
+  <%= f.text_area :description,:label=>"Wishlist description" %>
+   
+  <%= f.buttons "Create" %>
+ 
+<% end %>
+<hr />
+
+<% unless @user.has_permissions?('publish_stream') %>
+  <p>Click the button below, to grant permissions to publish the status updates to friend's wall(unless you've already done so for Little surprises): <form promptpermission="publish_stream"> 
+  <input type="submit" value="Grant me permission"> 
+  </form> </p>
+<% end %>
+<br />
+
+<% unless @user.has_permissions?('email') %>
+  <p>Click the button below, to allow Birthday remainder emails from  Little surprises <form promptpermission="email">
+  <input type="submit" value="Allow emails"> 
+  </form> </p>
+<% end %>
+<br />
+<% unless @user.has_permissions?('offline_access') %>
+  <p>Click the button below, to grant the offline access to Little surprises <form promptpermission="offline_access">
+  <input type="submit" value="Allow offline access"> 
+  </form> </p>
+<% end %>
+
+
+

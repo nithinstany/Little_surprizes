@@ -1,0 +1,5 @@
+<% unless @user.has_permissions?('publish_stream') %>
+  <p>Click the button below, to grant permissions to publish the status updates to friend's wall. Then return back to your wish list.(unless you've already done so for Little surprises): <form promptpermission="publish_stream"><br /> 
+  <input type="submit" value="Grant me permission"> 
+  </form> </p> 
+<% end %>

@@ -1,0 +1,40 @@
+<script type="text/javascript">
+ function change_function (wish_list)
+ {
+    document.getElementById("edit").href = "wish_lists/" + wish_list + "/edit"
+    document.getElementById("delete_record").href = "wish_lists/" + wish_list
+    return false;
+ }
+</script>
+
+
+<div class="clear"></div>
+<h1>My wishlists</h1>
+
+<table class="listing">
+	<tr>
+      		<th>Name</th>
+    		<th>Description</th>
+    		<th>Created at</th>
+  	</tr>
+
+	<% @wish_lists.each do |wish_list| %>
+  	<tr>
+    		<td><%=radio_button_tag('wishlist_id', wish_list.id, checked = false, options = {:onclick => "change_function(#{wish_list.id})"})%>
+    		<%=link_to "#{wish_list.name}",edit_wish_list_path(wish_list)%></td>
+    		<td><%=h wish_list.description %></td>
+    		<td><%=Time.parse(wish_list.created_at.to_s).strftime('%m/%d/%Y') %></td>
+    		<!--<td><%= link_to 'Show', wish_list %></td>
+    		<td><%= link_to 'Edit', edit_wish_list_path(wish_list) %></td>
+    		<td><%= link_to 'Destroy', wish_list, :confirm => 'Are you sure?', :method => :delete %></td> -->
+  	</tr>
+<% end %>
+</table>
+
+		<%= link_to 'Add new', new_wish_list_path %>
+		<% unless @wish_lists.blank? %>
+		|
+		  <%= link_to 'Edit Selected', edit_wish_list_path(@wish_lists.first.id), :id => "edit" %> |
+		  <%= link_to 'Delete', @wish_lists.first,:confirm => "Are you sure want delete wishlist ?", :method => :delete, :id => 'delete_record' %>
+		<%end%>
+

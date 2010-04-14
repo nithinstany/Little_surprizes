@@ -1,0 +1,48 @@
+<div class="main">
+<div class="container">
+	<h2>Categories
+	
+	
+	<%if admin?%>
+		<span><%= link_to 'Add new category', new_admin_category_path %> | <%= link_to 'Add subcategory', subcategory_new_admin_categories_path %></span>
+	<%end%>
+	</h2>
+
+	<div id = 'category-list'>
+	  <%= render :partial => 'list' %>
+	</div>
+</div>
+<div class="sidebar">
+	<h2>Category List</h2>
+	 <ul id='tree'><%= render :partial => 'category_list', :collection => @parent, :as => :category %></ul>
+     <h2 class="banner">Banners</h2>
+     <div id = "banners">
+       <% unless @banners.blank? %>
+         <% @banners.each do |banner| %>
+           <div class = 'banner'>
+             <%= link_to image_tag(banner.banner_image.url(:thumb)),banner.url,:target=>'_blank'%><br/>
+             <%= link_to "Edit banner",edit_admin_banner_path(banner)%> | 
+             <%= link_to 'Destroy', admin_banner_path(banner), :confirm => 'Are you sure?', :method => :delete %><br/>
+           </div>
+         <% end %>
+      <% end %>
+
+      <% if @banners.size < 2 %>
+           <% if @banners.blank? %>
+             <div class = 'banner'>
+                <%= link_to(image_tag('banner.gif'), new_admin_banner_path) %><br />
+             </div>
+           <% end %>  
+            <div class = 'banner'>
+              <%= link_to(image_tag('banner.gif'), new_admin_banner_path) %><br />
+            </div>
+          <% end %>  
+    
+          
+     </div>
+	
+</div>
+</div>
+<div class="clear"></div>
+
+

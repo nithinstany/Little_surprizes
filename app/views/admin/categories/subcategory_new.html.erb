@@ -1,0 +1,43 @@
+
+<div class="clear"></div>
+<div class="main">
+<h2 class="form_heading">Add new sub category </h2>
+<% form_for([:admin,@category],:html => {:id =>'main_form'},:html => { :multipart => true }) do |f| %>
+  <%= f.error_messages %>
+<table class="formstyle"  cellpadding="15px;" border="1">
+	<tr>
+    		<th><%= f.label :Subcategory_name %></th>
+    		<td><%= f.text_field :name %></td>
+  	</tr>
+  	<tr>
+    		<th><%= f.label :Subcategory_description %></th>
+    		<td><%= f.text_area :description,:cols=>25,:rows=>12 %></td>
+  	</tr>
+  	<tr>
+    		<th><%= f.label :image %></th>
+    		<td><%= f.file_field :avatar %></td>
+  	</tr>
+  	<tr>
+    		<th><%= f.label :url %></th>
+    		<td><%= f.text_field :url %></td>
+  	</tr>
+  	<tr>
+    		<th><%= f.label :lowest_number_of_points_needed %></th>
+    		<td><%= f.text_field :lowest_number_of_points_needed %></td>
+ 	</tr>
+	<tr>
+		<th></th>
+  		<td>
+      		<input type="hidden" id="category_parent_id", name="category[parent_id]" value="">
+      		<ul id='tree'>
+		<%= render :partial => 'child_list', :collection => @parent, :as => :category %></ul>
+  		</td>
+	</tr>
+</table>
+<div id="btn">
+  <center><%= f.submit 'Create' %></center>
+</div>
+<% end -%>
+</div>
+
+<!--<%= link_to 'Back', categories_path %>-->

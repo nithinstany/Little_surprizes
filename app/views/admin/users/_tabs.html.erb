@@ -1,0 +1,12 @@
+
+<% if admin? %>
+   <%= link_to "Categories",categories_path %> |
+   <%= link_to "Accounts",:controller => "admin",:action => "user_list" %> |
+   <%= link_to "Order",:controller => "admin",:action => "user_list" %> |
+   <%= link_to "Report",:controller => "admin",:action => "user_list" %> | 
+   <%= link_to "Logout", logout_path %>
+ <% else %>
+   
+   <%= link_to "Login", login_path  %>
+   
+ <% end %>

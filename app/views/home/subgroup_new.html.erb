@@ -1,0 +1,24 @@
+<% form_for(@group,:html => {:id =>'main-form'}) do |f| %>
+  <%= f.error_messages %>
+ 
+ <p>
+   <%= f.label :Subgroup_name %><br />
+    <%= f.text_field :name %>
+  </p>
+   <p>
+   <b> Students</b>
+   <input type='checkbox' title ="Check All/Uncheck" name='checkall' onclick='checkedAll();'>(Check all/Uncheck all)</p>
+  <%@students.each do |student| %>
+  	<p>
+       <%= check_box_tag("students[]", student.id, false,:id=> student.id)%>
+    		<%=h student.name %></p>
+    		<%end%>
+    <p>
+      <input type="hidden" id = "group_parent_id", name="group[parent_id]" value="">
+      <ul id='tree'>
+<%= render :partial => 'child_list', :collection => @parent, :as => :group %></ul>
+       <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', groups_path %>

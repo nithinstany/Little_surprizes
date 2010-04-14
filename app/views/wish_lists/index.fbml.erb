@@ -1,0 +1,41 @@
+<script type="text/javascript">
+ function change_function ()
+ {
+
+    
+    document.getElementById("edit").href = "littlesurprisetest/wish_lists/9/edit"
+
+    return false;
+ }
+</script>
+
+
+<h1>My wishlists</h1><br/>
+
+
+
+<table>
+  <tr>
+    <th></th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Created at</th>
+  </tr>
+
+
+<% @wish_lists.each do |wish_list| %>
+  <tr>
+    <td> <%=radio_button_tag('wishlist_id', wish_list.id, checked = false, options = {:onclick => "change_function()"})%>   </td>
+     <td><%=link_to "#{wish_list.name}",edit_wish_list_path(wish_list)%></td>
+    <td><%=h wish_list.description %></td>
+    <td><%=Time.parse(wish_list.created_at.to_s).strftime('%m/%d/%Y') %></td>
+    <!--<td><%= link_to 'Show', wish_list %></td>
+    <td><%= link_to 'Edit', edit_wish_list_path(wish_list) %></td>
+    <td><%= link_to 'Destroy', wish_list, :confirm => 'Are you sure?', :method => :delete %></td>-->
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Add new', new_wish_list_path %> |<%= link_to 'Edit', edit_wish_list_path(34),:id => "edit" %>| <%= link_to 'Delete selected', new_wish_list_path %> 

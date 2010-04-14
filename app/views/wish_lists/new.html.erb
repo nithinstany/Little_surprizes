@@ -1,0 +1,19 @@
+<h1>New wish list</h1>
+
+<% form_for :wish_list, :url => wish_lists_path,:html => { :multipart => true }  do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name%><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', wish_lists_path %>

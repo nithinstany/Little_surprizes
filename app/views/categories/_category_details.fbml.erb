@@ -1,0 +1,27 @@
+<p>
+  <b>Category name:</b>
+  <%=h @category.name %>
+</p>
+
+<p>
+  <b>Category description:</b>
+  <%=h @category.description %>
+</p>
+
+<p>
+  <b>Image:</b>
+  <%= image_tag @category.avatar.url(:thumb)%>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%=h @category.url %>
+</p>
+
+<p>
+  <b>Lowest number of points needed:</b>
+  <%=h @category.lowest_number_of_points_needed %>
+</p>
+
+
+

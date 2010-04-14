@@ -1,0 +1,34 @@
+
+ <h2>Edit category</h2>
+
+
+<% form_for(@category,:html => { :multipart => true }) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :category_name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :category_description %><br />
+    <%= f.text_area :description %>
+  </p>
+  <p>
+    <%= f.label :image %><br />
+    <%= f.file_field :avatar %>
+  </p>
+  <p>
+    <%= f.label :url %><br />
+    <%= f.text_field :url %>
+  </p>
+  <p>
+    <%= f.label :lowest_number_of_points_needed %><br />
+    <%= f.text_field :lowest_number_of_points_needed %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @category %> |
+<%= link_to 'Back', categories_path %>

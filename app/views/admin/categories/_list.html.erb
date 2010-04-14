@@ -1,0 +1,37 @@
+<br /><br />
+<% @categories.each do |category| %>
+<div class="outer_box">
+	<div class="box">
+		<div class="heading"><%=h category.name %></div>
+	
+		<div class="box_lt">
+			<%unless find_root(category).children.blank?%>    
+		      <center><%=link_to "#{image_tag category.avatar.url(:thumb)}",admin_categories_path(:category_id => category.id)%></center>
+           <%else%>
+              <center><%= image_tag(category.avatar.url(:thumb)) %></center>
+           <%end%>
+		</div>
+		<div class="box_rt">
+   			<p></b><%=h category.description %></p>
+  			<a><%=h category.url %></a>
+        	</div>
+		<div class="points">
+    			Lowest points needed:<%=h category.lowest_number_of_points_needed %>
+	
+      		<%if admin?%>
+      		<%= link_to 'Edit', edit_admin_category_path(category) %>
+      		<%= link_to 'Destroy', admin_category_path(category), :confirm => 'Are you sure?', :method => :delete %>
+      		<%end%>
+   		</div>
+	
+
+
+</div>
+</div>
+ <% end %>
+<div class="clear"></div>
+<script type="text/javascript">
+	jQuery(".outer_box").corner("corner 10px");
+	jQuery(".box").corner("corner 10px");
+	jQuery(".heading").corner("top 10px");
+</script>

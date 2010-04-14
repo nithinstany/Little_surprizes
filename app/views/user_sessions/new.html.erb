@@ -1,0 +1,24 @@
+<div class="clear"></div>
+<div class="spacing">&nbsp;</div>
+<div class="Login">
+
+<% form_for @user_session, :url => user_session_path do |f| %>
+  <%= f.error_messages %>
+  
+  <p><%= f.label :login %>
+  <%= f.text_field :login %>
+
+</p>
+  
+<p><%= f.label :password %>
+  <%= f.password_field :password %>
+
+</p>
+<p>
+  <%= f.check_box :remember_me %><%= f.label :remember_me %>
+</p>
+<div class="login_btn">
+  <%= f.submit "Login" %>
+</div>
+<% end %>
+</div>

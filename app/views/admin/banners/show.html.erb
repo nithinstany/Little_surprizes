@@ -1,0 +1,18 @@
+<p>
+  <b>Name:</b>
+  <%=h @banner.name %>
+</p>
+
+
+<p>
+  <b>Image:</b>
+  <%= image_tag @banner.banner_image.url(:thumb)%>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%= @banner.url%>
+</p>
+
+<%= link_to 'Edit', edit_admin_banner_path(@banner) %> |
+<%= link_to 'Back', admin_categories_path %>

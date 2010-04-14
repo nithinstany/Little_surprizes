@@ -1,0 +1,46 @@
+<% content_for :categories_tab do %>
+    <% unless (@current_user.wish_list.blank?) %>
+       <%= fb_tab_item "View my wishlist", wish_list_path(@wish_list.id) %>
+    <% end -%>
+<% end %>
+
+<div class ="facebook_container container">
+<% @counter = 0 %>
+<h4>Listing all product categories</h4>
+<hr />
+<% @fb_categories.each do |fb_category| %>
+<div class="list">
+	
+	<% @counter = @counter + 1 %>
+
+      	<div class="name">
+        	<center><%=h fb_category.name %></center>
+      	</div>
+   
+
+	<div class="list_box">
+		<center><%=link_to "#{image_tag fb_category.avatar.url(:thumb)}",category_path(fb_category.id)%></center>
+	</div>
+
+	<div class="description">
+    	<center><h4>Points needed: <b><%=h fb_category.lowest_number_of_points_needed %></b></h4></center>
+    	<center><%=link_to "View details",category_path(fb_category.id)%></center>
+	</div>
+
+	
+    	<% if @counter == 3 %>
+    	<% @counter = 0 %> 
+    	<%end%>
+	</div> 
+<% end %>
+
+
+
+
+
+
+
+
+
+
+

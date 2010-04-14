@@ -1,0 +1,32 @@
+<h4>Product Categories</h4>
+<% @categories.each do |category| %>
+<div id="list">
+
+<div class="list_box">
+		<%unless find_root(category).children.blank?%>    
+		   <center><%=link_to "#{image_tag category.avatar.url(:thumb)}",categories_path(:category_id => category.id)%></center>
+        <%else%>
+           <center><%= image_tag(category.avatar.url(:thumb)) %></center>
+        <%end%>
+
+</div>
+
+<div class="description">
+	        <h3><%=h category.name %></h3>
+		<p><%=h category.description %></p>
+</div>
+
+</div>
+
+<% end %>
+
+
+
+
+
+<script type="text/javascript">
+	jQuery(".outer_box").corner("corner 10px");
+	jQuery(".box").corner("corner 10px");
+	jQuery(".heading").corner("top 10px");
+</script>
+

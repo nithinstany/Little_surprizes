@@ -1,0 +1,21 @@
+<h2>Users</h2>
+<table>
+  <tr>
+    <th>Name</th>
+   
+    <% form_tag( :action=>"user_list", :controller=>"admins", :method => :get )do %>
+    <% fields_for @search do |f|%>
+    	<% f.fields_for @search.conditions do |user| %>
+       	Search:</span><%= user.text_field :login_like   %> 
+ 		<%end%>
+  	<%end%> 
+   <%=  submit_tag "Search" %> &nbsp;&nbsp; <%=link_to "Reset search",:action=>"user_list", :controller=>"admins"%> 
+   <%end%>
+  </tr>
+</table>
+
+<div id = 'dealer-list'>
+  <%=render :partial => "list"%>
+</div>
+
+<%= link_to 'Back', :controller => "admins",:action => "index" %>

@@ -1,0 +1,56 @@
+<fb:fbml version="1.1">
+
+
+ <%= stylesheet_link_tag  'style'%>
+<!-- <%=javascript_include_tag :defaults,:fckeditor ,'js/jquery-1.3.2.min.js','jquery.cookie', 'jquery.treeview.min','jquery.corner','prototype','jquery_corner', 'js/jquery-ui-1.7.1.custom.min.js', 'jrails','js/hoverIntent.js','jquery.simplyCountable.js', 'js/superfish.js', 'js/jquery.watermarkinput.js', 'jquery.tablednd'%> -->
+ <%=javascript_include_tag 'facebooker' %> 
+
+<!--<script type="text/javascript">
+jQuery(function() {
+jQuery("#tree").treeview({
+collapsed: false,
+animated: "medium",
+control:"#sidetreecontrol",
+persist: "location"
+});
+})
+ 
+</script>-->
+
+
+
+<%= fb_connect_javascript_tag %>
+<% init_fb_connect "XFBML","Api" do %>
+      <%= fb_user_action(flash[:user_action_to_publish]) if flash[:user_action_to_publish] %>
+<% end %>
+
+
+<% fb_tabs do %>
+
+  <% unless request.request_uri == '/'%>
+    <%= fb_tab_item "Home", root_url %>
+  <%end%>
+ 
+  <%= yield(:wish_list_tab) %>
+  <%= yield(:categories_tab) %>
+
+  <%= fb_tab_item "Help &amp; Feedback",fb_about_url,:align=>"right"%> 
+  
+<% end %>
+
+
+
+
+
+<br />
+<%= fb_add_profile_section %>
+
+
+ <div id = 'wrapper'>
+   <%= yield%>
+ </div>
+
+</fb:fbml>
+
+
+

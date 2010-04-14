@@ -1,0 +1,32 @@
+
+<% if !@items.blank? %>
+   <h3>Items in your wishlist.</h3>  
+
+    <% @items.each do |item| %>
+      <div class="outer_box">
+	<div class="box">
+          <div class="heading"> 
+             <%=h item.name %> 
+          </div>
+          <div class="box_lt">
+             <center><%= image_tag item.avatar.url(:thumb)%></center>
+          </div>
+
+          <div class="box_rt">
+            <p><%=h item.description %></p>
+	    <a><%=h item.url %></a>
+          </div>
+         </div>
+       </div>
+    <%end%>
+<%end%>
+<div class="clear"></div>
+ 
+
+
+
+
+
+
+ 
+

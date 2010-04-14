@@ -1,0 +1,13 @@
+<div class="main">
+<div class="container">
+	<div id = 'category-list'>
+   		
+	</div>
+</div>
+
+<div class="sidebar">
+   <h2>Category list</h2>
+	<ul id='tree'><%= render :partial => 'categorylist', :collection => @parent, :as => :category %></ul>
+</div>
+</div>
+<div class="clear"></div>

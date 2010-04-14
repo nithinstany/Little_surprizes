@@ -1,0 +1,13 @@
+
+<li>
+<%= link_to_remote("#{category.name}",          
+       :url => { :action=>"index", :controller=>"categories",:id=>category.id},
+       :method => :get)%>
+<% unless category.children.empty? %>
+<ul><%= render :partial => 'category_list', :collection => category.children, :as => :category %></ul>
+<% end %>
+</li>
+
+
+
+

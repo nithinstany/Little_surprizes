@@ -1,0 +1,7 @@
+
+<%=image_tag("file-icon.gif") %>
+<%=radio_button_tag('parent_id', category.id, checked = false, options = {:onclick => "$('main-form').category_parent_id.value=#{category.id};"})%> <%=category.name %>
+<% unless category.children.empty? %>
+<ul><%= render :partial => 'child_list', :collection => category.children, :as => :category %></ul>
+<% end %>
+

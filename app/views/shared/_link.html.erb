@@ -1,0 +1,27 @@
+<% if !current_user %>
+<ul class="btn">
+ 
+ <li><%= authlogic_facebook_login_button :js => :jquery %></li>
+</ul>
+<%else%>
+<ul><li><%= link_to "Logout", user_session_path, :method => :delete, :confirm => "Are you sure you want to logout?" %></li>
+</ul>
+<% end %>
+
+
+
+<%if admin?%> 
+  <ul>
+     <li><%= link_to "Home", admin_categories_path %></li> |
+     <li><%= link_to "Users",admin_users_path %></li>|
+     <li><%= link_to "View public website", 'http://69.164.192.249:3012' %></li>|
+  </ul>
+<%else%>
+  <% unless request.request_uri == '/'%>
+    <ul><li><%= link_to "Home", root_url %></li></ul>
+  <%end%>
+<%end%> 
+
+
+    
+

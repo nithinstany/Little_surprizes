@@ -1,0 +1,13 @@
+<li>
+     ssssssssssssssssssssssssssssssssssssssss
+        <td><%= check_box_tag("categories[]", category.id, false,:id=>category.id)%></td>
+	<%= link_to_remote("#{category.name}",
+:url => { :action=>"index", :controller=>"categories",:id=>category.id},
+:method => :get)%>
+	<% unless category.children.empty? %>
+	<ul><%= render :partial => 'categorylist', :collection => category.children, :as => :category %></ul>
+	<% end %>
+</li>
+
+
+

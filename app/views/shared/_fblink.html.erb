@@ -1,0 +1,15 @@
+
+
+<div id="menu">
+  <ul>
+  
+   <li><%= link_to "Categories", fb_categories_path %></li> 
+    <% if !@wish_list.blank? %>
+     <li><%= link_to "#{@wish_list.name}",wish_list_path(@wish_list.id) %></li>
+    <%end%>
+  
+  
+  </ul>
+ </div>
+    
+

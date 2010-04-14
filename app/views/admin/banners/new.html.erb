@@ -1,0 +1,25 @@
+<div class="clear"></div>
+<h2 class="form_heading">New banner</h2>
+<% form_for([:admin,@banner],:url => admin_banners_path,:html => { :multipart => true })  do |f| %>
+  <%= f.error_messages %>
+<table class="formstyle"  cellpadding="15px;" border="1">
+	<tr>
+    		<th><%= f.label :name %></th>
+    		<td><%= f.text_field :name %></td>
+  	</tr>
+   	<tr>
+    		<th><%= f.label :image %></th>
+    		<td><%= f.file_field :banner_image %></td>
+   	</tr>
+   	<tr>
+    		<th><%= f.label :url %></th>
+    		<td><%= f.text_field :url %>
+    		for example :(http://www.example.com)</td>
+   	</tr>
+</table>
+<div class="btn">
+    &nbsp;&nbsp;&nbsp;<%= f.submit 'Create' %>
+<% end %>
+
+<%= link_to 'Back', admin_categories_path %>
+</div>

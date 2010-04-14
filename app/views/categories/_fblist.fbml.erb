@@ -1,0 +1,45 @@
+
+<% @counter = 0 %>
+<h4>Listing all sub categories</h4>
+<hr />
+
+<% @fb_categories.each do |fb_category| %>
+<div class="list">
+        <% @counter = @counter + 1 %>
+
+       <div class="name"><center><%=h fb_category.name %></center></div>
+
+
+	<div class="list_box">
+       <center><%=link_to "#{image_tag fb_category.avatar.url(:thumb)}",category_path(fb_category.id,:links => @links)%></center>
+	</div>
+
+	<div class="description">
+		 <center><h4>Points needed: <b><%=h fb_category.lowest_number_of_points_needed %></b></h4></center>
+                  <center><a><%=link_to "View details",category_path(fb_category.id)%></a></center>
+		  
+          <% if @wish_list.blank? %>
+            	<center><a><%=link_to "Add to wishlist", new_wish_list_path ,:confirm => 'You have not created a wishlist yet.Create a new wishlist?'%></a></center> 
+         	<%else%>
+             		<% unless @category_ids.include?(fb_category.id) %>
+          		<center><a><%=link_to "Add to wishlist",add_to_wishlist_wish_lists_path(:category_id => fb_category.id) ,:confirm => "#{fb_category.name} will be added to your wishlist."%> </a></center>
+          	<%else%>
+            		<center><a>Already in wishlist</a></center>
+          	<%end%>
+     	     <%end%>
+       </div>
+	</div>
+	  	
+	</div>
+
+	
+    	<% if @counter == 3 %>
+    	<% @counter = 0 %> 
+    	<%end%>
+	
+
+<% end %>
+
+
+
+

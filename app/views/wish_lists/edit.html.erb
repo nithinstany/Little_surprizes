@@ -1,0 +1,35 @@
+<h1>Edit your wishlist</h1>
+
+<% form_for(@wish_list) do |f| %>
+  <%= f.error_messages %>
+
+  <p>Wishlist Name
+  <%= f.text_field :name %></p>
+
+  <!--<p>Wishlist Description<br/>
+  <%= f.text_area :description%></p>-->
+
+       <div class="sidebar">
+          <h2>Category list</h2>
+          <ul id='tree'>
+              <%= render :partial => 'category_list', :collection => @parent, :as => :category ,:locals => { :f => f} %>
+          </ul>
+       </div>
+
+    <div class="clear"></div>
+
+
+      <br /><hr />
+
+
+
+
+  <%= f.submit 'Save to wishlist' %>
+
+
+
+<% end %>
+
+
+<%= link_to 'Back', wish_lists_path %>
+

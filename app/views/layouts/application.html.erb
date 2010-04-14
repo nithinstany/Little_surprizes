@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title><%= controller.controller_name %>: <%= controller.action_name %></title>
+  <%= stylesheet_link_tag  'style','jquery.treeview'%>
+  <%=javascript_include_tag :defaults,:fckeditor ,'js/jquery-1.3.2.min.js','jquery.cookie', 'jquery.treeview.min','jquery.corner','prototype','jquery_corner', 'js/jquery-ui-1.7.1.custom.min.js', 'jrails','js/hoverIntent.js','jquery.simplyCountable.js', 'js/superfish.js', 'js/jquery.watermarkinput.js', 'jquery.tablednd'%>
+
+
+<script type="text/javascript">
+jQuery(function() {
+jQuery("#tree").treeview({
+collapsed: false,
+animated: "medium",
+control:"#sidetreecontrol",
+persist: "location"
+});
+})
+
+</script>
+
+
+<script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php" type="text/javascript"></script>
+
+<div id="FB_HiddenIFrameContainer" style="display:none; position:absolute; left:-100px; top:-100px; width:0px; height: 0px;"></div> <script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php" type="text/javascript"></script> <script type="text/javascript"> FB_RequireFeatures(["CanvasUtil"], function(){ FB.XdComm.Server.init(<site relative url to xd_receiver.htm>); FB.CanvasClient.startTimerToSizeToContent(); }); </script>
+
+</head>
+
+<body>
+<%= fb_connect_javascript_tag %>
+<%= init_fb_connect "XFBML", :js => :jquery %>
+
+
+
+<div class="header">
+	<h1>Little <span>Surprizes</span></h1>
+</div>
+<hr />
+	<!--<div class="header_right">
+		<%= render :partial => "shared/link" %>
+	</div>-->
+
+<div class="notice"><p class= "notice"><%= flash[:notice] %></p></div>
+
+<div class="main">
+       <%= yield  %>
+</div>
+
+
+<div class="clear"></div>
+
+<script type="text/javascript">
+
+	jQuery(".Login").corner("corner 10px");
+</script>
+
+
+
+<div class="footer"></div>
+
+</body>
+</html>
+

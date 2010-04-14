@@ -1,0 +1,57 @@
+<div class="image_bg">
+<div class="image_in">
+  <div class="image_left">
+       <img src="/images/gifts.jpg" height="245px" width="235px" /> 
+  </div>
+  <div class="image_right">
+   
+    <p class="first">LittleSurprizes lets you send surprise gifts to your friends on facebook on their special days like birthday and anniversary.</p>
+    <p class="second">You can contribute to your friend's wishlist by simply shopping for yourself through our website 
+<a href="#">www.littlesurprizes.com </a>.
+	
+       Remember, you don't have to purchase a gift, 
+	just shop for yourself via our site.</p>
+  
+  </div>
+</div>	
+</div>
+<div class="main">
+<div class="sidebar">
+   <h2>Category list</h2>
+	<ul id='tree'><%= render :partial => 'category_list', :collection => @parent, :as => :category %></ul>
+   <div id = "banners">
+     <% @banners.each do |banner| %>
+        <div class = "banner">
+           <%= link_to image_tag(banner.banner_image.url(:thumb)), banner.url, :target=>'_blank'%>
+       </div>
+     <% end %>
+   </div>
+</div>
+
+<div class="container">
+    <div class="bg">
+    <h2>LittleSurprizes.</h2>
+    
+    <p> Based on your shopping, we will send your friend a surprise gift in the names of the friends, like you, who contributed to the gift. </p>
+    <p>You can also do monetary contributions to your friends wishlist. You can create a wishlist and start contributing for your own littlesurprizes gift too!
+Try it out! It is absolutely FREE!!!</p>
+ </div>	
+<div class="wishlist">
+  <%= render :partial => "wish_lists/list" %>
+</div>
+
+	
+<div id = 'category-list'>
+  <%= render :partial => 'list' %>
+</div>
+
+<div class="clear"></div>
+<div class="bottom_link">
+ 	<%= link_to "view all", categories_path%>
+</div>
+</div>
+</div>
+
+<div class="clear"></div>
+
+

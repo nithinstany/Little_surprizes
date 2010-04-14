@@ -1,0 +1,56 @@
+<% content_for :categories_tab do %>
+    <% unless (@current_user.wish_list.blank?) %>
+       <%= fb_tab_item "View my wishlist", wish_list_path(@wish_list.id) %>
+    <% end -%>
+<% end %>
+<div class ="top_links">
+
+<%if !@ancestors.blank? %>
+
+<%= link_to "Categories",root_url %> >>
+
+<%@ancestors.each do |ancestor| %>
+  <%= link_to "#{find_category(ancestor).name}",category_path(find_category(ancestor).id)%>
+  <%if ancestor != @ancestors.last%>
+>>
+  <%end%>
+<%end%>
+<%end%>
+
+ 
+</div>
+
+
+<div class="facebook_container container">
+   <div class="show-box">
+	
+		
+		<div class="show_lt">
+		       <h2><%=h @category.name %></h2>
+			<center><%= image_tag @category.avatar.url(:thumb)%></center>
+		</div>
+		<div class="show_rt">
+ 			<p><%=h @category.description %></p>
+  			
+		
+			<p class="points">Lowest number of points needed:
+  			<b><%=h @category.lowest_number_of_points_needed %></b></p>
+			<a><%=h @category.url %></a> |
+            <% if @wish_list.blank? %>
+            		<%=link_to "Add to wishlist", new_wish_list_path ,:confirm => 'You have not created a wishlist yet.Create a new wishlist?'%> 
+         	<%else%>
+             		<% unless @category_ids.include?(@category.id) %>
+          		<%=link_to "Add to wishlist",add_to_wishlist_wish_lists_path(:category_id => @category.id) ,:confirm => "#{@category.name} will be added to your wishlist."%> 
+          	<%else%>
+            		<a>Already in wishlist</a>
+          	<%end%>
+     	     <%end%>
+		</div>
+	
+  </div>
+
+<div class="clear"></div>
+<% unless @fb_categories.blank?%>
+  <%= render :partial => 'fblist' %>
+<%end%>
+</div>

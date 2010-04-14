@@ -1,0 +1,15 @@
+<% form_for  @wish_list, :action => "update_wishlist" ,:url => update_wishlist_wish_lists_path(:wish_list => @wish_list.id), :method => :get do |f| %>
+
+<div class="sidebar">
+   <h2>Category list</h2>
+    <ul id='tree'><%= render :partial => 'category_list', :collection => @parent, :as => :category %></ul>
+</div>
+
+<div class="clear"></div>
+<%= f.submit "save to wishlist" %>
+ 
+<% end %>
+
+
+
+ 
