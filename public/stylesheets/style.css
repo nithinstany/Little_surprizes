@@ -211,6 +211,30 @@ ul#tree li{line-height:35px;}
 
 ul#tree li span input{border:1px solid #cbcbcd;padding:3px 0px;}
 
+ul#tree{
+	margin:15px 0px 0px 30px;
+	padding:0px;
+}
+
+ul#tree li {
+	margin:10px 0px;
+	font-size:16px;
+	color:#1d93d3;
+	text-align:left;
+	list-style:none;
+	
+}
+
+ul#tree li a{
+	color:#170f15;
+	padding:0px 0px 0px 16px;
+	text-decoration:none;background:url(/images/arrowright.png) no-repeat left top;
+}
+
+ul#tree li ul li {	
+	font-size:13px;
+}
+
 .clear{clear:both;}
 
 .form {
@@ -218,6 +242,7 @@ ul#tree li span input{border:1px solid #cbcbcd;padding:3px 0px;}
 	padding:20px 20px 20px 0px;
 	margin-top:20px;
 }
+
 .form input#wish_list_name{
 	padding:5px 0px;
 }
@@ -355,29 +380,7 @@ p.text{
 
 
 
-ul#tree{
-	margin:15px 0px 0px 30px;
-	padding:0px;
-}
 
-ul#tree li {
-	margin:10px 0px;
-	font-size:16px;
-	color:#1d93d3;
-	text-align:left;
-	list-style:none;
-	
-}
-
-ul#tree li a{
-	color:#170f15;
-	padding:0px 0px 0px 16px;
-	text-decoration:none;background:url(/images/arrowright.png) no-repeat left top;
-}
-
-ul#tree li ul li {	
-	font-size:13px;
-}
 
 .container{
 	width:72%;
