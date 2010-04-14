@@ -34,7 +34,7 @@ blockquote, q {
 quotes : "" "";
 }
 /*******************************************************/
-body { margin: 0px 0px 0px 0px; padding: 0px; background:#fdfdfd url(/images/bxody.jpg) repeat-x; color: #6d6c67; font-family: Arial, Helvetica, Sans-Serif; font-style: normal; font-variant: normal; font-weight: normal; font-size: 13px; line-height: normal;}
+body { margin: 0px 0px 0px 0px; padding: 0px; background-color:#dae7f8; border:1px solid #97bff0;color: #6d6c67; font-family: Arial, Helvetica, Sans-Serif; font-style: normal; font-variant: normal; font-weight: normal; font-size: 13px; line-height: normal;}
 
 .notice{
 	margin:0 auto;
