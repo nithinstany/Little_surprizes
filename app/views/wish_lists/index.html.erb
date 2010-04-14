@@ -9,7 +9,7 @@
 
 
 <div class="clear"></div>
-<h1>My wishlists</h1>
+<h2>My wishlists</h2>
 
 <table class="listing">
 	<tr>
@@ -19,11 +19,11 @@
   	</tr>
 
 	<% @wish_lists.each do |wish_list| %>
-  	<tr>
-    		<td><%=radio_button_tag('wishlist_id', wish_list.id, checked = false, options = {:onclick => "change_function(#{wish_list.id})"})%>
+  	<tr class="<%= cycle('odd', 'even')%>">
+    		<td width="25%"><%=radio_button_tag('wishlist_id', wish_list.id, checked = false, options = {:onclick => "change_function(#{wish_list.id})"})%>
     		<%=link_to "#{wish_list.name}",edit_wish_list_path(wish_list)%></td>
-    		<td><%=h wish_list.description %></td>
-    		<td><%=Time.parse(wish_list.created_at.to_s).strftime('%m/%d/%Y') %></td>
+    		<td width="52%"><%=h wish_list.description %></td>
+    		<td width="20%"><%=Time.parse(wish_list.created_at.to_s).strftime('%m/%d/%Y') %></td>
     		<!--<td><%= link_to 'Show', wish_list %></td>
     		<td><%= link_to 'Edit', edit_wish_list_path(wish_list) %></td>
     		<td><%= link_to 'Destroy', wish_list, :confirm => 'Are you sure?', :method => :delete %></td> -->
@@ -31,10 +31,10 @@
 <% end %>
 </table>
 
-		<%= link_to 'Add new', new_wish_list_path %>
-		<% unless @wish_lists.blank? %>
+		 <%= link_to 'Add new', new_wish_list_path %>
+		 <% unless @wish_lists.blank? %>
 		|
-		  <%= link_to 'Edit Selected', edit_wish_list_path(@wish_lists.first.id), :id => "edit" %> |
-		  <%= link_to 'Delete', @wish_lists.first,:confirm => "Are you sure want delete wishlist ?", :method => :delete, :id => 'delete_record' %>
-		<%end%>
+		   <%= link_to 'Edit selected', edit_wish_list_path(@wish_lists.first.id), :id => "edit" %> |
+		   <%= link_to 'Delete', @wish_lists.first,:confirm => "Are you sure want delete wishlist ?", :method => :delete, :id => 'delete_record' %>
+		 <%end%>
 

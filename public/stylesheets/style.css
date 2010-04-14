@@ -34,7 +34,7 @@ blockquote, q {
 quotes : "" "";
 }
 /*******************************************************/
-body { margin: 0px 0px 0px 0px; padding: 0px; background-color:#dae7f8; border:1px solid #97bff0;color: #6d6c67; font-family: Arial, Helvetica, Sans-Serif; font-style: normal; font-variant: normal; font-weight: normal; font-size: 13px; line-height: normal;}
+body { margin: 30px 0px 0px 0px; padding: 0px; color: #6d6c67; font-family: Arial, Helvetica, Sans-Serif; font-style: normal; font-variant: normal; font-weight: normal; font-size: 13px; line-height: normal;height:100%;}
 
 .notice{
 	margin:0 auto;
@@ -93,38 +93,36 @@ body { margin: 0px 0px 0px 0px; padding: 0px; background-color:#dae7f8; border:1
 
 
 
-.main{
+#wrapper{
 	margin:0 auto;
+	background-color:#e8f1fd; 
+	border:1px solid #c1d9f6;
 	height:auto !important;
+	min-height:600px;
+	height:auto !important;
+        height:600px;
         padding:5px 5px 0px 10px;
 	
 }
 
-.main h1{
-	color:#1990d4; 
-	font-size:25px;
-	margin:15px 0px;
-}
-
 .header{
 	height:45px;
-	margin:15px 0px 0px 5px;
+	margin:20px 0px 0px 0px;
 	padding:0px 0px 0px 0px;
 }
 
 .header h1{
-	color:#ed2626;
+	color:#3b5998;
 	font-size:32px;
-	margin-top:5px;
 }
 
 .header h1 span{
-	color:#f8db37;
+	color:#627aad;
 
 }
 
 
-.header_right{
+/*.header_right{
 	float:right;
 	width:45%;
 	margin:0px 10px 37px 0px;
@@ -160,7 +158,134 @@ body { margin: 0px 0px 0px 0px; padding: 0px; background-color:#dae7f8; border:1
 ul.btn li{
 	margin:0px;
 	padding:0px;
+}*/
+
+
+.main{
+	margin:0 auto;
+	height:auto !important;
+	min-height:600px;
+	height:auto !important;
+        height:600px;
+	padding-left:2px;	
 }
+
+.main h2{
+	color:#101319; 
+	font-size:16px;
+	font-weight:normal;
+	margin:20px 0px 5px 2px;
+}
+
+.main p span,a{
+	color:#284785;
+	text-decoration:underline;
+}
+
+.main p span,a:hover{
+	text-decoration:none;
+}
+
+
+
+
+
+.sidebar{
+	height:auto !important;
+	margin-top:0px;background-color:#fbfcfd;
+}
+
+.sidebar h2{
+	color:#101319; 
+	border-bottom:1px solid #c1bdbd; 
+	font-size:13px;
+	margin:0px 0px 0px 0px;
+	padding:3px 0px 2px 10px;
+}
+
+
+
+
+
+ul#tree li{line-height:35px;}
+
+ul#tree li span input{border:1px solid #cbcbcd;padding:3px 0px;}
+
+.clear{clear:both;}
+
+.form {
+	background-color:#fbfcfd;
+	padding:20px 20px 20px 0px;
+	margin-top:20px;
+}
+.form input#wish_list_name{
+	padding:5px 0px;
+}
+
+
+
+.form label{
+         color:#1990d4; 
+	font-size:13px;
+	margin:0px 0px 0px 0px;
+	padding:3px 0px 2px 10px;
+}
+
+.listing{
+	 border-collapse: collapse;
+         width: 98%;
+         color: #3a3a3a;    
+	 margin:0px 0px 15px 0px;
+	 border:1px solid #ddd;
+	 background-color:#fff;
+}
+
+
+.listing th {
+	color:#fff;
+        text-align: left;
+        padding: 11px;
+	font-size:15px;
+	background-color:#627aad;
+        font-weight:normal; border:1px solid #ddd;
+}
+
+
+
+.listing td {
+	padding: 12px;
+	color: #2a2828;
+	text-align: left; border:1px solid #ddd;
+}
+
+.listing tr {
+    	font-size: 13px; 
+}
+
+.listing a {
+	color: #007db7;
+        font-size: 11px;
+}
+
+.listing tr.even td {
+	background-color:#f8f8f8;
+     	
+}
+
+.listing tr.even:hover td {
+	background-color:#fff;
+     	
+}
+
+
+.listing tr.odd td {
+     	border-top: #dadeec 1px solid;
+      	border-bottom: #dadeec 1px solid;   
+}
+
+/*.......................................website css............................*/
+
+
 
 
 .image_bg{
@@ -176,14 +301,6 @@ ul.btn li{
 	width:940px;
 }
 
-.image_bg p span,a{
-	color:#977c0f;
-	text-decoration:underline;
-}
-
-.image_bg p span,a:hover{
-	text-decoration:none;
-}
 
 
 .image_bg p{
@@ -236,28 +353,9 @@ p.text{
 }
 
 
-.sidebar{
-	height:auto !important;
-	margin-top:20px;
-}
-
-.sidebar h2{
-	color:#1990d4; 
-	border-bottom:1px solid #c1bdbd; 
-	font-size:25px;
-	margin:0px 0px 0px 0px;
-	padding:3px 0px 2px 10px;
-}
 
 
-
-
-
-ul#tree li{line-height:35px;}
-
-
-
-/*ul#tree{
+ul#tree{
 	margin:15px 0px 0px 30px;
 	padding:0px;
 }
@@ -279,13 +377,13 @@ ul#tree li a{
 
 ul#tree li ul li {	
 	font-size:13px;
-}*/
+}
 
 .container{
 	width:72%;
 	height:auto !important;
 	float:right;
-	background-color: #fff;
+	
 }
 
 .bg{
@@ -378,7 +476,7 @@ ul#tree li ul li {
 hr{
 	border-top:1px solid #c8dbff;
 	border-bottom:1px solid #fff;
-	margin:2px 10px;
+	margin:2px 0px;
 }
 
 .box {
@@ -629,9 +727,7 @@ table.formstyle tr td input:focus{
 	margin:10px 12px;
 }
 
-.clear{
-	clear:both;
-}
+
 
 .bottom_link a{
 	float:right;
@@ -672,61 +768,4 @@ h2.banner{
 	margin:20px 5px 0px 5px;
 	background:none;
 	text-align:leftl	
-}
-
-#tree li{
-	list-style: none;
-	}
-
-
-.listing{
-	 border-collapse: collapse;
-         width: 98%;
-         color: #3a3a3a;    
-	 margin:0px 0px 15px 0px;
-	 border:1px solid #ddd;
-	 background-color:#fff;
-}
-
-
-.listing th {
-	color:#499616;
-        text-align: left;
-        padding: 11px;
-	font-size:15px;
-        font-weight:normal; border:1px solid #ddd;
-}
-
-
-
-.listing td {
-	padding: 12px;
-	color: #2a2828;
-	text-align: left; border:1px solid #ddd;
-}
-
-.listing tr {
-    	font-size: 13px; 
-}
-
-.listing a {
-	color: #007db7;
-        font-size: 11px;
-}
-
-.listing tr.even td {
-	background-color:#f0f8ff;
-     	
-}
-
-
-.listing tr.odd td {
-     	border-top: #dadeec 1px solid;
-      	border-bottom: #dadeec 1px solid;   
-}
-
-.footer{
-	background: #fff url(/images/border.gif) repeat-x top;
-	width:100%;
-	height:55px;
 }
