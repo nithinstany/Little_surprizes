@@ -209,17 +209,18 @@ ul.btn li{
 }
 
 .sidebar h2{
-	color:#101319;
+	color:#2a4f83;
 	border-bottom:1px solid #c1bdbd;
-	font-size:13px;
+	font-size:15px;
+	font-weight:bold;
 	margin:0px 0px 0px 0px;
 	padding:3px 0px 2px 10px;
 }
 
 
-ul#tree li{line-height:30px;}
+ul#tree li{}
 
-ul#tree li span input{border:1px solid #cbcbcd;padding:4px 0px;width:240px;}
+ul#tree li span input{border:1px solid #cbcbcd;padding:5px 0px;width:240px;}
 
 ul#tree{
 	margin:15px 0px 0px 30px;
@@ -228,22 +229,18 @@ ul#tree{
 
 ul#tree li {
 	margin:10px 0px;
-	font-size:16px;
-	color:#1d93d3;
+	font-size:13px;
+	color:#36383b;
 	text-align:left;
 	list-style:none;
 
 }
 
-ul#tree li a{
-	color:#170f15;
-	padding:0px 0px 0px 16px;
-	text-decoration:none;
-	background:url(/images/arrowright.png) no-repeat left top;
-}
+
 
 ul#tree li ul li {
 	font-size:13px;
+	color:#36383b;
 }
 
 .clear{clear:both;}
@@ -253,6 +250,7 @@ ul#tree li ul li {
 	background-color:#fbfcfd;
 	padding:20px 20px 20px 0px;
 	margin-top:8px;
+	border-top:1px solid #e5e6e7
 }
 
 .form input{
@@ -261,10 +259,8 @@ ul#tree li ul li {
 	padding:5px 0px;
 }
 
-
-
 .form label{
-        color:#1990d4;
+        color:#36383b;
         font-size:13px;
 	margin:0px 0px 5px 0px;
 	padding:3px 0px 2px 10px;
