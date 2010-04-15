@@ -120,7 +120,7 @@ class WishListsController < ApplicationController
        #                        :href => "http://apps.facebook.com/littlesurprizes"}]
        #                }
       )
-
+      flash[:notice] = "Published to Facebook"
       redirect_to(edit_wish_list_path(@wish_list))
     else
       render :action => 'grant_permission'
