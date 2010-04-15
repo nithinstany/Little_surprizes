@@ -1,21 +1,18 @@
 class WishListsController < ApplicationController
   ensure_authenticated_to_facebook
-  before_filter :set_current_user,:only => [:delete, :edit]
+  before_filter :set_current_user,:only => [:delete,:edit,:index,:show]
   #before_filter :wish_list_exists,:only => [:new]
 
    def index
     @wish_lists =  WishList.find(:all, :conditions => { :user_id => user.id })
-    WishList.birthday_reminder
+    #WishList.birthday_reminder
    end
 
   def show
-    @wish_list = WishList.find(params[:id]) rescue nil
+    @wish_list = WishList.find(params[:id],:include => [:categories])
     unless @wish_list.blank?
-      @categories = @wish_list.categories(:order => 'desc created_at')
-      items = @wish_list.categories.map{|c| c.category_id}
-      @category =  items.last
+      @categories = @wish_list.categories.find(:all,:order => 'created_at DESC')
     end
-
     @current_user = user rescue nil
   end
 
