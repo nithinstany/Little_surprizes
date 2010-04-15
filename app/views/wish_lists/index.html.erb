@@ -31,10 +31,12 @@
 <% end %>
 </table>
 
-		 <%= link_to 'Add new', new_wish_list_path %>
+		<div class="btn_links"> <%= link_to '<img src="images/add.jpg" title="Add new"/>', new_wish_list_path %>
 		 <% unless @wish_lists.blank? %>
-		|
-		   <%= link_to 'Edit selected', edit_wish_list_path(@wish_lists.first.id), :id => "edit" %> |
-		   <%= link_to 'Delete', @wish_lists.first,:confirm => "Are you sure want delete wishlist ?", :method => :delete, :id => 'delete_record' %>
+	
+		   <%= link_to '<img src="/images/delete.jpg" title="Delete"', @wish_lists.first,:confirm => "Are you sure want delete wishlist ?", :method => :delete, :id => 'delete_record' %>
+
+		     <%= link_to '<img src="/images/edit.jpg" title="Edit selected"/>', edit_wish_list_path(@wish_lists.first.id), :id => "edit" %> 
 		 <%end%>
+               </div>
 

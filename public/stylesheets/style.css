@@ -209,7 +209,7 @@ ul.btn li{
 
 
 
-ul#tree li{line-height:35px;}
+ul#tree li{line-height:30px;}
 
 ul#tree li span input{border:1px solid #cbcbcd;padding:3px 0px;}
 
@@ -309,6 +309,9 @@ ul#tree li ul li {
      	border-top: #dadeec 1px solid;
       	border-bottom: #dadeec 1px solid;
 }
+
+.btn_links{float:right;margin-right:12px;}
+.btn_links a{margin-right:3px;}
 
 /*.......................................website css............................*/
 
@@ -539,7 +542,7 @@ hr{
 
 h2.form_heading{
 	background-color:#1d93d3;
-	color:#fff;
+	cobtn_linkslor:#fff;
 	font-size:20px;
 	width:62%;
 	padding:5px 4px;
