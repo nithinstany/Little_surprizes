@@ -1,5 +1,5 @@
 <% unless @user.has_permissions?('publish_stream') %>
-  <p><fb:prompt-permission perms="publish_stream">Click the button below, to grant permissions to publish the status updates to friend's wall(unless you've already done so for Little surprises):</fb:prompt-permission> </p>
+  <p><fb:prompt-permission perms="publish_stream" next_fbjs="window.location.reload();" >Click the button below, to grant permissions to publish the status updates to friend's wall(unless you've already done so for Little surprises):</fb:prompt-permission> </p>
 
 
 <% end %>
