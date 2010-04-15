@@ -17,3 +17,24 @@
 <% end %>
 
 <%= link_to 'Back', wish_lists_path %>
+
+
+<% unless @user.has_permissions?('publish_stream') %>
+  <p>Click the button below, to grant permissions to publish the status updates to friend's wall(unless you've already done so for Little surprises): <form promptpermission="publish_stream">
+  <input type="submit" value="Grant me permission">
+  </form> </p>
+<% end %>
+<br />
+
+<% unless @user.has_permissions?('email') %>
+  <p>Click the button below, to allow Birthday remainder emails from  Little surprises <form promptpermission="email">
+  <input type="submit" value="Allow emails">
+  </form> </p>
+<% end %>
+<br />
+<% unless @user.has_permissions?('offline_access') %>
+  <p>Click the button below, to grant the offline access to Little surprises <form promptpermission="offline_access">
+  <input type="submit" value="Allow offline access">
+  </form> </p>
+<% end %>
+
