@@ -20,21 +20,20 @@
 
 
 <% unless @user.has_permissions?('publish_stream') %>
-  <p>Click the button below, to grant permissions to publish the status updates to friend's wall(unless you've already done so for Little surprises): <form promptpermission="publish_stream">
-  <input type="submit" value="Grant me permission">
-  </form> </p>
+  <p>
+    <fb:prompt-permission perms="publish_stream">Click the button below, to grant permissions to publish the status updates to friend's wall(unless you've already done so for Little surprises):</fb:prompt-permission>
+  </p>
 <% end %>
 <br />
 
-<% unless @user.has_permissions?('email') %>
-  <p>Click the button below, to allow Birthday remainder emails from  Little surprises <form promptpermission="email">
-  <input type="submit" value="Allow emails">
-  </form> </p>
+<% unless @user.has_permissions?('email') %><p>
+<fb:prompt-permission perms="email">Click the button below, to allow Birthday remainder emails from  Little surprises</fb:prompt-permission>
+   </p>
 <% end %>
 <br />
 <% unless @user.has_permissions?('offline_access') %>
-  <p>Click the button below, to grant the offline access to Little surprises <form promptpermission="offline_access">
-  <input type="submit" value="Allow offline access">
-  </form> </p>
+  <p>
+  <fb:prompt-permission perms="offline_access">Click the button below, to grant the offline access to Little surprises</fb:prompt-permission>
+     </p>
 <% end %>
 

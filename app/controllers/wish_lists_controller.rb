@@ -10,9 +10,9 @@ class WishListsController < ApplicationController
   def show
     @wish_list = WishList.find(params[:id]) rescue nil
     unless @wish_list.blank?
-      #@categories = @wish_list.categories(:order => 'desc created_at')
-      #items = @wish_list.categories.map{|c| c.category_id}
-     # @category =  items.last
+      @categories = @wish_list.categories(:order => 'desc created_at')
+      items = @wish_list.categories.map{|c| c.category_id}
+      @category =  items.last
     end
 
     @current_user = user rescue nil
@@ -26,11 +26,18 @@ class WishListsController < ApplicationController
 
 
   def edit
-    @wish_list = WishList.find(params[:id])
+    @wish_list = WishList.find(params[:id],:include =>[:categories, :category_wish_lists])
     @current_user = user
-    @wishlist_items = @wish_list.category_wish_lists.map{|c| c.category_id} rescue nil
+    @wishlist_items = @wish_list.category_wish_lists.find(:all,:order => 'created_at DESC').map{|c| c.category_id } rescue nil
     @parent = Category.find_all_by_parent_id(nil)
-
+=begin
+    Category.find(:all,:select => 'id').each do |category|
+       unless CategoryWishList.find_by_wish_list_id_and_category_id(@wish_list.id, category.id) # written in  FieldValue model
+          category_wish_list  = @wish_list.category_wish_lists.build
+          category_wish_list.category_id = category.id
+       end
+    end
+=end
      respond_to do |format|
        format.html {
                    }
@@ -68,7 +75,6 @@ class WishListsController < ApplicationController
          params[:categories].each do |category_id|
            CategoryWishList.create({ :category_id => category_id ,:wish_list_id => @wish_list.id , :custom_description => params["category_#{category_id}_custom_description"] })
          end
-
        end
        flash[:notice] = 'Wish list was successfully updated.'
        redirect_to(wish_lists_path)
@@ -101,10 +107,10 @@ class WishListsController < ApplicationController
     @wish_list = WishList.find(params[:id])
     @category = Category.find(params[:category])
 
-    user = facebook_user
-    if user.has_permissions?('publish_stream')
-      user.publish_to(user, :message => 'has added new product categories to wishlist.',
-      :action_links => [ :text => "#{user.name}'s wishlist",
+    @user = facebook_user
+    if @user.has_permissions?('publish_stream')
+      @user.publish_to(user, :message => 'has added new product categories to wishlist.',
+      :action_links => [ :text => "#{@user.name}'s wishlist",
                          :href => "http://apps.facebook.com/littlesurprizes/wish_lists/#{@wish_list.id}"
                        ],
        :attachment =>  { :name => "#{@category.name}",

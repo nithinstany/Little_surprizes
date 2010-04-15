@@ -1,9 +1,13 @@
+  <b><%=link_to "Publish", publish_to_friends_wish_list_path(:id => @wish_list.id, :category => @wishlist_items.last) ,:confirm => 'Allow your friends to view your wishlist?' unless @wishlist_items.blank? %> </b>
+
 <h2>Edit your wishlist</h2>
 <% form_for(@wish_list) do |f| %>
 	<%= f.error_messages %>
   		<div class="form">
-  			<label>Wishlist Name</label><%= f.text_field :name %>
+  			<label>Wishlist Name : </label><%= f.text_field :name %> <br />
+  			<label>Wishlist Description : </label>  <%= f.text_field :description %> <br />
   		</div>
+
 
        		<div class="sidebar">
           		<h2>Category list</h2>
@@ -16,5 +20,4 @@
 	<hr />
 	<%= f.submit 'Save to wishlist' %> -or- <%= link_to 'Back', wish_lists_path %>
 <% end %>
-
 
