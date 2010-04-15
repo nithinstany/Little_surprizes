@@ -5,6 +5,7 @@ class WishListsController < ApplicationController
 
    def index
     @wish_lists =  WishList.find(:all, :conditions => { :user_id => user.id })
+    WishList.birthday_reminder
    end
 
   def show

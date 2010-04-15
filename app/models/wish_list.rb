@@ -40,7 +40,7 @@ def WishList.send_mail
 end
 
 def WishList.birthday_reminder
-  fb_session = Facebooker::Session.new('160ff3da7db8f04a75fe58ca5ab90d11', 'def046826bbe6f68b1befa7f4eab9007')
+  fb_session = Facebooker::Session.new('160ff3da7db8f04a75fe58ca5ab90d11', 'def046826bbe6f68b1befa7f4eab9007') # api key and secret
   users = User.all(:select => 'facebook_id, session_key', :conditions => "facebook_id != ''")
   #user_ids = users.collect{|u| [u.facebook_id, u.session_key]}
 
