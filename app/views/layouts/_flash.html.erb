@@ -1,0 +1,13 @@
+<% unless flash.blank? -%>
+  <%- flash.each do |name, msg| -%>
+    <% content_tag :div, :class => "flash #{name}" do %>
+      <table style = 'width: 99%'> <tr> <td style = 'vertical-align : middle;'><%= msg %></td>
+        <td style = 'vertical-align : middle;'>
+          <%= link_to_function image_tag("close.png"), "$('flash').fade({duration: 0.5});", :title => "close", :class => 'close-button' %>
+        </td>
+        </tr>
+      </table>
+    <% end %>
+  <%- end -%>
+<%- end -%>
+

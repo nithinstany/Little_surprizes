@@ -1,3 +1,33 @@
+<% if @from_mail_user %>
+     <h2> <span><%=fb_name(@from_mail_user.facebook_id)%>'s  wishlist </span> <%= link_to "View My Wish List", wish_lists_path %> </h2>
+   <div class="clear"></div>
+  <table class="listing" width="100%">
+	  <tr>
+      <th> Name </th>
+    	<th> Description </th>
+    	<th> Created at </th>
+    </tr>
+    <% unless @from_mail_user.wish_lists.blank? %>
+	    <% @from_mail_user.wish_lists.each do |wish_list| %>
+      	<tr class="<%= cycle('odd', 'even')%>">
+          <td width="25%">
+            <%= link_to "#{wish_list.name}", wish_list %>
+          </td>
+        	<td width="52%">
+              <%=h wish_list.description %>
+          </td>
+        	<td width="20%">
+              <%=Time.parse(wish_list.created_at.to_s).strftime('%m/%d/%Y') %>
+          </td>
+
+      	</tr>
+      <% end %>
+    <%end%>
+</table>
+<%else%>
+
+
+
 <script type="text/javascript">
  function change_function (wish_list)
  {
@@ -11,7 +41,7 @@
 <div class="clear"></div>
 <h2>My wishlists</h2>
 
-<table class="listing">
+<table class="listing" width="100%">
 	<tr>
       		<th>Name</th>
     		<th>Description</th>
@@ -30,12 +60,15 @@
   	</tr>
 <% end %>
 </table>
-<div class="btn_links"> <%= link_to 'Add new', new_wish_list_path %>
+<div class="btn_links">
+  <%= link_to 'Add new', new_wish_list_path %>
 	<% unless @wish_lists.blank? %>
-	
+
 	<%= link_to 'Delete', @wish_lists.first,:confirm => "Are you sure want delete wishlist ?", :method => :delete, :id => 'delete_record' %>
-	
-	<%= link_to 'Edit selected', edit_wish_list_path(@wish_lists.first.id), :id => "edit" %> 
+
+	<%= link_to 'Edit selected', edit_wish_list_path(@wish_lists.first.id), :id => "edit" %>
 	<%end%>
 </div>
+ <div class="clear"> </div>
+<%end%>
 

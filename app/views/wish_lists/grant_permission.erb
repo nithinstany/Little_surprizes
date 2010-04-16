@@ -1,6 +1,22 @@
-<% unless @user.has_permissions?('publish_stream') %>
-  <p><fb:prompt-permission perms="publish_stream" next_fbjs="window.location.reload();" >Click the button below, to grant permissions to publish the status updates to friend's wall(unless you've already done so for Little surprises):</fb:prompt-permission> </p>
+<div class="permission">
+<div class="btn_links">
+   <% unless  @facebook_user.has_permissions?('publish_stream') %>
+       <fb:prompt-permission perms="publish_stream" next_fbjs="window.location.reload();" > Grant me permission </fb:prompt-permission>
+   <% end %>
+
+   <% unless @facebook_user.has_permissions?('email') %>
+      <fb:prompt-permission perms="email" next_fbjs="window.location.reload();"> Allow emails</fb:prompt-permission>
+
+   <% end %>
+
+   <% unless @facebook_user.has_permissions?('offline_access') %>
+     <fb:prompt-permission perms="offline_access" next_fbjs="window.location.reload();"> Allow offline access </fb:prompt-permission>
+   <% end %>
+</div>
 
 
-<% end %>
+
+ </div>
+
+<p> <%= link_to "Go to WishLists",wish_lists_path %> </p>
 

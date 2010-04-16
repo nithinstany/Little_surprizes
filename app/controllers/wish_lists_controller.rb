@@ -4,16 +4,20 @@ class WishListsController < ApplicationController
   #before_filter :wish_list_exists,:only => [:new]
 
    def index
+    @from_mail_user = User.find(params[:user_id]) if params[:user_id]  # when user click on mail link
+    @facebook_user = facebook_user
     @wish_lists =  WishList.find(:all, :conditions => { :user_id => user.id })
     #WishList.birthday_reminder
+
+
    end
 
   def show
-    @wish_list = WishList.find(params[:id],:include => [:categories])
-    unless @wish_list.blank?
-      @categories = @wish_list.categories.find(:all,:order => 'created_at DESC')
-    end
-    @current_user = user rescue nil
+    @wish_list = WishList.find(params[:id],:include => [:categories]) rescue nil
+   # unless @wish_list.blank?
+    #  @categories = @wish_list.categories.find(:all,:order => 'created_at DESC')
+   # end
+   # @current_user = user rescue nil
   end
 
   def new
@@ -49,13 +53,14 @@ class WishListsController < ApplicationController
   end
 
   def create
-    @user = facebook_user
+    @facebook_user = facebook_user
     @wish_list = WishList.new(params[:wish_list])
     @wish_list.user = user
 
     if @wish_list.save
       flash.now[:notice] = "Wish list has been created successfully."
-      redirect_to(wish_lists_path)
+      facebook_permissions(@facebook_user) ?  (redirect_to(wish_lists_path)) : (render :action => 'grant_permission')
+
     else
       flash.now[:error] = "Make sure that all required fields are entered."
       @wish_list = nil
@@ -121,7 +126,9 @@ class WishListsController < ApplicationController
       flash[:notice] = "Published to Facebook"
       redirect_to(edit_wish_list_path(@wish_list))
     else
-      render :action => 'grant_permission'
+      flash[:notice] = "You Don't have publish permissions Please click on grant permissions Button ."
+      redirect_to wish_lists_path
+      #render :action => 'grant_permission'
     end
   end
 
@@ -186,7 +193,16 @@ private
         flash[:notice] = "You can have only one wish list"
         redirect_to root_url
        end
-    end
+  end
+
+  def facebook_permissions(facebook_user)
+     permissions = ["offline_access","publish_stream",'email'] #"", "share_item","status_update", , "read_stream"
+     for per in permissions
+        value = facebook_user.has_permissions?("#{per}")
+        return false if !value
+     end
+     return true
+  end
 
 
 end

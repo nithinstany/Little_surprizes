@@ -1,42 +1,32 @@
-<% if @wish_list.nil? %>
-   Wish list does not exist.
-<%else%>
+<h2><%= link_to "Back", :back %> </h2><br />
 
-<% unless @categories.blank? %>
- <div class ="wishlist_container container">
-  <% if current_user == @wish_list.user %>
-     <h2> Items in your wishlist. </h2>
+ <% if @wish_list.nil? %>
+    <p> <b> Wish list does not exist. </b> </p>
+ <%else%>
+
+    <h2>   <%= @wish_list.name %> </h2>
+    <p>   <%= @wish_list.description %> </p>
+
+  <% unless @wish_list.category_wish_lists.blank? %>
+     <table class="listing" width="100%">
+      <tr>
+          <th> Category Name </th>
+          <th> Description </th>
+      </tr>
+
+     <% for wish_category in @wish_list.category_wish_lists -%>
+       <tr class="<%= cycle('odd', 'even')%>">
+         <td width="25%">
+            <%= wish_category.category.name %>
+          </td>
+          <td width="52%">
+            <%= wish_category.custom_description %>
+          </td>
+     <% end -%>
+  </table>
   <%else%>
-     <h2> <%=fb_name(@facebook_id)%> 's  wishlist.</h2>
+    <p> There are no items in <%=fb_name(@wish_list.user.facebook_id)%> 's wishlist </p>
   <%end%>
-
-
-    <% @counter = 0 %>
-
-      <% @categories.each do |category| %>
-       <div class="outer-box">
-		 <div class="box">
-      <% @counter +=  1 %>
-      <div class="heading"> <%=h category.name %> </div>
-      <div class="box_lt"><center> <%= image_tag category.avatar.url(:thumb)%> </center></div>
-
-         <div class="box_rt">
-				<p><%=h category.description %></p>
-				<a> <%=h category.url %> </a>
-         </div>
-
-      <% if @counter == 2 %>
-
-        <% @counter = 0 %>
-      <%end%>
-  </div>
-	</div>
-   <% end %>
-  </div>
-
-<%else%>
-  <p>There are no items in your wishlist </p>
-<%end%>
 
 <%end%>
 <div class="clear"></div>

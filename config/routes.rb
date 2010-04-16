@@ -1,11 +1,11 @@
 ActionController::Routing::Routes.draw do |map|
-  
+
 
 
 
   #map.resources :wish_lists, :collection => {:add_to_wishlist => :get, :remove_category => :any , :category_list => :any}, :member => {:publish_to_friends => :any}
 
- 
+
   map.resource :account, :controller => "users"
   map.resources :users
   map.resource :user_session, :member => {:logout => :get}
@@ -24,13 +24,17 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :banners
    end
 
-  #map.resources :categories   
+  #map.resources :categories
   map.root :controller => "wish_lists", :action => "index"
 
+  map.resources :users do |user|
+    user.resources :wish_lists
+  end
   map.resources :wish_lists,:collection => {:add_to_wishlist => :get, :remove_category => :any , :category_list => :any,:update_wishlist => :any}, :member => {:publish_to_friends => :any} do |wish_lists|
      wish_lists.resources :categories
   end
 
-  
+
 
 end
+

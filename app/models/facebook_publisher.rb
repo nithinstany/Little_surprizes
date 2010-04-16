@@ -52,7 +52,7 @@ def notification_email(user,sender,friends,date,wish_list)
   	  <fb:fbml>
          #{user.name}'s birthday is on #{date.strftime("%B #{date.day.ordinalize}")} <br/><br/>
 
-        Click here to view #{user.name}'s wishlist http://apps.facebook.com/littlesurprizes/wish_lists/#{wish_list}
+        Click here to view #{user.name}'s wishlist http://apps.facebook.com/littlesurprizes/users/#{user.id}/wish_lists
 
   	  </fb:fbml>
   	MESSAGE

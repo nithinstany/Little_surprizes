@@ -4,9 +4,9 @@ Edit your wishlist</h2>
 <% form_for(@wish_list) do |f| %>
 	<%= f.error_messages %>
   		<div class="form">
-			<table cellpadding="3px">	
-		           <tr>
-  				<td><label>Wishlist Name: </label></td><td><%= f.text_field :name %></p></td>
+			<table cellpadding="3px">
+		    <tr>
+  				<td><label>Wishlist Name: </label></td><td><%= f.text_field :name %></td>
 			   </tr>
 			   <tr>
   				<td><label>Wishlist Description: </label></td><td><%= f.text_field :description %></td>

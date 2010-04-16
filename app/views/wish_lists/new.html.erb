@@ -1,41 +1,20 @@
-<h1>New wish list</h1>
+<h2> New wish list </h2>
 
 <% form_for :wish_list, :url => wish_lists_path,:html => { :multipart => true }  do |f| %>
   <%= f.error_messages %>
+<div class="form">
+    <table cellpadding="3px">
+		    <tr>
+  				<td> <label>Wishlist Name: </label> </td><td><%= f.text_field :name %></td>
+        </tr>
+        <tr>
+          <td> <label>Wishlist Description: </label> </td><td><%= f.text_field :description %></td>
+        </tr>
+    </table>
 
-  <p>
-    <%= f.label :name%><br />
-    <%= f.text_field :name %>
+   <p>
+    <%= f.submit 'Create' %> -or- <%= link_to 'Back', wish_lists_path %>
   </p>
-  <p>
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
-  </p>
-  <p>
-    <%= f.submit 'Create' %>
-  </p>
+ </div>
 <% end %>
-
-<%= link_to 'Back', wish_lists_path %>
-
-
-<% unless @user.has_permissions?('publish_stream') %>
-  <p>  Click the button below, to grant permissions to publish the status updates to friend's wall(unless you've already done so for Little surprises): </p> <br />
-  <div class="btn_links">   <fb:prompt-permission perms="publish_stream" next_fbjs="window.location.reload();" > Grant me permission </fb:prompt-permission> </div>
-
-<% end %>
-<br />
-
-<% unless @user.has_permissions?('email') %>
- <p> Click the button below, to allow Birthday remainder emails from  Little surprises </p> <br />
-<div class="btn_links"> <fb:prompt-permission perms="email" next_fbjs="window.location.reload();"> Allow emails</fb:prompt-permission> </div>
-
-<% end %>
-<br />
-<% unless @user.has_permissions?('offline_access') %>
-  <p> Click the button below, to grant the offline access to Little surprises </p> <br />
- <div class="btn_links">  <fb:prompt-permission perms="offline_access" next_fbjs="window.location.reload();"> Allow offline access </fb:prompt-permission> </div>
-
-<% end %>
-<br />
 

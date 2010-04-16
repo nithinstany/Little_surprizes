@@ -22,7 +22,7 @@ persist: "location"
 </script>
 
 
-<script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php" type="text/javascript"></script>
+
 
 <div id="FB_HiddenIFrameContainer" style="display:none; position:absolute; left:-100px; top:-100px; width:0px; height: 0px;"></div> <script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php" type="text/javascript"></script> <script type="text/javascript"> FB_RequireFeatures(["CanvasUtil"], function(){ FB.XdComm.Server.init(<site relative url to xd_receiver.htm>); FB.CanvasClient.startTimerToSizeToContent(); }); </script>
 
@@ -41,8 +41,13 @@ persist: "location"
 	<!--<div class="header_right">
 		<%= render :partial => "shared/link" %>
 	</div>-->
-
-<div class="notice"><p class= "notice"><%= flash[:notice] %></p></div>
+  <% if flash[:notice] %>
+   <div class="notice">
+      <p>
+         <%= flash[:notice] %>
+      </p>
+   </div>
+  <%end%>
 
 <div class="main">
        <%= yield  %>
