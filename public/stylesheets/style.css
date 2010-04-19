@@ -89,8 +89,8 @@ body { margin: 30px 0px 0px 0px; padding: 0px; color: #6d6c67; font-family: Aria
 }
 
 .login_btn input{
-    color:#000;
-    padding:1px 3px;
+    	color:#000;
+    	padding:1px 3px;
 }
 
 
@@ -99,33 +99,33 @@ body { margin: 30px 0px 0px 0px; padding: 0px; color: #6d6c67; font-family: Aria
 }
 
 
-
 #wrapper{
 	margin:0 auto;
 	background-color:#e8f1fd;
-	border:1px solid #c1d9f6;
+	borXder:1px solid #c1d9f6;
 	height:auto !important;
 	min-height:900px;
 	height:auto !important;
-    height:900px;
-    padding:5px 5px 0px 10px;
-
+    	height:900px;
+    	padding:0px 0px 0px 0px;
 }
+
 
 .header{
 	height:65px;
-	background:url(/images/logo.jpg) no-repeat;
+	background:#fff url(/images/logo.jpg) no-repeat;
 	margin:0px 0px 0px 0px;
-	padding:25px 0px 0px 80px;
+	padding:25px 0px 0px 85px;
+	border-bottom:1px solid #dc3030;
 }
 
 .header h1{
-	color:#3b5998;
+	color:#820905;
 	font-size:32px;
 }
 
 .header h1 span{
-	color:#627aad;
+	color:#dc3030;
 
 }
 
@@ -174,8 +174,8 @@ ul.btn li{
 	height:auto !important;
 	min-height:600px;
 	height:auto !important;
-    height:600px;
-	padding-left:2px;
+        height:600px;
+	padding:2px 5px;
 }
 
 .main h2{
@@ -550,7 +550,7 @@ hr{
 }
 
 .box {
-	background:url("#{SITE_URL}images/box.png") repeat-x;
+	background:url('http://69.164.192.249:3012/images/box.png') repeat-x;
 	clear:both;
         height:230px;
 }
@@ -562,7 +562,7 @@ hr{
 	font-weight:bold;
 	font-size:15px;
 	padding:5px 0px 5px 15px;
-	background:url("#{SITE_URL}images/box_header.jpg") repeat-x;
+	background:url('http://69.164.192.249:3012/images/box_header.jpg') repeat-x;
 	margin-bottom:5px;
 	overflow:hidden
 }
