@@ -1,17 +1,17 @@
-<h2><%= link_to "Back", :back %> </h2><br />
+<h2><%= link_to "Back to #{fb_name(@wish_list.user.facebook_id)}'s wishlist", :back %> </h2><br />
 
  <% if @wish_list.nil? %>
     <p> <b> Wish list does not exist. </b> </p>
  <%else%>
 
-    <h2>   <%= @wish_list.name %> </h2>
+   <%=fb_name(@wish_list.user.facebook_id)%> 's wishlist -   <%= @wish_list.name %>
     <p>   <%= @wish_list.description %> </p>
-
+    <p> Items in  <%= @wish_list.name %> Wishlist </p>
   <% unless @wish_list.category_wish_lists.blank? %>
      <table class="listing" width="100%">
       <tr>
-          <th> Category Name </th>
-          <th> Description </th>
+          <th> Category  </th>
+          <th> Comments </th>
       </tr>
 
      <% for wish_category in @wish_list.category_wish_lists -%>
