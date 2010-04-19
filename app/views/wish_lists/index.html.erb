@@ -1,5 +1,5 @@
 <% if @from_mail_user %>
-     <h2> <span><%=fb_name(@from_mail_user.facebook_id)%>'s  wishlist </span> <%= link_to "View My Wish List", wish_lists_path %> </h2>
+     <h2> <span><%=fb_name(@from_mail_user.facebook_id, :linked => false)%>'s  wishlist </span> <%= link_to "View My Wish List", wish_lists_path %> </h2>
    <div class="clear"></div>
   <table class="listing" width="100%">
 	  <tr>

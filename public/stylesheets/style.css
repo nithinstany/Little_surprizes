@@ -130,45 +130,6 @@ body { margin: 30px 0px 0px 0px; padding: 0px; color: #6d6c67; font-family: Aria
 }
 
 
-/*.header_right{
-	float:right;
-	width:45%;
-	margin:0px 10px 37px 0px;
-	height:44px;
-}
-
-
-.header_right ul{
-	margin:15px 0px 0px 0px;
-	padding:0px;
-	float:right;color:#fff;
-}
-
-.header_right ul li{
-	padding:0px 10px 0px 10px;
-	margin:0px;
-	display:inline;
-	list-style:none;
-
-}
-
-.header_right ul li a{
-	color:#fff;
-	font-size:14px;
-	font-weight:bold;
-	text-decoration:none;
-}
-
-.header_right ul.logout{
-	margin-top:15px;
-}
-
-ul.btn li{
-	margin:0px;
-	padding:0px;
-}*/
-
-
 .main{
 	margin:0 auto;
 	height:auto !important;
@@ -187,18 +148,18 @@ ul.btn li{
 
 .main h2 span {
 	float:left;
-    width:60%;
+        width:60%;
 }
 
 .main h2 span a{
 	float:left;
-    background:none;
-    color:#2a4f83;
+    	background:none;
+    	color:#2a4f83;
 	font-size:18px;
 	font-weight:normal;
-    text-decoration:none;
-    border:none;
-    padding:0px;
+    	text-decoration:none;
+    	border:none;
+    	padding:0px;
 }
 
 .main h2 a{
@@ -227,7 +188,7 @@ ul.btn li{
 .sidebar{
 	height:auto !important;
 	margin-top:0px;
-    background-color:#fbfcfd;
+    	background-color:#fbfcfd;
 }
 
 .sidebar h2{
@@ -282,8 +243,8 @@ ul#tree li ul li {
 }
 
 .form label{
-    color:#36383b;
-    font-size:13px;
+    	color:#36383b;
+    	font-size:13px;
 	margin:0px 0px 5px 0px;
 	padding:3px 0px 2px 10px;
 	float:right;
@@ -294,7 +255,7 @@ ul#tree li ul li {
 	background-color:#2a4f83;
 	color:#fff;
 	padding:5px 8px;
-    margin:5px 0px 0px 50px;
+    	margin:5px 0px 0px 50px;
 	text-decoration:none;
 	border:1px solid #224472;
 }
@@ -373,6 +334,51 @@ ul#tree li ul li {
 .permission {
     margin:30px  0px 0px 0px;
     width:100%;
+}
+
+
+.lt{
+	float:left;
+    	background:none;
+    	color:#2a4f83;
+	font-size:18px;
+	font-weight:normal;
+    	text-decoration:none;
+    	border:none;
+    	padding:0px;
+	width:58%;
+	margin:10px 0px;
+}
+
+.rt {
+	background-color:#2a4f83;
+	padding:5px 5px;
+	float:right;
+	margin:10px 0px;
+	border:1px solid #224472;
+ 
+}
+
+.rt:hover {
+	background-color:#577cae; border:1px solid #4f6f9b;}
+
+.rt a{color:#fff;text-decoration:none;}
+
+.rt span a{color:#fff;text-decoration:none;}
+
+.rt span a:hover{text-decoration:none;color:#fff;}
+
+.post{
+	text-align:justify;
+	line-height:20px;
+	padding:3px 5px;
+	color:#323335;
+}
+
+.item{
+	color:#2a4f83;
+	font-size:15px;
+	margin:22px 0px 0px 5px;
 }
 
 /*.......................................website css............................*/
