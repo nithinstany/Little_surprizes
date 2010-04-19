@@ -42,13 +42,14 @@ body { margin: 30px 0px 0px 0px; padding: 0px; color: #6d6c67; font-family: Aria
 	margin:0 auto;
 	line-height:20px;
 	padding:10px 40px;
-	background-color:#e1d983;
-    border:1px solid #9a9664;
+	background-color:#e9fdc9;
+        border:1px solid #adbd93;
 }
 
 .notice p{
-    color:#312A2A;
+        color:#312A2A;
 	font-size:15px;
+	text-align:center;
 }
 
 .Login{
