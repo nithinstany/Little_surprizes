@@ -112,16 +112,17 @@ class WishListsController < ApplicationController
 
     @user = facebook_user
     if @user.has_permissions?('publish_stream')
-      @user.publish_to(@user, :message => 'has added new product categories to wishlist.'#,
-     # :action_links => [ :text => "#{@user.name}'s wishlist",
-             #            :href => "http://apps.facebook.com/littlesurprizes/wish_lists/#{@wish_list.id}"
-                  #     ],
-       #:attachment =>  { :name => "#{@category.name}",
-        #                 :description => "#{@category.description}",
-      #                   :media => [{ :type => 'image',
-       #                        :src => "http://69.164.192.249:3012/#{@category.avatar.url(:thumb)}",
-       #                        :href => "http://apps.facebook.com/littlesurprizes"}]
-       #                }
+      @user.publish_to(@user, :message => 'has added new product categories to wishlist.',
+       :action_links => [ :text => "visit #{@user.name}'s wishlist",
+                          :href => "http://apps.facebook.com/littlesurprizes/users/#{user.id}/wish_lists"
+                        ],
+       :attachment =>  { :name => "#{@wish_list.name}",
+                         :description => "#{@wish_list.description}",
+                         :media => [{ :type => 'image',
+                                      :src => "#{SITE_URL}images/facebook_publish.jpg",
+                                      :href => "http://apps.facebook.com/littlesurprizes"
+                                    }]
+                       }
       )
       flash[:notice] = "Published to Facebook"
       redirect_to(edit_wish_list_path(@wish_list))

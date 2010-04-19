@@ -550,7 +550,7 @@ hr{
 }
 
 .box {
-	background:url('http://69.164.192.249:3012/images/box.png') repeat-x;
+	background:url("#{SITE_URL}images/box.png") repeat-x;
 	clear:both;
         height:230px;
 }
@@ -562,7 +562,7 @@ hr{
 	font-weight:bold;
 	font-size:15px;
 	padding:5px 0px 5px 15px;
-	background:url('http://69.164.192.249:3012/images/box_header.jpg') repeat-x;
+	background:url("#{SITE_URL}images/box_header.jpg") repeat-x;
 	margin-bottom:5px;
 	overflow:hidden
 }
