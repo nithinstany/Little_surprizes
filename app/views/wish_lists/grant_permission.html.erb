@@ -1,6 +1,7 @@
+
 <div class="permission">
 <div class="btn_links">
-   <% unless  @facebook_user.has_permissions?('publish_stream') %>
+   <% unless @facebook_user.has_permissions?('publish_stream') %>
        <fb:prompt-permission perms="publish_stream" next_fbjs="window.location.reload();" > Grant me permission </fb:prompt-permission>
    <% end %>
 

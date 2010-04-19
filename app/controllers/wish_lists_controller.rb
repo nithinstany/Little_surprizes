@@ -59,7 +59,7 @@ class WishListsController < ApplicationController
 
     if @wish_list.save
       flash.now[:notice] = "Wish list has been created successfully."
-      facebook_permissions(@facebook_user) ?  (redirect_to(wish_lists_path)) : (render :action => 'grant_permission')
+      facebook_permissions(@facebook_user) ?  (redirect_to(wish_lists_path)) : (  redirect_to(grant_permission_wish_lists_path) )
 
     else
       flash.now[:error] = "Make sure that all required fields are entered."
@@ -127,13 +127,15 @@ class WishListsController < ApplicationController
       redirect_to(edit_wish_list_path(@wish_list))
     else
       flash[:notice] = "You Don't have publish permissions Please click on grant permissions Button ."
-      redirect_to wish_lists_path
+      redirect_to grant_permission_wish_lists_path
       #render :action => 'grant_permission'
     end
   end
 
 
   def grant_permission
+
+    @facebook_user = facebook_user
   end
 
   def remove_category
