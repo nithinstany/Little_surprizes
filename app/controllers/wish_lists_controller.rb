@@ -30,7 +30,7 @@ class WishListsController < ApplicationController
   def edit
     @wish_list = WishList.find(params[:id],:include =>[:categories, :category_wish_lists])
     @current_user = user
-    @wishlist_items = @wish_list.category_wish_lists.find(:all,:order => 'created_at DESC').map{|c| c.category_id } rescue nil
+    @wishlist_items = @wish_list.category_ids rescue nil
     @parent = Category.find_all_by_parent_id(nil)
 =begin
     Category.find(:all,:select => 'id').each do |category|
@@ -79,8 +79,31 @@ class WishListsController < ApplicationController
            CategoryWishList.create({ :category_id => category_id ,:wish_list_id => @wish_list.id , :custom_description => params["category_#{category_id}_custom_description"] })
          end
        end
-       flash[:notice] = 'Wish list was successfully updated.'
-       redirect_to(wish_lists_path)
+
+       if params[:commit] == "Save and Publish"
+          flash[:notice] = 'Wish list was successfully updated  and Published to Facebook'
+          @user = facebook_user
+           if @user.has_permissions?('publish_stream')
+             @user.publish_to(@user, :message => 'has added new product categories to wishlist.',
+                :action_links => [:text => "visit #{@user.name}'s wishlist",:href => "http://apps.facebook.com/littlesurprizes/users/#{user.id}/wish_lists"],
+
+                 :attachment =>  { :name => "#{@wish_list.name}",
+                         :description => "#{@wish_list.description}",
+                         :media => [{ :type => 'image',
+                                      :src => "#{SITE_URL}images/facebook_publish.jpg",
+                                      :href => "http://apps.facebook.com/littlesurprizes"
+                                    }]
+                       }
+      )
+             redirect_to(wish_lists_path)
+          else
+            flash[:notice] = "You Don't have publish permissions Please click on grant permissions Button ."
+            redirect_to grant_permission_wish_lists_path
+          end
+       else
+         flash[:notice] = 'Wish list was successfully updated.'
+         redirect_to(wish_lists_path)
+       end
     else
        render :action => 'edit'
     end
@@ -113,9 +136,8 @@ class WishListsController < ApplicationController
     @user = facebook_user
     if @user.has_permissions?('publish_stream')
       @user.publish_to(@user, :message => 'has added new product categories to wishlist.',
-       :action_links => [ :text => "visit #{@user.name}'s wishlist",
-                          :href => "http://apps.facebook.com/littlesurprizes/users/#{user.id}/wish_lists"
-                        ],
+       :action_links => [:text => "visit #{@user.name}'s wishlist",:href => "http://apps.facebook.com/littlesurprizes/users/#{user.id}/wish_lists"],
+
        :attachment =>  { :name => "#{@wish_list.name}",
                          :description => "#{@wish_list.description}",
                          :media => [{ :type => 'image',
@@ -197,6 +219,9 @@ private
         redirect_to root_url
        end
   end
+
+
+
 
   def facebook_permissions(facebook_user)
      permissions = ["offline_access","publish_stream",'email'] #"", "share_item","status_update", , "read_stream"
