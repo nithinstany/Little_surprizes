@@ -393,10 +393,10 @@ ul#tree li ul li {
 	text-decoration: none;
 	-moz-border-radius: 5px; 
 	-webkit-border-radius: 5px;
-	-moz-box-shadow: 0 1px 2px rgba(0,0,0,0.5);
-	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.5);
+	-moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
 	text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
-	border-bottom: 1px solid rgba(0,0,0,0.25);
+	border: 1px solid rgba(0,0,0,0.25);
 	position: relative;
 	cursor: pointer;
 }
@@ -404,6 +404,8 @@ ul#tree li ul li {
 	.awesome:hover{ background: #f3f6fb url(/images/btn.gif) repeat-x;  color: #535151; }
 	.awesome:active	{ top: 1px; }
 	
+
+
 
 /*.......................................website css............................*/
 
