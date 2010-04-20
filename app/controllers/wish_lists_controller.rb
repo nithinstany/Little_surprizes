@@ -58,11 +58,11 @@ class WishListsController < ApplicationController
     @wish_list.user = user
 
     if @wish_list.save
-      flash.now[:notice] = "Wish list has been created successfully."
+      flash[:notice] = "Wish list has been created successfully."
       facebook_permissions(@facebook_user) ?  (redirect_to(wish_lists_path)) : (  redirect_to(grant_permission_wish_lists_path) )
 
     else
-      flash.now[:error] = "Make sure that all required fields are entered."
+      flash[:error] = "Make sure that all required fields are entered."
       @wish_list = nil
       render :action => 'new'
     end
