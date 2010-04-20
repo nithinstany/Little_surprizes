@@ -1,12 +1,12 @@
  <div class="rt">
- <%= link_to "Back to <span>#{fb_name(@wish_list.user.facebook_id)}</span>'s wishlist", :back %> 
+ <%= link_to "Back to <span>#{fb_name(@wish_list.user.facebook_id, :linked => false)}</span>'s wishlist", :back %>
 </div>
 <div class="lt">
  <% if @wish_list.nil? %>
     <p> <b> Wish list does not exist. </b> </p>
  <%else%>
 
-   <%=fb_name(@wish_list.user.facebook_id)%> 's wishlist -   <%= @wish_list.name %>
+   <%=fb_name(@wish_list.user.facebook_id, :linked => false)%> 's wishlist -   <%= @wish_list.name %>
 </div>
 <div class="clear"></div>
 <hr />
