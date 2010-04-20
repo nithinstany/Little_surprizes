@@ -129,10 +129,9 @@ class WishListsController < ApplicationController
     end
   end
 
-  def publish_to_friends
+  def publish
+    puts "aaaaaaaaaaaaaaaaaaaaaaaaaa"
     @wish_list = WishList.find(params[:id])
-    @category = Category.find(params[:category])
-
     @user = facebook_user
     if @user.has_permissions?('publish_stream')
       @user.publish_to(@user, :message => 'has added new product categories to wishlist.',
@@ -147,7 +146,7 @@ class WishListsController < ApplicationController
                        }
       )
       flash[:notice] = "Published to Facebook"
-      redirect_to(edit_wish_list_path(@wish_list))
+      redirect_to(wish_lists_path)
     else
       flash[:notice] = "You Don't have publish permissions Please click on grant permissions Button ."
       redirect_to grant_permission_wish_lists_path

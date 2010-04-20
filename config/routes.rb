@@ -30,7 +30,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users do |user|
     user.resources :wish_lists
   end
-  map.resources :wish_lists,:collection => {:add_to_wishlist => :get, :remove_category => :any , :category_list => :any,:update_wishlist => :any,:grant_permission => :get }, :member => {:publish_to_friends => :any} do |wish_lists|
+  map.resources :wish_lists,:collection => {:add_to_wishlist => :get, :remove_category => :any , :category_list => :any,:update_wishlist => :any,:grant_permission => :get }, :member => {:publish => :any} do |wish_lists|
      wish_lists.resources :categories
   end
 

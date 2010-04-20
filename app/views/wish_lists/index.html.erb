@@ -34,6 +34,7 @@
  {
     document.getElementById("edit").href = "wish_lists/" + wish_list + "/edit"
     document.getElementById("delete_record").href = "wish_lists/" + wish_list
+    document.getElementById("publish_to_facebook").href = "wish_lists/" + wish_list + "/publish"
     return false;
  }
 </script>
@@ -68,6 +69,7 @@
 	<%= link_to 'Delete', @wish_lists.first,:confirm => "Are you sure want delete wishlist ?", :method => :delete, :id => 'delete_record',:class => "awesome"  %>
 
 	<%= link_to 'Edit selected', edit_wish_list_path(@wish_lists.first.id), :id => "edit" ,:class => "awesome" %>
+  <%= link_to 'Publish to Facebook', publish_wish_list_path(@wish_lists.first.id), :id => "publish_to_facebook" ,:class => "awesome" %>
 	<%end%>
 
  <div class="clear"> </div>
