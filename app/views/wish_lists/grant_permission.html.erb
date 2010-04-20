@@ -1,19 +1,17 @@
 
 <div class="permission">
-<div class="btn_links">
    <% unless @facebook_user.has_permissions?('publish_stream') %>
-       <fb:prompt-permission perms="publish_stream" next_fbjs="window.location.reload();" > Grant me permission </fb:prompt-permission>
+       <div class='large awesome'><fb:prompt-permission perms="publish_stream" next_fbjs="window.location.reload();" > Grant me permission </fb:prompt-permission></div>
    <% end %>
 
    <% unless @facebook_user.has_permissions?('email') %>
-      <fb:prompt-permission perms="email" next_fbjs="window.location.reload();"> Allow emails</fb:prompt-permission>
+      <div class='large awesome'><fb:prompt-permission perms="email" next_fbjs="window.location.reload();"> Allow emails</fb:prompt-permission></div>
 
    <% end %>
 
    <% unless @facebook_user.has_permissions?('offline_access') %>
-     <fb:prompt-permission perms="offline_access" next_fbjs="window.location.reload();"> Allow offline access </fb:prompt-permission>
+     <div class='large awesome'><fb:prompt-permission perms="offline_access" next_fbjs="window.location.reload();"> Allow offline access </fb:prompt-permission></div>
    <% end %>
-</div>
 </div>
 
 <p> <%= link_to "Go to WishLists",wish_lists_path %> </p>

@@ -4,17 +4,18 @@
   <%= f.error_messages %>
 <div class="form">
     <table cellpadding="3px">
-		    <tr>
-  				<td> <label>Wishlist Name: </label> </td><td><%= f.text_field :name %></td>
+        <tr>
+  		<td> <label>Wishlist Name: </label> </td><td><%= f.text_field :name %></td>
         </tr>
         <tr>
           <td> <label>Wishlist Description: </label> </td><td><%= f.text_field :description %></td>
         </tr>
-    </table>
-
-   <p>
-    <%= f.submit 'Create' %> -or- <%= link_to 'Back', wish_lists_path %>
-  </p>
+   	<tr>
+		<td></td>
+  		<td><%= f.submit 'Create' %> -or- <%= link_to 'Back', wish_lists_path %></td>
+	</tr>
+     </table>
  </div>
+ 
 <% end %>
 

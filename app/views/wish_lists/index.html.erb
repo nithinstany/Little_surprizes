@@ -61,12 +61,12 @@
 <% end %>
 </table>
 
-  <%= link_to 'Add new', new_wish_list_path ,:class => "large awesome"  %>
+  <%= link_to 'Add new', new_wish_list_path ,:class => "awesome"  %>
 	<% unless @wish_lists.blank? %>
 
-	<%= link_to 'Delete', @wish_lists.first,:confirm => "Are you sure want delete wishlist ?", :method => :delete, :id => 'delete_record',:class => "large awesome"  %>
+	<%= link_to 'Delete', @wish_lists.first,:confirm => "Are you sure want delete wishlist ?", :method => :delete, :id => 'delete_record',:class => "awesome"  %>
 
-	<%= link_to 'Edit selected', edit_wish_list_path(@wish_lists.first.id), :id => "edit" ,:class => "large awesome" %>
+	<%= link_to 'Edit selected', edit_wish_list_path(@wish_lists.first.id), :id => "edit" ,:class => "awesome" %>
 	<%end%>
 
  <div class="clear"> </div>
