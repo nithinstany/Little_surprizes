@@ -262,7 +262,7 @@ ul#tree li ul li {
 	 border-collapse: collapse;
          width: 100i%;
          color: #3a3a3a;
-	 margin:10px 0px 15px 0px;
+	 margin:5px 0px 15px 0px;
 	 border:1px solid #ddd;
 	 background-color:#fff;
 }
@@ -271,10 +271,11 @@ ul#tree li ul li {
 .listing th {
 	color:#fff;
         text-align: left;
-        padding: 11px;
+        padding: 9px;
 	font-size:15px;
 	background-color:#627aad;
-        font-weight:normal; border:1px solid #ddd;
+        font-weight:normal; 
+	border:1px solid #ddd;
 }
 
 
@@ -324,27 +325,27 @@ ul#tree li ul li {
 	font-weight:normal;
     	text-decoration:none;
     	border:none;
-    	padding:0px;
+    	padding:5px 0px;
 	width:58%;
-	margin:10px 0px;
+	margin:10px 0px 2px 0px;
 }
 
 .rt {
 	background-color:#2a4f83;
 	padding:5px 5px;
 	float:right;
-	margin:10px 0px;
+	margin:10px 0px 2px 0px;
 	border:1px solid #224472;
  
 }
 
 .rt:hover {background-color:#577cae; border:1px solid #4f6f9b;}
 
-.rt a{color:#fff;text-decoration:none;}
+.rt a{text-decoration:none;}
 
-.rt span a{color:#fff;text-decoration:none;}
+.rt span a{text-decoration:none;}
 
-.rt span a:hover{text-decoration:none;color:#fff;}
+.rt span a:hover{text-decoration:none;}
 
 .post{
 	text-align:justify;
@@ -366,7 +367,7 @@ ul#tree li ul li {
 .awesome, .awesome:visited, #wish_list_submit{
 	background: #f3f6fb url(/images/btn.gif) repeat-x; 
 	display: inline-block; 
-	padding: 5px 10px 6px; 
+	padding: 6px 10px 6px; 
 	color: #535151; 
 	text-decoration: none;
 	-moz-border-radius: 5px; 
