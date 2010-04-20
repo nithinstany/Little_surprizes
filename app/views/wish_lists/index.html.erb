@@ -60,15 +60,15 @@
   	</tr>
 <% end %>
 </table>
-<div class="btn_links">
-  <%= link_to 'Add new', new_wish_list_path %>
+
+  <%= link_to 'Add new', new_wish_list_path ,:class => "large awesome"  %>
 	<% unless @wish_lists.blank? %>
 
-	<%= link_to 'Delete', @wish_lists.first,:confirm => "Are you sure want delete wishlist ?", :method => :delete, :id => 'delete_record' %>
+	<%= link_to 'Delete', @wish_lists.first,:confirm => "Are you sure want delete wishlist ?", :method => :delete, :id => 'delete_record',:class => "large awesome"  %>
 
-	<%= link_to 'Edit selected', edit_wish_list_path(@wish_lists.first.id), :id => "edit" %>
+	<%= link_to 'Edit selected', edit_wish_list_path(@wish_lists.first.id), :id => "edit" ,:class => "large awesome" %>
 	<%end%>
-</div>
+
  <div class="clear"> </div>
 <%end%>
 
