@@ -335,11 +335,9 @@ ul#tree li ul li {
 	padding:5px 5px;
 	float:right;
 	margin:10px 0px 2px 0px;
-	border:1px solid #224472;
- 
 }
 
-.rt:hover {background-color:#577cae; border:1px solid #4f6f9b;}
+.rt:hover {background-color:#577cae; }
 
 .rt a{text-decoration:none;}
 
