@@ -39,7 +39,7 @@ body { margin: 30px 0px 0px 0px; padding: 0px; color: #6d6c67; font-family: Aria
 
 
 .notice{
-	margin:0 auto;
+	margin:5px auto;
 	line-height:20px;
 	padding:10px 40px;
 	background-color:#e9fdc9;
@@ -379,6 +379,8 @@ ul#tree li ul li {
 
 .awesome:hover{ background: #f3f6fb url(/images/btn_hr.gif) repeat-x;  color: #535151; }
 .awesome:active	{ top: 1px; }
+
+#wish_list_submit:hover{ background: #f3f6fb url(/images/btn_hr.gif) repeat-x;  color: #535151; }
 	
 
 
