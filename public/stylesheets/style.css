@@ -377,7 +377,7 @@ ul#tree li ul li {
 	cursor: pointer;
 }
 
-.awesome:hover{ background: #f3f6fb url(/images/btn.gif) repeat-x;  color: #535151; }
+.awesome:hover{ background: #f3f6fb url(/images/btn_hr.gif) repeat-x;  color: #535151; }
 .awesome:active	{ top: 1px; }
 	
 
