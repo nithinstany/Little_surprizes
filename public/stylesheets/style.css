@@ -270,7 +270,7 @@ ul#tree li ul li {
 .listing th {
 	color:#fff;
         text-align: left;
-        padding: 9px;
+        padding: 7px 10px;
 	font-size:15px;
 	background-color:#627aad;
         font-weight:normal; 
@@ -281,7 +281,9 @@ ul#tree li ul li {
 .listing td {
 	padding: 12px;
 	color: #2a2828;
-	text-align: left; border:1px solid #ddd;
+	text-align: left;
+	padding: 8px 0px 8px 10px; 
+	border:1px solid #ddd;
 }
 
 
