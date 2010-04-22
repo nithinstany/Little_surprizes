@@ -1,4 +1,5 @@
 <h2> Edit your wishlist</h2>
+<div id="wrapper">
 <% form_for(@wish_list) do |f| %>
 	<%= f.error_messages %>
   		<div class="form">
@@ -10,10 +11,10 @@
   				<td><label>Wishlist Description: </label></td><td><%= f.text_field :description %></td>
 			   </tr>
 			</table>
-  		</div>
+  		
 
 
-       		<div class="sidebar">
+       		
           		<h2>Category list</h2>
           			<ul id='tree'>
               				<%= render :partial => 'category_list', :collection => @parent, :as => :category ,:locals => { :f => f} %>
@@ -24,4 +25,4 @@
 	<hr />
 	<%= f.submit 'Save to wishlist',:class => "large awesome" %> -or- <%= f.submit 'Save and Publish' ,:class => "large awesome"%> -or- <%= link_to 'Back', wish_lists_path %>
 <% end %>
-
+</div>

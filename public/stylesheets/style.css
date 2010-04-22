@@ -99,17 +99,6 @@ body { margin: 30px 0px 0px 0px; padding: 0px; color: #6d6c67; font-family: Aria
 }
 
 
-#wrapper{
-	margin:0 auto;
-	background-color:#f4f8fd;
-	height:auto !important;
-	min-height:900px;
-	height:auto !important;
-    	height:900px;
-    	padding:0px 0px 0px 0px;
-}
-
-
 .header{
 	height:55px;
 	background:#fff url(/images/logo.jpg) no-repeat;
@@ -128,20 +117,24 @@ body { margin: 30px 0px 0px 0px; padding: 0px; color: #6d6c67; font-family: Aria
 
 }
 
-.main{
+.main{  
 	margin:0 auto;
 	height:auto !important;
-	min-height:600px;
+	min-height:900px;
 	height:auto !important;
-        height:600px;
-	padding:2px 5px;
+    	height:900px;
+    	padding:0px 0px 0px 0px;
 }
 
 .main h2{
 	color:#2a4f83;
-	font-size:18px;
+	font-size:15px;
 	font-weight:normal;
-	margin:20px 0px 5px 2px;
+	background:#f7fdff url(/images/gradient.jpg) repeat-x;
+	border:1px solid #e0e1e3;
+	border-bottom:none;font-weight:bold;
+	width:25%;padding:9px  0px 4px 9px;
+	margin:10px 0px 0px 0px;
 }
 
 .main h2 span {
@@ -183,19 +176,17 @@ body { margin: 30px 0px 0px 0px; padding: 0px; color: #6d6c67; font-family: Aria
 	text-decoration:none;
 }
 
-.sidebar{
-	height:auto !important;
-	margin-top:0px;
-    	background-color:#fbfcfd;
-}
 
-.sidebar h2{
-	color:#2a4f83;
-	border-bottom:1px solid #c1bdbd;
-	font-size:15px;
-	font-weight:bold;
-	margin:0px 0px 0px 0px;
-	padding:3px 0px 2px 10px;
+#wrapper{
+	margin:0 auto;
+	height:auto !important;
+	min-height:600px;
+	height:auto !important;
+        height:600px;
+	padding:2px 5px;
+	background:#f6faff url(/images/wrapper.jpg) no-repeat;
+	border:1px solid #e3e3e3;
+	border-top:none;
 }
 
 
@@ -227,10 +218,24 @@ ul#tree li ul li {
 
 
 .form {
-	background-color:#fbfcfd;
-	padding:20px 20px 20px 0px;
+	border:1px solid #ddd;
+	background-color:#fff;
+	padding:20px 10px;
 	margin-top:8px;
-	border-top:1px solid #e5e6e7
+}
+
+.form h2{
+	color:#2a4f83;
+	border-bottom:1px solid #c1bdbd;
+	border-top:none;
+	border-left:none;
+	border-right:none;
+	font-size:14px;
+	font-weight:bold;
+	width:100%;
+	background:none;
+	margin:15px 0px 0px 0px;
+	padding:3px 0px 2px 10px;
 }
 
 .form input{
@@ -259,7 +264,7 @@ ul#tree li ul li {
 
 .listing{
 	 border-collapse: collapse;
-         width: 100i%;
+         width: 100%;
          color: #3a3a3a;
 	 margin:5px 0px 15px 0px;
 	 border:1px solid #ddd;
@@ -270,9 +275,9 @@ ul#tree li ul li {
 .listing th {
 	color:#fff;
         text-align: left;
-        padding: 7px 10px;
+        padding: 9px 10px;
 	font-size:15px;
-	background-color:#627aad;
+	background-color:#2a4f83;
         font-weight:normal; 
 	border:1px solid #ddd;
 }
@@ -387,9 +392,12 @@ ul#tree li ul li {
 
 
 /*.......................................website css............................*/
-
-
-
+/*
+.sidebar{
+	height:auto !important;
+	margin-top:0px;
+    	background-color:#fbfcfd;
+}
 
 .image_bg{
 	margin:0px 0px 15px 0px ;
@@ -848,5 +856,5 @@ h2.banner{
 	margin:20px 5px 0px 5px;
 	background:none;
 	text-align:leftl
-}
+}*/
 
