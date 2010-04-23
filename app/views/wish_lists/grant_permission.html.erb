@@ -2,7 +2,7 @@
 <p> To grant permissions, to publish and send offline birthday emails, please click the bellow button. </p>
 <div class="permission">
    <% unless @facebook_user.has_permissions?('publish_stream') %>
-       <div class='large awesome'><fb:prompt-permission perms="publish_stream,email,offline_access" next_fbjs="window.location.href = '<%=  @test %>'" > Grant me permission </fb:prompt-permission></div>
+       <div class='large awesome'><fb:prompt-permission perms="publish_stream,email,offline_access" next_fbjs="window.location.href = '/wish_lists/grant_permission'" > Grant me permission </fb:prompt-permission></div>
    <% end %>
 <!--
    <% unless @facebook_user.has_permissions?('email') %>
