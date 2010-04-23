@@ -85,7 +85,7 @@ class WishListsController < ApplicationController
           @user = facebook_user
            if @user.has_permissions?('publish_stream')
              @user.publish_to(@user, :message => 'has added new product categories to wishlist.',
-                :action_links => [:text => "visit #{@user.name}'s wishlist",:href => "http://apps.facebook.com/littlesurprizes/users/#{user.id}/wish_lists"],
+                :action_links => [:text => "visit wishlist",:href => "http://apps.facebook.com/littlesurprizes/users/#{user.id}/wish_lists"],
 
                  :attachment =>  { :name => "#{@wish_list.name}",
                          :description => "#{@wish_list.description}",
@@ -98,7 +98,10 @@ class WishListsController < ApplicationController
              redirect_to(wish_lists_path)
           else
             flash[:notice] = "You Don't have publish permissions Please click on grant permissions Button ."
-            redirect_to grant_permission_wish_lists_path
+            @facebook_user = facebook_user
+            @test = "/wish_lists/#{@wish_list.id}/edit"
+            render :action => 'grant_permission'
+
           end
        else
          flash[:notice] = 'Wish list was successfully updated.'
@@ -130,12 +133,12 @@ class WishListsController < ApplicationController
   end
 
   def publish
-    puts "aaaaaaaaaaaaaaaaaaaaaaaaaa"
+
     @wish_list = WishList.find(params[:id])
     @user = facebook_user
     if @user.has_permissions?('publish_stream')
       @user.publish_to(@user, :message => 'has added new product categories to wishlist.',
-       :action_links => [:text => "visit #{@user.name}'s wishlist",:href => "http://apps.facebook.com/littlesurprizes/users/#{user.id}/wish_lists"],
+       :action_links => [:text => "visit wishlist",:href => "http://apps.facebook.com/littlesurprizes/users/#{user.id}/wish_lists"],
 
        :attachment =>  { :name => "#{@wish_list.name}",
                          :description => "#{@wish_list.description}",
@@ -148,9 +151,11 @@ class WishListsController < ApplicationController
       flash[:notice] = "Published to Facebook"
       redirect_to(wish_lists_path)
     else
+      @facebook_user = facebook_user
       flash[:notice] = "You Don't have publish permissions Please click on grant permissions Button ."
-      redirect_to grant_permission_wish_lists_path
-      #render :action => 'grant_permission'
+     # redirect_to grant_permission_wish_lists_path
+       @test = "/wish_lists"
+      render :action => 'grant_permission'
     end
   end
 
