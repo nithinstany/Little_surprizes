@@ -165,7 +165,6 @@ class WishListsController < ApplicationController
     if facebook_permissions(facebook_user)
       flash[:notice] = "Facebook Permissions are set."
       redirect_to wish_lists_path
-    else
     end
   end
 

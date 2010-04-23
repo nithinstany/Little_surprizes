@@ -4,6 +4,7 @@
    <% unless @facebook_user.has_permissions?('publish_stream') %>
        <div class='large awesome'><fb:prompt-permission perms="publish_stream,email,offline_access" next_fbjs="window.location.href = '/wish_lists/grant_permission'" > Grant me permission </fb:prompt-permission></div>
    <% end %>
+   &nbsp;&nbsp;or-<%= link_to " Go to WishLists", wish_lists_path %>
 <!--
    <% unless @facebook_user.has_permissions?('email') %>
       <div class='large awesome'><fb:prompt-permission perms="email" next_fbjs="window.location.reload();"> Allow emails</fb:prompt-permission></div>
@@ -16,6 +17,4 @@
 -->
 </div>
 <br />
-
-<p><%= link_to "Go to WishLists",wish_lists_path %> </p>
 
