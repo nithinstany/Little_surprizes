@@ -5,8 +5,8 @@ class WishListsController < ApplicationController
 
    def index
     @from_mail_user = User.find(params[:user_id]) if params[:user_id]  # when user click on mail link
-    @facebook_user = facebook_user
-    @wish_lists =  WishList.find(:all, :conditions => { :user_id => user.id })
+    @facebook_user = user
+    #@wish_lists =  WishList.find(:all, :conditions => { :user_id => user.id })
     #WishList.birthday_reminder
 
 
@@ -17,7 +17,7 @@ class WishListsController < ApplicationController
    # unless @wish_list.blank?
     #  @categories = @wish_list.categories.find(:all,:order => 'created_at DESC')
    # end
-   # @current_user = user rescue nil
+   @current_user = user rescue nil
   end
 
   def new

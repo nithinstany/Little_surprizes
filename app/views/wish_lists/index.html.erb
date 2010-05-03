@@ -1,16 +1,30 @@
-<% if @from_mail_user %>
-      <div class="lt"><%=fb_name(@from_mail_user.facebook_id, :linked => false)%>'s  wishlist   </div>
-      <div class="rt awesome"><%= link_to "View My Wish List", wish_lists_path %> </div>
-   <div class="clear"></div>
+<% if @from_mail_user && check_user_login %>
+   <div class="rt awesome"> <%= link_to "View My Wish List", wish_lists_path %> </div>
+
+<%end%>
+<h2>
+   <% if @from_mail_user && (@facebook_user.facebook_id.to_s != @from_mail_user.facebook_id.to_s) %>
+    <%=fb_name(@from_mail_user.facebook_id, :linked => false)%>'s  wishlist
+   <%else%>
+     My wishlists
+  <%end%>
+
+</h2>
+
+
+<div id="wrapper">
   <table class="listing" width="100%">
    <tr>
       <th> Name </th>
     	<th> Description </th>
     	<th> Created at </th>
     </tr>
-    <% unless @from_mail_user.wish_lists.blank? %>
-	    <% @from_mail_user.wish_lists.each do |wish_list| %>
-      	<tr class="<%= cycle('odd', 'even')%>">
+
+   <% if @from_mail_user && check_user_login %>
+
+     <% unless @from_mail_user.wish_lists.blank? %>
+	      <% @from_mail_user.wish_lists.each do |wish_list| %>
+        	<tr class="<%= cycle('odd', 'even')%>">
           <td width="25%">
             <%= link_to "#{wish_list.name}", wish_list %>
           </td>
@@ -22,58 +36,40 @@
           </td>
 
       	</tr>
-      <% end %>
-    <%end%>
-</table>
-<%else%>
+       <% end %>
+      </table>
+     <%end%>
+   <%else%>
+    <script type="text/javascript">
+     function change_function (wish_list)
+     {
+        document.getElementById("edit").href = "wish_lists/" + wish_list + "/edit"
+        document.getElementById("delete_record").href = "wish_lists/" + wish_list
+        document.getElementById("publish_to_facebook").href = "wish_lists/" + wish_list + "/publish"
+        return false;
+     }
+    </script>
+
+     <% unless @facebook_user.wish_lists.blank? %>
+	    <% @facebook_user.wish_lists.each do |wish_list| %>
+      	<tr class="<%= cycle('odd', 'even')%>">
+        		<td width="25%"><%=radio_button_tag('wishlist_id', wish_list.id, checked = false, options = {:onclick => "change_function(#{wish_list.id})"})%>
+        		<%=link_to "#{wish_list.name}",edit_wish_list_path(wish_list)%></td>
+        		<td width="52%"><%=h wish_list.description %></td>
+        		<td width="20%"><%=Time.parse(wish_list.created_at.to_s).strftime('%m/%d/%Y') %></td>
+
+      	</tr>
+       <%end%>
+       </table>
+     <% end %>
+     <%= link_to 'Add new', new_wish_list_path ,:class => "awesome"  %>
+	    <% unless @facebook_user.wish_lists.blank?  %>
+	      <%= link_to 'Delete', @facebook_user.wish_lists.first,:confirm => "Are you sure want delete wishlist ?", :method => :delete, :id => 'delete_record',:class => "awesome"  %>
+	      <%= link_to 'Edit selected', edit_wish_list_path(@facebook_user.wish_lists.first.id), :id => "edit" ,:class => "awesome" %>
+        <%= link_to 'Publish to Facebook', publish_wish_list_path(@facebook_user.wish_lists.first.id), :id => "publish_to_facebook" ,:class => "awesome" %>
+	    <%end%>
+   <%end%>
 
 
-
-<script type="text/javascript">
- function change_function (wish_list)
- {
-    document.getElementById("edit").href = "wish_lists/" + wish_list + "/edit"
-    document.getElementById("delete_record").href = "wish_lists/" + wish_list
-    document.getElementById("publish_to_facebook").href = "wish_lists/" + wish_list + "/publish"
-    return false;
- }
-</script>
-
-
-<div class="clear"></div>
-
-<h2>My wishlists</h2>
-<div id="wrapper">
-<table class="listing" width="100%">
-	<tr>
-      		<th>Name</th>
-    		<th>Description</th>
-    		<th>Created at</th>
-  	</tr>
-
-	<% @wish_lists.each do |wish_list| %>
-  	<tr class="<%= cycle('odd', 'even')%>">
-    		<td width="25%"><%=radio_button_tag('wishlist_id', wish_list.id, checked = false, options = {:onclick => "change_function(#{wish_list.id})"})%>
-    		<%=link_to "#{wish_list.name}",edit_wish_list_path(wish_list)%></td>
-    		<td width="52%"><%=h wish_list.description %></td>
-    		<td width="20%"><%=Time.parse(wish_list.created_at.to_s).strftime('%m/%d/%Y') %></td>
-    		<!--<td><%= link_to 'Show', wish_list %></td>
-    		<td><%= link_to 'Edit', edit_wish_list_path(wish_list) %></td>
-    		<td><%= link_to 'Destroy', wish_list, :confirm => 'Are you sure?', :method => :delete %></td> -->
-  	</tr>
-<% end %>
-</table>
-
-  <%= link_to 'Add new', new_wish_list_path ,:class => "awesome"  %>
-	<% unless @wish_lists.blank? %>
-
-	<%= link_to 'Delete', @wish_lists.first,:confirm => "Are you sure want delete wishlist ?", :method => :delete, :id => 'delete_record',:class => "awesome"  %>
-
-	<%= link_to 'Edit selected', edit_wish_list_path(@wish_lists.first.id), :id => "edit" ,:class => "awesome" %>
-  <%= link_to 'Publish to Facebook', publish_wish_list_path(@wish_lists.first.id), :id => "publish_to_facebook" ,:class => "awesome" %>
-	<%end%>
-
- <div class="clear"> </div>
-<%end%>
 </div>
 
