@@ -1,0 +1,64 @@
+# Logfile created on Thu Apr 15 11:29:33 +0530 2010Swapping facebooker config: 'd7069c71e7b928287fccf3c74f67beec'
+
+
+Processing WishListsController#index (for 127.0.0.1 at 2010-04-15 11:30:05) [GET]
+  Parameters: {"fb_sig_time"=>Thu Apr 15 11:30:04 +0530 2010, "fb_sig_in_iframe"=>"1", "fb_sig_iframe_key"=>"aab3238922bcc25a6f606eb525ffdc56", "fb_sig_in_new_facebook"=>true, "fb_sig_app_id"=>"117640064915776", "fb_sig"=>"e3627bc8954cee935a5a51980c5c8d2e", "action"=>"index", "fb_sig_locale"=>"en_US", "fb_sig_session_key"=>"2.IXjxqZMet_aFHEQtamI_pA__.3600.1271318400-100000286056578", "controller"=>"wish_lists", "fb_sig_expires"=>Thu Apr 15 13:30:00 +0530 2010, "fb_sig_cookie_sig"=>"b6da64b1c49467a064e106af99e19813", "fb_sig_added"=>true, "fb_sig_ext_perms"=>"email,auto_publish_recent_activity,contact_email", "fb_sig_api_key"=>"d7069c71e7b928287fccf3c74f67beec", "fb_sig_profile_update_time"=>Fri Sep 11 12:37:48 +0530 2009, "fb_sig_user"=>"100000286056578", "fb_sig_ss"=>"IXjxqZMet_aFHEQtamI_pA__"}
+Rendering template within layouts/application
+Rendering wish_lists/index
+Completed in 405ms (View: 203, DB: 38) | 200 OK [http://127.0.0.1/?fb_sig_in_iframe=1&fb_sig_iframe_key=aab3238922bcc25a6f606eb525ffdc56&fb_sig_locale=en_US&fb_sig_in_new_facebook=1&fb_sig_time=1271311204.4726&fb_sig_added=1&fb_sig_profile_update_time=1252652868&fb_sig_expires=1271318400&fb_sig_user=100000286056578&fb_sig_session_key=2.IXjxqZMet_aFHEQtamI_pA__.3600.1271318400-100000286056578&fb_sig_ss=IXjxqZMet_aFHEQtamI_pA__&fb_sig_cookie_sig=b6da64b1c49467a064e106af99e19813&fb_sig_ext_perms=email%2Cauto_publish_recent_activity%2Ccontact_email&fb_sig_api_key=d7069c71e7b928287fccf3c74f67beec&fb_sig_app_id=117640064915776&fb_sig=e3627bc8954cee935a5a51980c5c8d2e]
+
+
+Processing WishListsController#new (for 127.0.0.1 at 2010-04-15 11:30:14) [GET]
+  Parameters: {"action"=>"new", "controller"=>"wish_lists"}
+Rendering template within layouts/application
+Rendering wish_lists/new
+Swapping facebooker config: 'd7069c71e7b928287fccf3c74f67beec'
+
+
+Processing WishListsController#index (for 127.0.0.1 at 2010-04-16 14:46:22) [GET]
+  Parameters: {"fb_sig_time"=>Fri Apr 16 14:46:22 +0530 2010, "fb_sig_in_iframe"=>"1", "fb_sig_iframe_key"=>"c74d97b01eae257e44aa9d5bade97baf", "fb_sig_in_new_facebook"=>true, "fb_sig_app_id"=>"117640064915776", "fb_sig"=>"bd089d1996530d4e1c681a19bbb41db5", "action"=>"index", "fb_sig_locale"=>"en_US", "fb_sig_session_key"=>"2.7_INXyHuTjOOYD6n3QMPtg__.3600.1271415600-100000286056578", "controller"=>"wish_lists", "fb_sig_expires"=>Fri Apr 16 16:30:00 +0530 2010, "fb_sig_cookie_sig"=>"08c028bdd53473088a2cca5f56d49d29", "fb_sig_added"=>true, "fb_sig_api_key"=>"d7069c71e7b928287fccf3c74f67beec", "fb_sig_profile_update_time"=>Fri Sep 11 12:37:48 +0530 2009, "fb_sig_user"=>"100000286056578", "fb_sig_ss"=>"7_INXyHuTjOOYD6n3QMPtg__"}
+facebook.users.getInfo (34.4439721107483) uids = 100000286056578, fields = status,political,pic_small,name,quotes,is_app_user,tv,profile_update_time,meeting_sex,hs_info,timezone,relationship_status,hometown_location,about_me,wall_count,significant_other_id,pic_big,music,work_history,sex,religion,notes_count,activities,pic_square,movies,has_added_app,education_history,birthday,birthday_date,first_name,meeting_for,last_name,interests,current_location,pic,books,affiliations,locale,profile_url,proxied_email,email_hashes,allowed_restrictions,pic_with_logo,pic_big_with_logo,pic_small_with_logo,pic_square_with_logo,online_presence,verified,profile_blurb,username,website,is_blocked,family,email
+Rendering template within layouts/application
+Rendering wish_lists/index
+facebook.users.hasAppPermission (11.0171599388123) ext_perm = publish_stream, uid = 100000286056578
+facebook.users.hasAppPermission (9.50976490974426) ext_perm = email, uid = 100000286056578
+facebook.users.hasAppPermission (20.2323999404907) ext_perm = offline_access, uid = 100000286056578
+Completed in 75743ms (View: 40878, DB: 94) | 200 OK [http://127.0.0.1/?fb_sig_in_iframe=1&fb_sig_iframe_key=c74d97b01eae257e44aa9d5bade97baf&fb_sig_locale=en_US&fb_sig_in_new_facebook=1&fb_sig_time=1271409382.0629&fb_sig_added=1&fb_sig_profile_update_time=1252652868&fb_sig_expires=1271415600&fb_sig_user=100000286056578&fb_sig_session_key=2.7_INXyHuTjOOYD6n3QMPtg__.3600.1271415600-100000286056578&fb_sig_ss=7_INXyHuTjOOYD6n3QMPtg__&fb_sig_cookie_sig=08c028bdd53473088a2cca5f56d49d29&fb_sig_api_key=d7069c71e7b928287fccf3c74f67beec&fb_sig_app_id=117640064915776&fb_sig=bd089d1996530d4e1c681a19bbb41db5]
+Swapping facebooker config: 'd7069c71e7b928287fccf3c74f67beec'
+
+
+Processing WishListsController#index (for 127.0.0.1 at 2010-04-16 14:47:38) [GET]
+  Parameters: {"fb_sig_time"=>Fri Apr 16 14:47:22 +0530 2010, "fb_sig_in_iframe"=>"1", "fb_sig_iframe_key"=>"c74d97b01eae257e44aa9d5bade97baf", "fb_sig_in_new_facebook"=>true, "fb_sig_app_id"=>"117640064915776", "fb_sig"=>"89011a5f8b384cd4086fdb51f52aa470", "action"=>"index", "fb_sig_locale"=>"en_US", "fb_sig_session_key"=>"2.7_INXyHuTjOOYD6n3QMPtg__.3600.1271415600-100000286056578", "controller"=>"wish_lists", "fb_sig_expires"=>Fri Apr 16 16:30:00 +0530 2010, "fb_sig_cookie_sig"=>"08c028bdd53473088a2cca5f56d49d29", "fb_sig_added"=>true, "fb_sig_api_key"=>"d7069c71e7b928287fccf3c74f67beec", "fb_sig_profile_update_time"=>Fri Sep 11 12:37:48 +0530 2009, "fb_sig_user"=>"100000286056578", "fb_sig_ss"=>"7_INXyHuTjOOYD6n3QMPtg__"}
+facebook.users.getInfo (29.0920250415802) uids = 100000286056578, fields = status,political,pic_small,name,quotes,is_app_user,tv,profile_update_time,meeting_sex,hs_info,timezone,relationship_status,hometown_location,about_me,wall_count,significant_other_id,pic_big,music,work_history,sex,religion,notes_count,activities,pic_square,movies,has_added_app,education_history,birthday,birthday_date,first_name,meeting_for,last_name,interests,current_location,pic,books,affiliations,locale,profile_url,proxied_email,email_hashes,allowed_restrictions,pic_with_logo,pic_big_with_logo,pic_small_with_logo,pic_square_with_logo,online_presence,verified,profile_blurb,username,website,is_blocked,family,email
+Rendering template within layouts/application
+Rendering wish_lists/index
+facebook.users.hasAppPermission (6.56409597396851) ext_perm = publish_stream, uid = 100000286056578
+facebook.users.hasAppPermission (6.45864987373352) ext_perm = email, uid = 100000286056578
+facebook.users.hasAppPermission (37.4579260349274) ext_perm = offline_access, uid = 100000286056578
+Completed in 79645ms (View: 50539, DB: 466) | 200 OK [http://127.0.0.1/?fb_sig_in_iframe=1&fb_sig_iframe_key=c74d97b01eae257e44aa9d5bade97baf&fb_sig_locale=en_US&fb_sig_in_new_facebook=1&fb_sig_time=1271409442.8738&fb_sig_added=1&fb_sig_profile_update_time=1252652868&fb_sig_expires=1271415600&fb_sig_user=100000286056578&fb_sig_session_key=2.7_INXyHuTjOOYD6n3QMPtg__.3600.1271415600-100000286056578&fb_sig_ss=7_INXyHuTjOOYD6n3QMPtg__&fb_sig_cookie_sig=08c028bdd53473088a2cca5f56d49d29&fb_sig_api_key=d7069c71e7b928287fccf3c74f67beec&fb_sig_app_id=117640064915776&fb_sig=89011a5f8b384cd4086fdb51f52aa470]
+
+
+Processing WishListsController#edit (for 127.0.0.1 at 2010-04-16 14:49:43) [GET]
+  Parameters: {"action"=>"edit", "id"=>"2", "controller"=>"wish_lists"}
+facebook.users.getInfo (9.57085609436035) uids = 100000286056578, fields = status,political,pic_small,name,quotes,is_app_user,tv,profile_update_time,meeting_sex,hs_info,timezone,relationship_status,hometown_location,about_me,wall_count,significant_other_id,pic_big,music,work_history,sex,religion,notes_count,activities,pic_square,movies,has_added_app,education_history,birthday,birthday_date,first_name,meeting_for,last_name,interests,current_location,pic,books,affiliations,locale,profile_url,proxied_email,email_hashes,allowed_restrictions,pic_with_logo,pic_big_with_logo,pic_small_with_logo,pic_square_with_logo,online_presence,verified,profile_blurb,username,website,is_blocked,family,email
+Rendering template within layouts/application
+Rendering wish_lists/edit
+Completed in 10316ms (View: 77, DB: 663) | 200 OK [http://127.0.0.1/wish_lists/2/edit]
+
+
+Processing WishListsController#publish_to_friends (for 127.0.0.1 at 2010-04-16 14:49:59) [GET]
+  Parameters: {"category"=>"5", "action"=>"publish_to_friends", "id"=>"2", "controller"=>"wish_lists"}
+facebook.users.hasAppPermission (6.53024506568909) ext_perm = publish_stream, uid = 100000286056578
+Redirected to http://127.0.0.1:3000/wish_lists
+Completed in 6591ms (DB: 71) | 302 Found [http://127.0.0.1/wish_lists/2/publish_to_friends?category=5]
+
+
+Processing WishListsController#index (for 127.0.0.1 at 2010-04-16 14:50:05) [GET]
+  Parameters: {"action"=>"index", "controller"=>"wish_lists"}
+facebook.users.getInfo (9.60298800468445) uids = 100000286056578, fields = status,political,pic_small,name,quotes,is_app_user,tv,profile_update_time,meeting_sex,hs_info,timezone,relationship_status,hometown_location,about_me,wall_count,significant_other_id,pic_big,music,work_history,sex,religion,notes_count,activities,pic_square,movies,has_added_app,education_history,birthday,birthday_date,first_name,meeting_for,last_name,interests,current_location,pic,books,affiliations,locale,profile_url,proxied_email,email_hashes,allowed_restrictions,pic_with_logo,pic_big_with_logo,pic_small_with_logo,pic_square_with_logo,online_presence,verified,profile_blurb,username,website,is_blocked,family,email
+Rendering template within layouts/application
+Rendering wish_lists/index
+facebook.users.hasAppPermission (6.09841084480286) ext_perm = publish_stream, uid = 100000286056578
+facebook.users.hasAppPermission (6.15783619880676) ext_perm = email, uid = 100000286056578
+facebook.users.hasAppPermission (6.5941698551178) ext_perm = offline_access, uid = 100000286056578
+Completed in 28511ms (View: 18895, DB: 19) | 200 OK [http://127.0.0.1/wish_lists]

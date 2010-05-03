@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100326105719) do
+ActiveRecord::Schema.define(:version => 20100326105720) do
 
   create_table "banners", :force => true do |t|
     t.string   "name"
@@ -37,7 +37,9 @@ ActiveRecord::Schema.define(:version => 20100326105719) do
     t.datetime "updated_at"
   end
 
-  create_table "categories_wish_lists", :id => false, :force => true do |t|
+  add_index "categories", ["parent_id"], :name => "index_categories_on_parent_id"
+
+  create_table "category_wish_lists", :force => true do |t|
     t.integer  "wish_list_id"
     t.integer  "category_id"
     t.datetime "created_at"
@@ -45,13 +47,8 @@ ActiveRecord::Schema.define(:version => 20100326105719) do
     t.text     "custom_description"
   end
 
-  create_table "category_wish_lists", :force => true do |t|
-    t.integer  "category_id"
-    t.integer  "wish_list_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.text     "custom_description"
-  end
+  add_index "category_wish_lists", ["category_id"], :name => "index_category_wish_lists_on_category_id"
+  add_index "category_wish_lists", ["wish_list_id"], :name => "index_category_wish_lists_on_wish_list_id"
 
   create_table "emails", :force => true do |t|
     t.string   "reference_string"
@@ -85,6 +82,9 @@ ActiveRecord::Schema.define(:version => 20100326105719) do
     t.integer "role_id"
     t.integer "user_id"
   end
+
+  add_index "roles_users", ["role_id", "user_id"], :name => "index_roles_users_on_role_id_and_user_id"
+  add_index "roles_users", ["user_id", "role_id"], :name => "index_roles_users_on_user_id_and_role_id"
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false
@@ -133,5 +133,7 @@ ActiveRecord::Schema.define(:version => 20100326105719) do
     t.datetime "updated_at"
     t.integer  "user_id"
   end
+
+  add_index "wish_lists", ["user_id"], :name => "index_wish_lists_on_user_id"
 
 end

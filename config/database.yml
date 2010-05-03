@@ -1,0 +1,23 @@
+development:
+  adapter: mysql
+  database: testlittlesurprise
+  username: root
+  password: isiri
+
+
+
+production:
+  adapter: mysql
+  encoding: utf8
+  database: testlittlesurprise
+  username: root
+  password: isiri
+
+
+test:
+  adapter: mysql
+  encoding: utf8
+  database: littlesurprise
+  username: root
+  password: qdroot123
+
