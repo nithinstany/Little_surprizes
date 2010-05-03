@@ -20,7 +20,7 @@
     	<th> Created at </th>
     </tr>
 
-   <% if @from_mail_user && check_user_login %>
+   <% if @from_mail_user && check_user %>
 
      <% unless @from_mail_user.wish_lists.blank? %>
 	      <% @from_mail_user.wish_lists.each do |wish_list| %>
