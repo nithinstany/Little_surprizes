@@ -339,16 +339,9 @@ ul#tree li ul li {
 .rt {
 
 	float:right;
-
 }
 
-.rt:hover {background-color:#577cae; }
 
-.rt a{text-decoration:none;}
-
-.rt span a{text-decoration:none;}
-
-.rt span a:hover{text-decoration:none;}
 
 .post{
 	text-align:justify;
@@ -365,7 +358,7 @@ ul#tree li ul li {
 
 
 /*..........................button css..........................*/
-
+.awesome a{text-decoration: none;}
 
 .awesome, .awesome:visited, #wish_list_submit{
 	background: #f3f6fb url(/images/btn.gif) repeat-x;
