@@ -102,7 +102,7 @@ body { margin: 30px 0px 0px 0px; padding: 0px; color: #6d6c67; font-family: Aria
 .header{
 	height:55px;
 	background:#fff url(/images/logo.jpg) no-repeat;
-	margin:0px 0px 0px 0px;
+	margin:0px 10px 0px 10px;
 	padding:20px 0px 0px 130px;
 	border-bottom:1px solid #de4a4a;
 }
@@ -123,7 +123,7 @@ body { margin: 30px 0px 0px 0px; padding: 0px; color: #6d6c67; font-family: Aria
 	min-height:900px;
 	height:auto !important;
     	height:900px;
-    	padding:0px 0px 0px 0px;
+    	padding:0px 10px 0px 10px;
 }
 
 .main h2{
@@ -183,11 +183,23 @@ body { margin: 30px 0px 0px 0px; padding: 0px; color: #6d6c67; font-family: Aria
 	min-height:600px;
 	height:auto !important;
         height:600px;
-	padding:2px 5px;
+	padding:10px 5px;
 	background:#f6faff url(/images/wrapper.jpg) no-repeat;
 	border:1px solid #e3e3e3;
 	border-top:none;
 }
+
+#wrapper h3{
+    	color:#2a4f83;
+	font-size:18px;
+	font-weight:normal;
+    	text-decoration:none;
+    	border:none;
+    	padding:5px 0px;
+	margin:10px 0px 2px 0px;
+}
+
+#wrapper h3.item{font-size:15px;}
 
 
 ul#tree li{}
@@ -314,48 +326,17 @@ ul#tree li ul li {
 
 .listing tr.odd td {border-top: #dadeec 1px solid;border-bottom: #dadeec 1px solid;}
 
-.permission {margin:30px  0px 0px 0px;width:100%;}
-
-.permission a{text-decoration:none;}
-
-.link{
-	margin:5px;
-}
 
 
 .lt{
 	float:left;
-    	background:none;
-    	color:#2a4f83;
-	font-size:18px;
-	font-weight:normal;
-    	text-decoration:none;
-    	border:none;
-    	padding:5px 0px;
-	width:58%;
-	margin:10px 0px 2px 0px;
+    	
 }
 
 .rt {
 
 	float:right;
 }
-
-
-
-.post{
-	text-align:justify;
-	line-height:20px;
-	padding:3px 5px;
-	color:#323335;
-}
-
-.item{
-	color:#2a4f83;
-	font-size:15px;
-	margin:22px 0px 0px 5px;
-}
-
 
 /*..........................button css..........................*/
 .awesome a{text-decoration: none;}
@@ -381,114 +362,22 @@ ul#tree li ul li {
 #wish_list_submit:hover{ background: #f3f6fb url(/images/btn_hr.gif) repeat-x;  color: #535151; }
 
 
-
-/*.......................................website css............................*/
-/*
-.sidebar{
-	height:auto !important;
-	margin-top:0px;
-    	background-color:#fbfcfd;
-}
-
-.image_bg{
-	margin:0px 0px 15px 0px ;
-	height:270px;
-	clear:both;
-	background: url(/images/image_bg.jpg) repeat-x;
-	padding:5px 0px 0px 0px
-}
-
-.image_in{
-	margin:0 auto;
-	width:940px;
-}
-
-
-
-.image_bg p{
-	padding:9px 10px;
-        margin-top:5px;
-
-
-
-}
-
-.image_bg p.first{
-	line-height:40px;
-	font-size:28px;
-	color:#9b1121;
-
-}
-
-.image_bg p.second{
-	line-height:28px;
-	font-size:13px;
-	color:#585555;
-        margin-bottom:21px;
-}
-
-.image_right{
-	width:71%;
-	border:1px solid #7ba71d;
-	float:right;
-	background-color:#fff;
-	padding-left:6px;
-}
-
-.image_right h2{
-        margin-top:30px;
-	float:left;
-}
-
-.image_left{
-	width:26%;
-	float:left;
-}
-
-.image_left img{
-	border:1px solid #7ba71d;
-}
-
-p.text{
-	font-size:12px;
-	margin-left:8px;
-}
-
-
-
-
+/*......................................admin-section............................*/
 
 
 .container{
 	width:72%;
 	height:auto !important;
-	float:right;
-
+	float:right; 
+	margin-top:10px;  
 }
 
-.bg{
-	padding:0px 5px 5px 0px;
-
-}
-
-.facebook_container{
-	width:100%;
-	height:auto !important;
-	float:left;
-	background-color: #f0f5ff;
-}
-
-.wishlist_container{
-	height:auto !important;
-	float:left;
-}
-
-.container h2{
-	color:#84a934;
-	font-size:26px;
-	margin:0px 0px 0px 6px;
-	border-bottom:1px solid #84a934;
-	padding:2px 0px 3px 0px;
+.container h3{
+	color:#b32b31;
+	font-size:22px;
+	margin:0px 5px 0px 10px;
+	background:none;
+        border:none;
 }
 
 .container hr{
@@ -501,37 +390,6 @@ p.text{
 	margin:15px 5px 15px 8px;
         color:#333435;
 	line-height:21px;
-}
-
-.container h3{
-	color:#d71920;
-	font-size:22px;
-	padding:4px 5px;
-	margin:25px 0px 0px 5px;
-}
-
-.container h4{
-	color:#d71920;
-	font-size:20px;
-	padding:4px 5px;
-	margin:15px 0px 5px 5px;
-}
-
-.container h2 span{
-	margin:0px 0px 0px 250px;
-	font-size:13px;
-	padding:0px;
-}
-
-.container h2 span a{
-	font-size:13px;
-	color:#2fa1f1;
-	padding:0px;
-	text-decoration:none;
-}
-
-.container h2 span a:hover{
-	text-decoration:underline;
 }
 
 
@@ -613,10 +471,12 @@ hr{
 }
 
 h2.form_heading{
-	background-color:#1d93d3;
+	background:none;
 	font-size:20px;
-	width:62%;
+	border:none;
+	font-weight:normal;
 	padding:5px 4px;
+	color:#b32b31;
 	margin:2px 0px 0px 15px;
 }
 
@@ -834,6 +694,17 @@ table.formstyle tr td input:focus{
 	font-size:13px;
 }
 
+
+.sidebar{
+	width:25%;margin-top:10px;
+	border:1px solid #e5e5e5;
+	background-color:#f4f5f6;
+	
+}
+
+.sidebar h2{width:100%;}
+
+
 #banners {margin: 20px;}
 .banner {margin-bottom: 20px; }
 .banner img{
@@ -844,8 +715,10 @@ table.formstyle tr td input:focus{
 h2.banner{
 	color:#b32b31;
 	font-size:22px;
-	margin:20px 5px 0px 5px;
+	margin:0px 5px 0px 5px;
 	background:none;
-	text-align:leftl
-}*/
+	text-align:left;
+        border:none;
+	font-weight:normal;
+}
 

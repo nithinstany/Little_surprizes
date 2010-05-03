@@ -5,7 +5,7 @@
     <p> <b> Wish list does not exist. </b> </p>
  <%else%>
 
-   <%=fb_name(@wish_list.user.facebook_id, :linked => false)%> 's wishlist -   <%= @wish_list.name %>
+   <h3><%=fb_name(@wish_list.user.facebook_id, :linked => false)%> 's wishlist -   <%=       @wish_list.name %></h3>
 </div>
 
 <div class="rt awesome">
