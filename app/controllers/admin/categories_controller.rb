@@ -1,22 +1,22 @@
 class Admin::CategoriesController < ApplicationController
- 
+
 before_filter :check_logged_in
 before_filter :check_admin,:except => :index
-  
+
   def index
-     
-     
+
+
      @search = Category.new_search(params[:search])
       if !params[:category_id].blank?
-       
+
        @search.conditions.parent_id = params[:category_id] if params[:category_id]
      else
        if params[:id]
           @category =  Category.find(params[:id])
           if @category.parent_id
-            @search.conditions.id = params[:id] 
-          else 
-            @search.conditions.id = params[:id] 
+            @search.conditions.id = params[:id]
+          else
+            @search.conditions.id = params[:id]
             @search.conditions.parent_id = nil
           end
         else
@@ -25,7 +25,7 @@ before_filter :check_admin,:except => :index
      end
      @categories = @search.all
      @parent = Category.find_all_by_parent_id(nil)
-     @banners = Banner.find(:all)
+     @banners = Banner.find(:all) rescue nil
 
 
      respond_to do |format|
@@ -37,7 +37,7 @@ before_filter :check_admin,:except => :index
      end
    end
 
-  
+
   def show
     @category = Category.find(params[:id])
 
@@ -47,7 +47,7 @@ before_filter :check_admin,:except => :index
     end
   end
 
-  
+
   def new
     @category = Category.new
 
@@ -57,12 +57,12 @@ before_filter :check_admin,:except => :index
     end
   end
 
-  
+
   def edit
     @category = Category.find(params[:id])
   end
 
-  
+
   def create
     @category = Category.new(params[:category])
 
@@ -78,9 +78,9 @@ before_filter :check_admin,:except => :index
     end
   end
 
- 
+
   def update
-    
+
     @category = Category.find(params[:id])
 
     respond_to do |format|
@@ -95,7 +95,7 @@ before_filter :check_admin,:except => :index
     end
   end
 
-  
+
   def destroy
     @category = Category.find(params[:id])
     @category.destroy
@@ -112,13 +112,14 @@ before_filter :check_admin,:except => :index
   @parent = Category.find_all_by_parent_id(nil)
  end
 
- 
 
 
 
 
- 
 
- 
-  
+
+
+
+
 end
+
