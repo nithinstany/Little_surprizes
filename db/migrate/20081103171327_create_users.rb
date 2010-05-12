@@ -24,8 +24,8 @@ class CreateUsers < ActiveRecord::Migration
       t.timestamps
 
     end
-     #execute("alter table users modify facebook_id bigint")
-     execute("ALTER TABLE users ALTER COLUMN facebook_id TYPE bigint")
+     execute("alter table users modify facebook_id bigint")
+
 
     add_index :users, :login
     add_index :users, :persistence_token

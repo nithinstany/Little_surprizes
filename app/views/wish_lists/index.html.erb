@@ -38,6 +38,15 @@
       	</tr>
        <% end %>
       </table>
+
+      <% form_tag(express_user_path(@facebook_user.id) )  do  -%>
+        <%= hidden_field_tag "user_id",@from_mail_user.id %>
+        <p> <%= text_field_tag "points" , '',:class => 'textbox-small' %> $
+
+        <%= image_submit_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif") %> </p>
+      <% end -%>
+
+
      <%end%>
    <%else%>
     <script type="text/javascript">
@@ -67,7 +76,7 @@
 	      <%= link_to 'Delete', @facebook_user.wish_lists.first,:confirm => "Are you sure want delete wishlist ?", :method => :delete, :id => 'delete_record',:class => "awesome"  %>
 	      <%= link_to 'Edit selected', edit_wish_list_path(@facebook_user.wish_lists.first.id), :id => "edit" ,:class => "awesome" %>
         <%= link_to 'Publish to Facebook', publish_wish_list_path(@facebook_user.wish_lists.first.id), :id => "publish_to_facebook" ,:class => "awesome" %>
-        <%= link_to image_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"), express_wish_list_path(@facebook_user.wish_lists.first.id) %>
+
 	    <%end%>
    <%end%>
 

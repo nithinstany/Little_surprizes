@@ -1,0 +1,15 @@
+<div id="wrapper">
+<% form_for([@reciver_user,@order]) do |f| %>
+  <%= f.error_messages %>
+  <br />
+   <p> To complete payments please click complete payment button </p> <br />
+    <%= f.hidden_field :express_token %>
+    <p> Your Paypal Details </p><br />
+    <p> Name: <%=h @order.first_name %> <%=h @order.last_name %> </p> <br />
+
+  <p>
+    <%= f.submit "Complete payment" %>
+  </p>
+<% end %>
+</div>
+

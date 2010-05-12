@@ -1,23 +1,16 @@
 class WishListsController < ApplicationController
   ensure_authenticated_to_facebook
   before_filter :set_current_user,:only => [:delete,:edit,:index,:show]
-  #before_filter :wish_list_exists,:only => [:new]
+
 
    def index
     @from_mail_user = User.find(params[:user_id]) if params[:user_id]  # when user click on mail link
     @facebook_user = user
-    #@wish_lists =  WishList.find(:all, :conditions => { :user_id => user.id })
-    #WishList.birthday_reminder
-
-
    end
 
   def show
     @wish_list = WishList.find(params[:id],:include => [:categories]) rescue nil
-   # unless @wish_list.blank?
-    #  @categories = @wish_list.categories.find(:all,:order => 'created_at DESC')
-   # end
-   @current_user = user rescue nil
+    @current_user = user rescue nil
   end
 
   def new
@@ -199,14 +192,7 @@ class WishListsController < ApplicationController
      redirect_to (wish_list_categories_path(wish_list))
   end
 
-  def express
-  response = EXPRESS_GATEWAY.setup_purchase(1000,
-    :ip                => request.remote_ip,
-    :return_url        => wish_lists_url,
-    :cancel_return_url => wish_lists_url
-  )
-  redirect_to EXPRESS_GATEWAY.redirect_url_for(response.token)
-end
+
 
 
 private
@@ -229,16 +215,6 @@ private
   def facebook_user
     facebook_session.user
   end
-
-  def wish_list_exists
-      if !user.wish_list.nil?
-        flash[:notice] = "You can have only one wish list"
-        redirect_to root_url
-       end
-  end
-
-
-
 
   def facebook_permissions(facebook_user)
      permissions = ["offline_access","publish_stream",'email'] #"", "share_item","status_update", , "read_stream"

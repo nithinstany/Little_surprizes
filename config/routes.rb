@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+ # map.resources :orders
+
 
 
 
@@ -7,7 +9,7 @@ ActionController::Routing::Routes.draw do |map|
 
 
   map.resource :account, :controller => "users"
-  map.resources :users
+  map.resources :users ,:member => {  :express => :post } ,:has_many => [:orders]
   map.resource :user_session, :member => {:logout => :get}
   map.resource :wish_list_item, :member => {:edit => :get}
   map.resource :admin,      :member => {:user_list => :get,:index => :get}
@@ -30,7 +32,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users do |user|
     user.resources :wish_lists
   end
-  map.resources :wish_lists,:collection => {:add_to_wishlist => :get, :remove_category => :any , :category_list => :any,:update_wishlist => :any,:grant_permission => :get }, :member => {:publish => :any} do |wish_lists|
+  map.resources :wish_lists,:collection => {:add_to_wishlist => :get, :remove_category => :any , :category_list => :any,:update_wishlist => :any,:grant_permission => :get }, :member => {:publish => :any } do |wish_lists|
      wish_lists.resources :categories
   end
 
