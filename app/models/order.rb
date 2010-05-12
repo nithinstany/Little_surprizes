@@ -12,11 +12,15 @@ class Order < ActiveRecord::Base
     end
   end
 
+  def confirm
+    response = process_purchase
+    response.success?
+  end
+
   def purchase
     response = process_purchase
     self.build_transaction
     transaction.create!(:response => response)
-    response.success?
   end
 
   private

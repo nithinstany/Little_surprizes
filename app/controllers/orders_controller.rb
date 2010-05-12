@@ -25,7 +25,8 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new(:express_token => params[:token])
-
+    @confirmed = @order.confirm
+    puts "pppppppppppppppp:#{@confirmed}"
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @order }
@@ -42,18 +43,14 @@ class OrdersController < ApplicationController
     @order = Order.new(params[:order])
     @order.payer_id =  @facebook_user.id
     @order.reciver_id =  @reciver_user.id
-    if @order.save
-      if @order.purchase
-        @reciver_user.points = (@reciver_user.points.to_i + @order.amount.to_i)
-        @reciver_user.save_with_validation(false)
-        flash[:notice] = "Successfully paid $#{@order.amount}"
-      else
-        flash[:notice] = "Failure: #{@order.transaction.message} "
-      end
-      redirect_to "/users/#{@reciver_user.id}/wish_lists"
+    if @order.save && @order.purchase
+       @reciver_user.points = (@reciver_user.points.to_i + @order.amount.to_i)
+       @reciver_user.save_with_validation(false)
+       flash[:notice] = "Successfully gifted $#{@order.amount}"
     else
-      render :action => "new"
+       flash[:notice] = "Failure: #{@order.transaction.message} "
     end
+    redirect_to "/users/#{@reciver_user.id}/wish_lists"
   end
 
   def update

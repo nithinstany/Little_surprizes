@@ -1,14 +1,19 @@
 <div id="wrapper">
+ <% unless @confirmed %>
+  <p> A successful transaction has already been completed for this token. </p>
+ <%end%>
 <% form_for([@reciver_user,@order]) do |f| %>
   <%= f.error_messages %>
   <br />
-   <p> To complete payments please click complete payment button </p> <br />
+    <p> Please click the below button, to complete the payment process. </p> <br />
     <%= f.hidden_field :express_token %>
     <p> Your Paypal Details </p><br />
     <p> Name: <%=h @order.first_name %> <%=h @order.last_name %> </p> <br />
 
   <p>
-    <%= f.submit "Complete payment" %>
+    <% if @confirmed %>
+    <%= f.submit "Confirm payment" %> or
+    <%end%> <%= link_to 'Cancel', "/users/#{@reciver_user.id}/wish_lists",:class => "awesome"  %>
   </p>
 <% end %>
 </div>
