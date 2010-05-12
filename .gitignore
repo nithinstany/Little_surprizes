@@ -1,0 +1,6 @@
+log/*
+tmp/*
+config/database.yml
+config/facebooker.yml
+db/schema.rb
+

@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/../../test_helper'
+require 'test_helper'
 
 class PaypalExpressTest < Test::Unit::TestCase
   TEST_REDIRECT_URL = 'https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=1234567890'
@@ -165,6 +165,13 @@ class PaypalExpressTest < Test::Unit::TestCase
                )
                
     assert_equal ["10736", "10002"] , response.params['error_codes'].split(',')
+  end
+  
+  def test_allow_guest_checkout
+    xml = REXML::Document.new(@gateway.send(:build_setup_request, 'SetExpressCheckout', 10, {:allow_guest_checkout => true}))
+    
+    assert_equal 'Sole', REXML::XPath.first(xml, '//n2:SolutionType').text
+    assert_equal 'Billing', REXML::XPath.first(xml, '//n2:LandingPage').text
   end
 
   private

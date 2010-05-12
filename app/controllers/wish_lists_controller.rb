@@ -199,6 +199,16 @@ class WishListsController < ApplicationController
      redirect_to (wish_list_categories_path(wish_list))
   end
 
+  def express
+  response = EXPRESS_GATEWAY.setup_purchase(1000,
+    :ip                => request.remote_ip,
+    :return_url        => wish_lists_url,
+    :cancel_return_url => wish_lists_url
+  )
+  redirect_to EXPRESS_GATEWAY.redirect_url_for(response.token)
+end
+
+
 private
 
   def owner_of_the_profile

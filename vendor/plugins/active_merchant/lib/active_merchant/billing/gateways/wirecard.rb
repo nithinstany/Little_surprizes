@@ -20,6 +20,15 @@ module ActiveMerchant #:nodoc:
 
       RETURN_CODES = %w[ ACK NOK ]
 
+      # Wirecard only allows phone numbers with a format like this: +xxx(yyy)zzz-zzzz-ppp, where: 
+      #   xxx = Country code 
+      #   yyy = Area or city code 
+      #   zzz-zzzz = Local number 
+      #   ppp = PBX extension 
+      # For example, a typical U.S. or Canadian number would be "+1(202)555-1234-739" indicating PBX extension 739 at phone 
+      # number 5551234 within area code 202 (country code 1).
+      VALID_PHONE_FORMAT = /\+\d{1,3}(\(?\d{3}\)?)?\d{3}-\d{4}-\d{3}/
+      
       # The countries the gateway supports merchants from as 2 digit ISO country codes
       # TODO: Check supported countries
       self.supported_countries = ['DE']
@@ -202,9 +211,13 @@ module ActiveMerchant #:nodoc:
 	          xml.tag! 'Address2', address[:address2] if address[:address2]
 	          xml.tag! 'City', address[:city]
 	          xml.tag! 'ZipCode', address[:zip]
-	          xml.tag! 'State', address[:state].blank? ? 'N/A' : address[:state]
+	          
+	          if address[:state] =~ /[A-Za-z]{2}/ && address[:country] =~ /^(us|ca)$/i
+	            xml.tag! 'State', address[:state].upcase
+	          end
+	          
 	          xml.tag! 'Country', address[:country]
-	          xml.tag! 'Phone', address[:phone]
+            xml.tag! 'Phone', address[:phone] if address[:phone] =~ VALID_PHONE_FORMAT
 	          xml.tag! 'Email', address[:email]
 	        end
 	      end
