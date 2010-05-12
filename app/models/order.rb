@@ -22,7 +22,7 @@ class Order < ActiveRecord::Base
   private
 
   def process_purchase
-    EXPRESS_GATEWAY.purchase(self.ammount, express_purchase_options)
+    EXPRESS_GATEWAY.purchase(self.amount, express_purchase_options)
   end
 
   def express_purchase_options
