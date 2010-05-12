@@ -330,13 +330,22 @@ ul#tree li ul li {
 
 .lt{
 	float:left;
-    	
+
 }
 
 .rt {
 
 	float:right;
 }
+
+input.textbox-small {
+border : 1px solid #838F99;
+background : #ffffff
+padding : 2px 2px;
+width : 60px;
+height : 19px;
+}
+
 
 /*..........................button css..........................*/
 .awesome a{text-decoration: none;}
@@ -368,8 +377,8 @@ ul#tree li ul li {
 .container{
 	width:72%;
 	height:auto !important;
-	float:right; 
-	margin-top:10px;  
+	float:right;
+	margin-top:10px;
 }
 
 .container h3{
@@ -516,7 +525,7 @@ table.formstyle tr td input:focus{
 	width:25%;margin-top:10px;
 	border:1px solid #e5e5e5;
 	background-color:#f4f5f6;
-	
+
 }
 
 .sidebar h2{width:100%;}
