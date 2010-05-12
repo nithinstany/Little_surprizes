@@ -44,9 +44,9 @@ class OrdersController < ApplicationController
     @order.reciver_id =  @reciver_user.id
     if @order.save
       if @order.purchase
-        @reciver_user.points = (@reciver_user.points.to_i + @order.ammount.to_i)
+        @reciver_user.points = (@reciver_user.points.to_i + @order.amount.to_i)
         @reciver_user.save_with_validation(false)
-        flash[:notice] = "Successfully paid $#{@order.ammount}"
+        flash[:notice] = "Successfully paid $#{@order.amount}"
       else
         flash[:notice] = "Failure: #{@order.transaction.message} "
       end
