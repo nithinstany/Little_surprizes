@@ -1,5 +1,5 @@
 class Admin::CategoriesController < ApplicationController
-
+  layout 'admin'
 before_filter :check_logged_in
 before_filter :check_admin,:except => :index
 

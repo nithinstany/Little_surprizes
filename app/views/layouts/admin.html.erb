@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title><%= controller.controller_name %>: <%= controller.action_name %></title>
+  <%= stylesheet_link_tag  'style','jquery.treeview'%>
+  <%= javascript_include_tag :defaults,'jquery.treeview.min','jquery.corner','jquery_corner' %>
+  <script type="text/javascript">
+    jQuery(function() {
+      jQuery("#tree").treeview({
+         collapsed: false,
+         animated: "medium",
+         control:"#sidetreecontrol",
+         persist: "location"
+      });
+   })
+  </script>
+
+
+</head>
+
+<body>
+
+
+
+
+      <div class="header">
+	      <h1><img src="/images/heading.jpg" /></h1>
+      </div>
+
+       <% if flash[:notice] %>
+         <div class="notice">
+            <p>
+                <%= flash[:notice] %>
+            </p>
+         </div>
+       <% end %>
+
+      <div class="main">
+         <%= yield  %>
+      </div>
+
+
+      <div class="clear"></div>
+         <script type="text/javascript">
+           	jQuery(".Login").corner("corner 10px");
+         </script>
+
+
+</body>
+</html>
+

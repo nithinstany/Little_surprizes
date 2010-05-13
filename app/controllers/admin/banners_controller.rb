@@ -1,23 +1,23 @@
 class Admin::BannersController < ApplicationController
-   
+  layout 'admin'
   #before_filter :check_logged_in
   before_filter :check_admin
 
-  
+
   def index
     @banners = Banner.all
-      
+
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @banners }
     end
 
-       
-                  
-     
+
+
+
   end
 
-  
+
   def show
     @banner = Banner.find(params[:id])
 
@@ -27,7 +27,7 @@ class Admin::BannersController < ApplicationController
     end
   end
 
-  
+
   def new
     @banner = Banner.new
 
@@ -37,12 +37,12 @@ class Admin::BannersController < ApplicationController
     end
   end
 
-  
+
   def edit
     @banner = Banner.find(params[:id])
   end
 
-  
+
   def create
     @banner = Banner.new(params[:banner])
 
@@ -58,7 +58,7 @@ class Admin::BannersController < ApplicationController
     end
   end
 
-  
+
   def update
     @banner = Banner.find(params[:id])
 
@@ -74,7 +74,7 @@ class Admin::BannersController < ApplicationController
     end
   end
 
-  
+
   def destroy
     @banner = Banner.find(params[:id])
     @banner.destroy
@@ -85,3 +85,4 @@ class Admin::BannersController < ApplicationController
     end
   end
 end
+
