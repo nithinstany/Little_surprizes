@@ -35,7 +35,7 @@ quotes : "" "";
 }
 /*******************************************************/
 
-body { margin: 30px 0px 0px 0px; padding: 0px; color: #6d6c67; font-family: Arial, Helvetica, Sans-Serif; font-style: normal; font-variant: normal; font-weight: normal; font-size: 13px; line-height: normal;height:100%;}
+body { margin: 0px 0px 0px 0px; padding: 0px; color: #6d6c67; font-family: Arial, Helvetica, Sans-Serif; font-style: normal; font-variant: normal; font-weight: normal; font-size: 13px; line-height: normal;height:100%; background:#f6e5a8 url(/images/body.jpg) repeat-x;border:3px solid #c3c3a7;}
 
 
 .notice{
@@ -100,41 +100,42 @@ body { margin: 30px 0px 0px 0px; padding: 0px; color: #6d6c67; font-family: Aria
 
 
 .header{
-	height:55px;
-	background:#fff url(/images/logo.jpg) no-repeat;
+	height:45px;
+	background: url(/images/logo.gif) no-repeat;
 	margin:0px 10px 0px 10px;
 	padding:20px 0px 0px 130px;
-	border-bottom:1px solid #de4a4a;
 }
 
 .header h1{
-	color:#3482a9;
+        font-family:URW Gothic L;
+	color:#ae321a;
 	font-size:32px;
 }
 
 .header h1 span{
-	color:#3482a9;
+	color:#ae321a;
 
 }
 
+hr{border-top:1px solid #ead17b; border-bottom:1px solid #fff;}
+
 .main{
-	margin:0 auto;
+	margin:5px;
 	height:auto !important;
 	min-height:900px;
 	height:auto !important;
     	height:900px;
-    	padding:0px 10px 0px 10px;
+    	padding:0px 5px 0px 5px;
+        background:#fff url(/images/top.jpg) repeat-x;
 }
 
 .main h2{
-	color:#2a4f83;
-	font-size:15px;
+	color:#8a1f11;
+	font-size:18px;
 	font-weight:normal;
-	background:#f4f9fc url(/images/gradient.jpg) repeat-x;
-	border:1px solid #e0e1e3;
-	border-bottom:none;font-weight:bold;
-	width:25%;padding:9px  0px 4px 9px;
+	padding:20px  0px 4px 0px;
 	margin:10px 0px 0px 0px;
+        font-family:Serif;
 }
 
 .main h2 span {
@@ -167,6 +168,15 @@ body { margin: 30px 0px 0px 0px; padding: 0px; color: #6d6c67; font-family: Aria
 	text-decoration:underline;
 }
 
+.main h3{
+	color:#4b4949;
+	font-size:15px;
+	font-weight:normal;
+	padding:0px  0px 4px 0px;
+	margin:0px 0px 0px 0px;
+        font-family:Serif;
+}
+
 .main p span,a{
 	color:#284785;
 	text-decoration:underline;
@@ -177,29 +187,9 @@ body { margin: 30px 0px 0px 0px; padding: 0px; color: #6d6c67; font-family: Aria
 }
 
 
-#wrapper{
-	margin:0 auto;
-	height:auto !important;
-	min-height:600px;
-	height:auto !important;
-        height:600px;
-	padding:10px 5px;
-	background:#f6faff url(/images/wrapper.jpg) no-repeat;
-	border:1px solid #e3e3e3;
-	border-top:none;
-}
+.main h2.item{font-size:15px;}
 
-#wrapper h3{
-    	color:#2a4f83;
-	font-size:18px;
-	font-weight:normal;
-    	text-decoration:none;
-    	border:none;
-    	padding:5px 0px;
-	margin:10px 0px 2px 0px;
-}
-
-#wrapper h3.item{font-size:15px;}
+.borders{border:1px solid #ddd; padding:10px 5px;}
 
 
 ul#tree li{}
@@ -280,23 +270,23 @@ ul#tree li ul li {
          color: #3a3a3a;
 	 margin:5px 0px 15px 0px;
 	 border:1px solid #ddd;
-	 background-color:#fff;
+	 background: url(/images/center.jpg) no-repeat;
 }
 
 
 .listing th {
 	color:#fff;
         text-align: left;
-        padding: 9px 10px;
+        padding: 6px 10px;
 	font-size:15px;
-	background-color:#2a4f83;
+	background: url(/images/th_header.jpg) repeat-x;
         font-weight:normal;
 	border:1px solid #ddd;
 }
 
 
 .listing td {
-	padding: 12px;
+	padding: 13px;
 	color: #2a2828;
 	text-align: left;
 	padding: 8px 0px 8px 10px;
@@ -309,12 +299,12 @@ ul#tree li ul li {
 }
 
 .listing a {
-	color: #007db7;
-        font-size: 11px;
+	color: #b02715;
+        font-size: 13px;
 }
 
 .listing tr.even td {
-	background-color:#f8f8f8;
+	backgXround-color:#f8f8f8;
 
 }
 
@@ -348,7 +338,8 @@ height : 19px;
 
 
 /*..........................button css..........................*/
-.awesome a{text-decoration: none;}
+.awesome{margin-top: 20px; margin-bottom:5px;}
+.awesome a{text-decoration: none;color:#535151;}
 
 .awesome, .awesome:visited, #wish_list_submit{
 	background: #f3f6fb url(/images/btn.gif) repeat-x;
@@ -359,7 +350,6 @@ height : 19px;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	-moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
-
 	border: 1px solid rgba(0,0,0,0.25);
 	position: relative;
 	cursor: pointer;

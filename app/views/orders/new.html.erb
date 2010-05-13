@@ -1,34 +1,30 @@
-<div id="wrapper">
-
- <% if @confirmed %>
-  <br />  <p> A successful transaction has already been completed for this token. </p>
- <%else%>
- <br />
-    <p> Please click the below button, to complete the payment process. </p>
- <%end%>
-
 
 <% form_for([@reciver_user,@order]) do |f| %>
   <%= f.error_messages %>
 
     <%= f.hidden_field :express_token %>
-    <p> Your Paypal Details </p><br />
-    <p> Name: <%=h @order.first_name %> <%=h @order.last_name %> </p> <br />
-    <p> Address </p>
-    <p> street : <%=h @details.params["street1"] %>  <%=h @details.params["street2"] %> </p>
-    <p> city :  <%=h @details.params["city_name"] %></p>
-    <p> state_or_province :  <%=h @details.params["state_or_province"] %> </p>
-    <p> Country :  <%=h @details.params["country_name"] %></p>
-    <p> postal_code:  <%=h @details.params["postal_code"] %> </p>
+    <h2> Your Paypal Details </h2>
+    <h3><%=h @order.first_name %> <%=h @order.last_name %> </h3> 
+    <h3><%=h @details.params["street1"] %>  <%=h @details.params["street2"] %> </h3>
+    <h3><%=h @details.params["city_name"] %></h3>
+    <h3><%=h @details.params["state_or_province"] %> </h3>
+    <h3><%=h @details.params["country_name"] %></h3>
+    <h3><%=h @details.params["postal_code"] %> </h3>
 <br />
-<p> Payment : $<%=h @details.params["order_total"].to_i %> </p>
-<br />
+<h3> Payment : $<%=h @details.params["order_total"].to_i %> </h3>
 
+<% if @confirmed %>
+<h2> A successful transaction has already been completed for this token. </h2>
+<%else%>
+<div class="borders">
+ <h3> Please click the below button, to complete the payment process. </h3>
+</div>
+<%end%>
   <p>
     <% unless @confirmed %>
-    <%= f.submit "Confirm payment" %> or
+    <%= f.submit "Confirm payment",:class => "awesome" %> or
     <%end%> <%= link_to 'Cancel', "/users/#{@reciver_user.id}/wish_lists",:class => "awesome"  %>
   </p>
 <% end %>
-</div>
+
 

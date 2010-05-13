@@ -1,11 +1,11 @@
- <div id="wrapper">
+
 
 <div class="lt">
  <% if @wish_list.nil? %>
     <p> <b> Wish list does not exist. </b> </p>
  <%else%>
 
-   <h3><%=fb_name(@wish_list.user.facebook_id, :linked => false)%> 's wishlist -   <%=       @wish_list.name %></h3>
+   <h2><%=fb_name(@wish_list.user.facebook_id, :linked => false)%> 's wishlist -   <%=       @wish_list.name %></h2>
 </div>
 
 <div class="rt awesome">
@@ -14,7 +14,7 @@
 <div class="clear"></div>
 <hr />
     <p class="post"><%= @wish_list.description %> </p>
-    <h3 class="item"> Items in  <%= @wish_list.name %> Wishlist </h3>
+    <h2 class="item"> Items in  <%= @wish_list.name %> Wishlist </h2>
   <% unless @wish_list.category_wish_lists.blank? %>
      <table class="listing" width="100%">
       <tr>
@@ -37,6 +37,6 @@
   <%end%>
 
 <%end%>
-</div>
+
 <div class="clear"></div>
 
