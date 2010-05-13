@@ -1,6 +1,7 @@
 class Admin::UsersController < ApplicationController
   before_filter :check_admin
-    layout 'admin'
+  layout 'admin'
+
   def index
     @search = User.new_search(params[:search])
     @users = @search.all

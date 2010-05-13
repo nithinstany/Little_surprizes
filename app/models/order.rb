@@ -14,6 +14,7 @@ class Order < ActiveRecord::Base
 
   def confirm
     response = process_purchase
+
     response.success?
   end
 

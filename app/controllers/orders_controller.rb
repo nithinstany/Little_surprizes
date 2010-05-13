@@ -25,8 +25,10 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new(:express_token => params[:token])
-    @confirmed = @order.confirm
-    puts "pppppppppppppppp:#{@confirmed}"
+    @details = EXPRESS_GATEWAY.details_for(params[:token])
+    @confirmed = Order.find_by_express_token(params[:token]) ? true : false
+    puts "ppppppppppppppppppppp:::#{@confirmed}"
+
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @order }
