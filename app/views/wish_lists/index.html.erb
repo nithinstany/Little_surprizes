@@ -38,12 +38,15 @@
       	</tr>
        <% end %>
       </table>
-
+      <br />
       <% form_tag(express_user_path(@facebook_user.id) )  do  -%>
         <%= hidden_field_tag "user_id",@from_mail_user.id %>
-        <p> <%= text_field_tag "points" , '',:class => 'textbox-small' %> $
-
-        <%= image_submit_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif") %> </p>
+        <table>
+         <tr>
+           <td valign="top">  <%= text_field_tag "points" , '',:class => 'textbox-small' %> $ </td>
+           <td>  <%= image_submit_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif") %> </td>
+         </tr>
+        </table>
       <% end -%>
 
 
