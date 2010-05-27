@@ -22,20 +22,15 @@
              <%= link_to "Edit banner",edit_admin_banner_path(banner)%> |
              <%= link_to 'Destroy', admin_banner_path(banner), :confirm => 'Are you sure?', :method => :delete %><br/>
            </div>
-         <% end %>
+          <%end%>
+       <%else%>
 
-
-      <% if @banners.size < 2 %>
-           <% if @banners.blank? %>
-             <div class = 'banner'>
+            <div class = 'banner'>
                 <%= link_to(image_tag('banner.gif'), new_admin_banner_path) %><br />
              </div>
            <% end %>
-            <div class = 'banner'>
-              <%= link_to(image_tag('banner.gif'), new_admin_banner_path) %><br />
-            </div>
-          <% end %>
-    <% end %>
+
+
 </div>
 </div>
 
