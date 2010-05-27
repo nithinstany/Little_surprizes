@@ -24,6 +24,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :users, :controller => 'users'
     admin.resources :categories , :controller => 'categories',:collection => {:subcategory_new => :get}
     admin.resources :banners
+    admin.resources :points
    end
 
   #map.resources :categories

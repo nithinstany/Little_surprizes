@@ -22,31 +22,26 @@
 </head>
 
 <body>
+   <div class="header">
+     <h1> <img src="/images/heading.jpg" /> </h1>
+   </div>
 
-
-
-
-      <div class="header">
-	      <h1><img src="/images/heading.jpg" /></h1>
-      </div>
-
+   <div class="main">
        <% if flash[:notice] %>
          <div class="notice">
-            <p>
-                <%= flash[:notice] %>
-            </p>
+            <p> <%= flash[:notice] %> </p>
          </div>
+         <% flash[:notice] = nil  %>
        <% end %>
+       <%= yield  %>
 
-      <div class="main">
-         <%= yield  %>
-      </div>
+   </div>
 
 
-      <div class="clear"></div>
-         <script type="text/javascript">
-           	jQuery(".Login").corner("corner 10px");
-         </script>
+<div class="clear"></div>
+<script type="text/javascript">
+jQuery(".Login").corner("corner 10px");
+</script>
 
 
 </body>

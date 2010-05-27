@@ -115,11 +115,5 @@ before_filter :check_admin,:except => :index
 
 
 
-
-
-
-
-
-
 end
 

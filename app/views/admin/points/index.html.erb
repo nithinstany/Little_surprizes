@@ -1,0 +1,30 @@
+
+<%= javascript_include_tag 'facebox' %>
+<%= stylesheet_link_tag 'facebox' %>
+   <script type="text/javascript">
+     jQuery(document).ready(function() {
+       jQuery('a[rel*=facebox]').facebox()
+
+     })
+   </script>
+<h2> Each users points </h2>
+
+
+<table>
+  <tr>
+     <th> Name </th>
+     <th> Points earned</th>
+     <th> Details </th>
+  </tr>
+
+  <% @users.each do |user| -%>
+    <tr>
+        <td> <%= user.name %> </td>
+        <td> <%= "$ #{user.points}" %> </td>
+        <td> <%= link_to "points details", admin_point_path(user.id) ,:rel => 'facebox' %></td>
+    </tr>
+
+  <% end -%>
+
+</table>
+

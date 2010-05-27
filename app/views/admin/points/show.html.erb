@@ -1,0 +1,26 @@
+ <h2> Points Details for <%= @user.name %> </h2>
+
+
+ <table>
+   <tr>
+     <th> Paypal user name </th>
+     <th> Express token  </th>
+     <th> Payer id </th>
+     <th> Date </th>
+     <th> Amount </th>
+   </tr>
+
+<% @user.recived_gifts.each do |gift| -%>
+
+
+   <tr>
+     <td> <%= "#{gift.first_name} #{gift.last_name}" %>  </td>
+     <td> <%= gift.express_token %> </td>
+     <td> <%= gift.express_payer_id %>  </td>
+     <td> <%= Time.parse(gift.created_at.to_s).strftime('%d-%m-%y %H:%M').to_s%> </td>
+     <td> <%= "$ #{gift.amount}" %> </td>
+
+   </tr>
+<% end -%>
+</table>
+

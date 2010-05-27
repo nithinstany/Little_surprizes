@@ -1,5 +1,4 @@
-<div class="main">
-<div class="clear"></div>
+
 <h2 class="form_heading">Add New Category </h2>
 <% form_for([:admin,@category], :url => admin_categories_path,:html => { :multipart => true })  do |f| %>
   <%= f.error_messages %>
@@ -26,10 +25,7 @@
   	</tr>
 </table>
   <div id="btn">
-    <center><%= f.submit 'Create' %></center>
+    <%= f.submit 'Create' %> or <%= link_to 'Back', admin_categories_path  %>
   </div>
 <% end %>
-</div>
-
-<!--<%= link_to 'Back', :back %>-->
 

@@ -1,4 +1,6 @@
 class Order < ActiveRecord::Base
+
+  belongs_to :user
   has_one :transaction, :class_name => "OrderTransaction"
 
   def express_token=(token)

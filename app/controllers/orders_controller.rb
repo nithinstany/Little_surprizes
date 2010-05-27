@@ -27,7 +27,6 @@ class OrdersController < ApplicationController
     @order = Order.new(:express_token => params[:token])
     @details = EXPRESS_GATEWAY.details_for(params[:token])
     @confirmed = Order.find_by_express_token(params[:token]) ? true : false
-    puts "ppppppppppppppppppppp:::#{@confirmed}"
 
     respond_to do |format|
       format.html # new.html.erb
