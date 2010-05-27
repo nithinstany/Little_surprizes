@@ -35,7 +35,7 @@ quotes : "" "";
 }
 /*******************************************************/
 
-body { margin: 0px 0px 0px 0px; padding: 0px; color: #6d6c67; font-family: Arial, Helvetica, Sans-Serif; font-style: normal; font-variant: normal; font-weight: normal; font-size: 13px; line-height: normal;height:100%; background:#f6e5a8 url(/images/body.jpg) repeat-x;border:3px solid #c3c3a7;}
+body { margin: 0px 0px 0px 0px; padding: 0px; color: #6d6c67; font-family: Arial, Helvetica, Sans-Serif; font-style: normal; font-variant: normal; font-weight: normal; font-size: 13px; line-height: normal;height:100%; background:#f8eab9 url(/images/body.jpg) repeat-x;border:1px solid #c3c3a7;}
 
 
 .notice{
@@ -125,7 +125,7 @@ hr{border-top:1px solid #ead17b; border-bottom:1px solid #fff;}
 	min-height:900px;
 	height:auto !important;
     	height:900px;
-    	padding:0px 5px 0px 5px;
+    	padding:10px 5px 0px 5px;
         background:#fff url(/images/top.jpg) repeat-x;
 }
 
@@ -363,21 +363,28 @@ height : 19px;
 
 /*......................................admin-section............................*/
 
+.wrapper{
+	background: url(/images/center.jpg) no-repeat bottom left;     
+        padding-top:20px;
+	}
+
 
 .container{
 	width:72%;
 	height:auto !important;
 	float:right;
-	margin-top:10px;
+	margin-top:20px;background: url(/images/th_header.jpg) repeat-x;
 }
 
 .container h3{
-	color:#b32b31;
+	color:#fff;
 	font-size:22px;
-	margin:0px 5px 0px 10px;
+	margin:5px 5px 0px 10px;
 	background:none;
         border:none;
 }
+
+.container a{color:#fff;padding-top:0px;}
 
 .container hr{
 	border-top:1px solid #9ec844;
@@ -512,13 +519,13 @@ table.formstyle tr td input:focus{
 }
 
 .sidebar{
-	width:25%;margin-top:10px;
-	border:1px solid #e5e5e5;
-	background-color:#f4f5f6;
-
+	width:25%;
+	border-right:1px solid #9d1e00;
+	backXground-color:#9d1e00;
+        margin-top:20px;
 }
 
-.sidebar h2{width:100%;}
+.sidebar h2{width:100%;padding-top:0px;}
 
 
 #banners {margin: 20px;}
