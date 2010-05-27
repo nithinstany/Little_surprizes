@@ -119,13 +119,15 @@ body { margin: 0px 0px 0px 0px; padding: 0px; color: #6d6c67; font-family: Arial
 
 hr{border-top:1px solid #ead17b; border-bottom:1px solid #fff;}
 
+h1, h2, h3, h4, h5, a{font-family:URW Gothic L;}
+
 .main{
 	margin:5px;
 	height:auto !important;
 	min-height:900px;
 	height:auto !important;
     	height:900px;
-    	padding:10px 5px 0px 5px;
+    	padding:3px 5px 3px 5px;
         background:#fff url(/images/top.jpg) repeat-x;
 }
 
@@ -135,7 +137,6 @@ hr{border-top:1px solid #ead17b; border-bottom:1px solid #fff;}
 	font-weight:normal;
 	padding:20px  0px 4px 0px;
 	margin:10px 0px 0px 0px;
-        font-family:Serif;
 }
 
 .main h2 span {
@@ -265,14 +266,22 @@ ul#tree li ul li {
 }
 
 .listing{
-	 border-collapse: collapse;
-         width: 100%;
-         color: #3a3a3a;
-	 margin:5px 0px 15px 0px;
-	 border:1px solid #ddd;
-	 background: url(/images/center.jpg) no-repeat;
+         border:1px solid #ddd;
+	 background-color:#f2f2f2;
+	 padding:10px 5px;
+	 margin-bottom:20px;
 }
 
+.listing p{padding-top:5px;line-height:22px;}
+
+.listing p.description{padding-left:30px;}
+
+.listing h3 a{font-size:15px;color:#1e1e1e;text-decoration:none;width:100%;}
+
+.listing_btm{text-align:right;padding:10px;background-color:#eaeaea;}
+
+
+.listing hr{border-top:1px solid #ddd;border-bottom:1px solid #fff;}
 
 .listing th {
 	color:#fff;
@@ -337,6 +346,7 @@ height : 19px;
 }
 
 
+
 /*..........................button css..........................*/
 .awesome{margin-top: 20px; margin-bottom:5px;}
 .awesome a{text-decoration: none;color:#535151;}
@@ -384,7 +394,7 @@ height : 19px;
         border:none;
 }
 
-.container a{color:#fff;padding-top:0px;}
+
 
 .container hr{
 	border-top:1px solid #9ec844;

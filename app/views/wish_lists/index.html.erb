@@ -1,6 +1,5 @@
 <% if @from_mail_user && check_user %>
    <div class="rt awesome"> <%= link_to "View My Wish List", wish_lists_path %> </div>
-
 <%end%>
 <h2>
    <% if @from_mail_user && (@facebook_user.facebook_id.to_s != @from_mail_user.facebook_id.to_s) %>
@@ -10,37 +9,22 @@
   <%end%>
 
 </h2>
-
-
-
-  <table class="listing" width="100%">
-   <tr>
-      <th> Name </th>
-    	<th> Description </th>
-    	<th> Created at </th>
-    </tr>
-
-   <% if @from_mail_user && check_user %>
-
-     <% unless @from_mail_user.wish_lists.blank? %>
-	      <% @from_mail_user.wish_lists.each do |wish_list| %>
-        	<tr class="<%= cycle('odd', 'even')%>">
-          <td width="25%">
-            <%= link_to "#{wish_list.name}", wish_list %>
-          </td>
-        	<td width="52%">
-              <%=h wish_list.description %>
-          </td>
-        	<td width="20%">
-              <%=Time.parse(wish_list.created_at.to_s).strftime('%m/%d/%Y') %>
-          </td>
-
-      	</tr>
+<% if @from_mail_user && check_user %>
+  <% unless @from_mail_user.wish_lists.blank? %>
+   <% @from_mail_user.wish_lists.each do |wish_list| %>
+       <div class="listing">	
+            <h3><%= link_to "#{wish_list.name}", wish_list %></h3><hr />
+            <p><%=h wish_list.description %></p>
+            <div class="listing_btm">
+		Created at:<%=Time.parse(wish_list.created_at.to_s).strftime('%m/%d/%Y') %>
+	    </div>
+      </div>
        <% end %>
-      </table>
+
       <br />
       <% form_tag(express_user_path(@facebook_user.id) )  do  -%>
         <%= hidden_field_tag "user_id",@from_mail_user.id %>
+	<p>Want to contribute for  <%=fb_name(@from_mail_user.facebook_id, :linked => false)%>'s  wishlist?</p>
         <table>
          <tr>
            <td valign="top">  <%= text_field_tag "points" , '',:class => 'textbox-small' %> $ </td>
@@ -68,15 +52,18 @@
 
      <% unless @facebook_user.wish_lists.blank? %>
 	    <% @facebook_user.wish_lists.each do |wish_list| %>
-      	<tr class="<%= cycle('odd', 'even')%>">
-        		<td width="25%"><%=radio_button_tag('wishlist_id', wish_list.id, checked = false, options = {:onclick => "change_function(#{wish_list.id})"})%>
-        		<%=link_to "#{wish_list.name}",edit_wish_list_path(wish_list)%></td>
-        		<td width="52%"><%=h wish_list.description %></td>
-        		<td width="20%"><%=Time.parse(wish_list.created_at.to_s).strftime('%m/%d/%Y') %></td>
+      	 <div class="listing">
+        		<h3><%=radio_button_tag('wishlist_id', wish_list.id, checked = false, options = {:onclick => "change_function(#{wish_list.id})"})%>
+        		<%=link_to "#{wish_list.name}",edit_wish_list_path(wish_list)%></h3>
+                        <hr />
+        		<p class="description"><%=h wish_list.description %></p>
+        		 <div class="listing_btm">
+				<%=Time.parse(wish_list.created_at.to_s).strftime('%m/%d/%Y') %>
+			</div>
 
-      	</tr>
+      	</div>
        <%end%>
-       </table>
+      
      <% end %>
      <%= link_to 'Add new', new_wish_list_path ,:class => "awesome"  %>
 	    <% unless @facebook_user.wish_lists.blank?  %>
