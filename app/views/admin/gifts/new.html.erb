@@ -1,14 +1,35 @@
-<h1>New gift</h1>
-
+<h2>New gift</h2>
+<div class="container">
+  <div id="wish_list">
+  </div>
+</div>
+<div class="sidebar">
 <% form_for(:gift , :url => admin_user_gifts_path(@user.id) ,:html => { :method => :post }) do |f| %>
   <%= f.error_messages %>
+  <table class="formstyle"  cellpadding="15px;" border="1">
+    <%= f.hidden_field :user_id ,:value => @user.id %>
+   <tr> <th> Wish list </th> <td> <%= f.select :wish_list_id ,@user.wish_lists.collect { |p| [p.name,p.id] },{:prompt => 'Select wishlist'}%> </td> </tr>
 
-  <%= f.hidden_field :user_id ,:value => @user.id %>
-  <%= f.select :wish_list_id ,@user.wish_lists.collect { |p| [p.name,p.id] },{:prompt => 'Select wishlist'}%>
-  <p>
-    <%= f.submit 'Create' %>
-  </p>
+  </table>
+ <div class="btn">
+   <%= f.submit 'Create' %> or <%= link_to 'Back', :back %>
+ </div>
 <% end %>
 
-<%= link_to 'Back', :back %>
+
+</div>
+
+<%= image_tag("spinner.gif",
+              :align => "absmiddle",
+              :border => 0,
+              :id => "spinner1",
+              :style =>"display: none;" ) %>
+
+ <%= observe_field(:gift_wish_list_id, :frequency => 0.3,
+                    :before => "jQuery('#spinner1').show()",
+                    :success => "jQuery('#spinner1').hide();" ,
+                    :url => admin_wish_lists_path,
+                    :method => :get,
+                    :with => "'wish_list_id=' + value"
+                  )%>
 
