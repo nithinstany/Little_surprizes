@@ -1,4 +1,5 @@
-<div id="wish_list">
+
+<div id="wish_list_replace">
  <h2><%= @wish_list.name %></h2>
  <hr />
  <p><%= @wish_list.description%></p>
@@ -6,15 +7,16 @@
    <tr>
 	<th>Category name</th>
 	<th>Comment</th>
+	<th> Points needed </th>
    </tr>
  <% @wish_list_categories.each do |wish_catogery|%>
 
     <tr class="<%= cycle('odd', 'even')%>">
-	<td><%= wish_catogery.category.name %></td>
-	<td><%= wish_catogery.custom_description %></td>
+	<td> <%= radio_button_tag("gift[category_id]",wish_catogery.category_id ) %><%= wish_catogery.category.name %></td>
+	<td> <%= wish_catogery.custom_description %></td>
+	<td> <%= "$ #{wish_catogery.category.lowest_number_of_points_needed}" %> </td>
    </tr>
  <% end %>
 </table>
-</div>
 </div>
 

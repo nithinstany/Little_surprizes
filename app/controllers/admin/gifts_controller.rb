@@ -25,7 +25,7 @@ class Admin::GiftsController < ApplicationController
   # GET /gifts/new.xml
   def new
     @gift = Gift.new
-    @parent = Category.find_all_by_parent_id(nil)
+
 
     respond_to do |format|
       format.html # new.html.erb
@@ -55,7 +55,7 @@ class Admin::GiftsController < ApplicationController
         format.html { redirect_to( admin_user_points_path(@user.id) ) }
         format.xml  { render :xml => @gift, :status => :created, :location => @gift }
       else
-         @parent = Category.find_all_by_parent_id(nil)
+
         format.html { render :action => "new" }
         format.xml  { render :xml => @gift.errors, :status => :unprocessable_entity }
       end

@@ -5,7 +5,7 @@ class Admin::WishListsController < ApplicationController
     @wish_list_categories = @wish_list.category_wish_lists
 
     render :update do |page|
-      page.replace_html 'wish_list', :partial => 'wish_list'
+      page.replace_html 'wish_list_replace', :partial => 'wish_list'
     end
   end
 

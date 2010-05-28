@@ -3,16 +3,20 @@
   <tr>
      <th> Name </th>
      <th> Points earned </th>
-     <th> Point Details </th>
-     <th> Deliver Gift </th>
+     <th> Points </th>
+     <th> Gift </th>
   </tr>
 
   <% @users.each do |user| -%>
    <tr class="<%= cycle('odd', 'even')%>">
         <td> <%= user.name %> </td>
         <td> <%= "$ #{user.points}" %> </td>
-        <td> <%= link_to "Details",  admin_user_points_path(user.id)  %> </td>
-        <td> <%= link_to "Giveout gifts",  new_admin_user_gift_path(user.id)  %>  </td>
+        <td> <%= link_to "Gift",  admin_user_points_path(user.id)  %> </td>
+        <td>  <% if user.points.to_i == 0 %>
+                <b> No sufficient points Available. </b>
+              <%else%>
+                <%= link_to "Give out gifts",  new_admin_user_gift_path(user.id) %>
+               <%end%> </td>
     </tr>
 
   <% end -%>
