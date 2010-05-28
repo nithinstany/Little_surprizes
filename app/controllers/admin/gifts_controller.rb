@@ -25,6 +25,7 @@ class Admin::GiftsController < ApplicationController
   # GET /gifts/new.xml
   def new
     @gift = Gift.new
+    @parent = Category.find_all_by_parent_id(nil)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -45,7 +46,7 @@ class Admin::GiftsController < ApplicationController
     respond_to do |format|
       if @gift.save
         flash[:notice] = 'Admin::Gift was successfully created.'
-        format.html { redirect_to(@gift) }
+        format.html { redirect_to(admin_users_points(@user.id) ) }
         format.xml  { render :xml => @gift, :status => :created, :location => @gift }
       else
         format.html { render :action => "new" }
