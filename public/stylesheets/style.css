@@ -276,7 +276,7 @@ ul#tree li ul li {
 
 .listing h3 a{font-size:18px;color:#9d1e00;text-decoration:none;width:100%;}
 
-.listing_btm{padding:10px 5px;background-color:#fffeec;}
+.listing_btm{padding:10px 5px 10px 0px;background-color:#fffeec; margin-top:5px;}
 
 .listing_btm p{color:#191717;}
 
@@ -387,13 +387,6 @@ height : 19px;
 
 
 /*......................................admin-section............................*/
-
-.wrapper{
-	  
-        padding-top:20px;
-	}
-
-
 .container{
 	width:72%;
 	height:auto !important;
@@ -407,14 +400,6 @@ height : 19px;
 	margin:5px 5px 0px 10px;
 	background:none;
         border:none;
-}
-
-
-
-.container hr{
-	border-top:1px solid #9ec844;
-	border-bottom:1px solid #f1f8e2;
-	margin:0px;
 }
 
 .container p{

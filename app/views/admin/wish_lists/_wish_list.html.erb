@@ -1,9 +1,9 @@
 <div id="wish_list">
- wish_list  name : <%= @wish_list.name %>
+ name : <%= @wish_list.name %>
 
  <% @wish_list_categories.each do |wish_catogery|%>
   category : <%= wish_catogery.category.name %>
-  Description : <%= wish_catogery.custom_description %>
+  comments : <%= wish_catogery.custom_description %>
  <% end %>
 </div>
 

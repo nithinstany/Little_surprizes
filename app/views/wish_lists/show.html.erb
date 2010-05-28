@@ -1,5 +1,4 @@
 
-
 <div class="lt">
  <% if @wish_list.nil? %>
     <p> <b> Wish list does not exist. </b> </p>
@@ -16,7 +15,7 @@
     <p class="post"><%= @wish_list.description %> </p>
     <h2 class="item"> Items in  <%= @wish_list.name %> Wishlist </h2>
   <% unless @wish_list.category_wish_lists.blank? %>
-     <table class="listing" width="100%">
+     <table class="admin_listing" width="100%">
       <tr>
           <th> Category  </th>
           <th> Comments </th>
