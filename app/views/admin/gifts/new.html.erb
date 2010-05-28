@@ -9,7 +9,7 @@
   <table class="formstyle"  cellpadding="15px;" border="1">
     <%= f.hidden_field :user_id ,:value => @user.id %>
    <tr> <th> Wish list </th> <td> <%= f.select :wish_list_id ,@user.wish_lists.collect { |p| [p.name,p.id] },{:prompt => 'Select wishlist'}%> </td> </tr>
-
+   <tr> <th> Comments </th> <td> <%= f.text_field :comments %></td> </tr>
   </table>
  <div id="btn">
    <%= f.submit 'Create' %> or <%= link_to 'Back', :back %>

@@ -11,8 +11,8 @@
    <tr class="<%= cycle('odd', 'even')%>">
         <td> <%= user.name %> </td>
         <td> <%= "$ #{user.points}" %> </td>
-        <td> <%= link_to "Point details",  admin_user_points_path(user.id)  %> </td>
-        <td> <%= link_to "Deliver gifts",  admin_user_gifts_path(user.id)  %>  </td>
+        <td> <%= link_to "Details",  admin_user_points_path(user.id)  %> </td>
+        <td> <%= link_to "Giveout gifts",  admin_user_gifts_path(user.id)  %>  </td>
     </tr>
 
   <% end -%>

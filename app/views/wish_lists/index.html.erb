@@ -37,6 +37,19 @@
       <% end -%>
      <%end%>
 <%else%>
+<script type="text/javascript">
+
+    $(document).ready(function($) {
+      $(".listing").hover(
+       function(){
+         $(this).children('.listing_btm').children('.links').fadeIn(500);
+       },
+
+       function () {
+         $(this).children('.listing_btm').children('.links').fadeOut(100);
+       });
+     });
+  </script>
 
    <% unless @facebook_user.wish_lists.blank? %>
       <% @facebook_user.wish_lists.each do |wish_list| %>
@@ -45,7 +58,7 @@
         		<%=link_to "#{wish_list.name}",edit_wish_list_path(wish_list)%></h3>
         		 <p><%=h wish_list.description %></p>
         		 <div class="listing_btm">
-	                <div class="links">
+	                <div class="links" style ='display:none'>
 			    <ul>
 	                    <li><%= link_to 'Delete', wish_list,:confirm => "Are you sure want delete wishlist ?", :method => :delete%> |</li>
 	                    <li><%= link_to 'Edit', edit_wish_list_path(wish_list)%>  |</li>
