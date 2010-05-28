@@ -1,5 +1,4 @@
 <div class="clear"></div>
-<div class="main">
 <h2 class="form_heading">Edit category</h2>
 <% form_for([:admin,@category],:html => { :multipart => true }) do |f| %>
   <%= f.error_messages %>
@@ -29,6 +28,5 @@
     <center><%= f.submit 'Update' %></center>
 </div>
 <% end %>
-</div>
 <!--<%= link_to 'Show', admin_category_path(@category) %> |
 <%= link_to 'Back', admin_categories_path %>-->
