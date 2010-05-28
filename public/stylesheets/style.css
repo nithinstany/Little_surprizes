@@ -54,7 +54,7 @@ body { margin: 0px 0px 0px 0px; padding: 0px; color: #6d6c67; font-family: Arial
 
 .Login{
 	width:25%;
-	background-color:#2fa1f1;
+	background-color:#9d1e00;
 	margin:0 auto;
 	padding:50px 20px;
 }
@@ -283,7 +283,14 @@ ul#tree li ul li {
 
 .listing hr{border-top:1px solid #ddd;border-bottom:1px solid #fff;}
 
-.listing th {
+
+.admin_listing {
+	width:100%;
+	border:collapse;
+	border:1px solid #ddd;
+}
+
+.admin_listing th {
 	color:#fff;
         text-align: left;
         padding: 6px 10px;
@@ -294,7 +301,7 @@ ul#tree li ul li {
 }
 
 
-.listing td {
+.admin_listing td {
 	padding: 13px;
 	color: #2a2828;
 	text-align: left;
@@ -303,27 +310,27 @@ ul#tree li ul li {
 }
 
 
-.listing tr {
+.admin_listing tr {
     	font-size: 13px;
 }
 
-.listing a {
+.admin_listing a {
 	color: #b02715;
         font-size: 13px;
 }
 
-.listing tr.even td {
+.admin_listing tr.even td {
 	backgXround-color:#f8f8f8;
 
 }
 
-.listing tr.even:hover td {
+.admin_listing tr.even:hover td {
 	background-color:#fff;
 
 }
 
 
-.listing tr.odd td {border-top: #dadeec 1px solid;border-bottom: #dadeec 1px solid;}
+.admin_listing tr.odd td {border-top: #dadeec 1px solid;border-bottom: #dadeec 1px solid;}
 
 
 
@@ -383,11 +390,11 @@ height : 19px;
 	width:72%;
 	height:auto !important;
 	float:right;
-	margin-top:20px;background: url(/images/th_header.jpg) repeat-x;
+	margin-top:20px;
 }
 
 .container h3{
-	color:#fff;
+	color:#9d1e00;
 	font-size:22px;
 	margin:5px 5px 0px 10px;
 	background:none;
