@@ -127,15 +127,15 @@ h1, h2, h3, h4, h5, a{font-family:URW Gothic L;}
 	min-height:900px;
 	height:auto !important;
     	height:900px;
-    	padding:3px 5px 3px 5px;
+    	padding:20px 5px 3px 5px;
         background:#fff url(/images/top.jpg) repeat-x;
 }
 
 .main h2{
-	color:#8a1f11;
-	font-size:18px;
-	font-weight:bold;
-	padding:20px  0px 4px 5px;
+	color:#b33c36;
+	font-size:30px;
+	font-weight:normal;
+	padding:0px  0px 4px 5px;
 	margin:10px 0px 0px 0px;
 }
 
@@ -271,16 +271,20 @@ ul#tree li ul li {
 	 margin-bottom:25px;
 }
 
-.listing p{padding-top:5px;line-height:22px;}
+.listing p{padding-top:5px;line-height:22px;color:#191717;}
 
 
-.listing h3 a{font-size:16px;color:#9d1e00;text-decoration:none;width:100%;}
+.listing h3 a{font-size:18px;color:#9d1e00;text-decoration:none;width:100%;}
 
-.listing_btm{padding:10px 5px;background-color:#fffddf;}
+.listing_btm{padding:10px 5px;background-color:#fffeec;}
 
-.listing_btm p{color:#8a1a00;}
+.listing_btm p{color:#191717;}
 
-.listing_btm p a{float:right;margin-left:10px;color:#191717;}
+.links{float:right;}
+
+.links ul li{margin:0px;padding:0px;display:inline;list-style:none;}
+
+.links ul li a{display:inline;color:#191717;}
 
 
 
