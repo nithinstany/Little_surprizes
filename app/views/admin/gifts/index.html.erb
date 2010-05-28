@@ -1,0 +1,21 @@
+<h2> Deliverd gifts for <%= @user.name %></h2>
+
+ <br />
+
+ <table class="admin_listing">
+  <tr>
+  </tr>
+
+<% @gifts.each do |gift| %>
+  <tr>
+    <td><%= link_to 'Show', gift %></td>
+    <td><%= link_to 'Edit', edit_gift_path(gift) %></td>
+    <td><%= link_to 'Destroy', gift, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New gift', new_admin_user_gift_path(@user) %>
+

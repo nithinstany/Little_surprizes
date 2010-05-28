@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+
+
  # map.resources :orders
 
 
@@ -13,11 +15,13 @@ ActionController::Routing::Routes.draw do |map|
 
   map.login "login", :controller => "user_sessions", :action => "new"
   map.logout "logout", :controller => "user_sessions", :action => "destroy"
+  map.log_out "log_out", :controller => "user_sessions", :action => "log_out"
 
    map.namespace(:admin) do |admin|
     admin.root :controller => 'categories', :action => 'index'
     admin.resources :users, :controller => 'users' do |user|
       user.resources :points
+      user.resources :gifts
     end
     admin.resources :categories , :controller => 'categories',:collection => {:subcategory_new => :get}
     admin.resources :banners

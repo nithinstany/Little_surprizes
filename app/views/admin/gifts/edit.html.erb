@@ -1,0 +1,12 @@
+<h1>Editing gift</h1>
+
+<% form_for(@gift) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @gift %> |
+<%= link_to 'Back', gifts_path %>

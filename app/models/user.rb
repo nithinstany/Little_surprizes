@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
 
   has_many :recived_gifts , :class_name => 'Order' ,:foreign_key => :reciver_id
   has_many :donated_gifts , :class_name => 'Order' ,:foreign_key => :payer_id
+  has_many :gifts
 
   acts_as_authentic do |c|
     #c.validate_login_field = false

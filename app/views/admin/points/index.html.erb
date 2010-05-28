@@ -1,6 +1,6 @@
 
  <h2> Points Details for <%= @user.name %> </h2>
-
+ <br />
 
  <table class="admin_listing">
    <tr>
@@ -26,5 +26,18 @@
 </table>
 
 <br />
+ <h2>  Gift Deliverd to <%= @user.name %> </h2>
+ <br />
+ <table class="admin_listing">
+   <tr>
+
+   </tr>
+<% @user.gifts.each do |gift| -%>
+   <tr class="<%= cycle('odd', 'even')%>">
+
+   </tr>
+<%end%>
+</table>
+
 <%= link_to "Back" ,:back%>
 
