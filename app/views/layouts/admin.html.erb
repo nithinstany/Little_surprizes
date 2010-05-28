@@ -25,7 +25,7 @@
    <div class="header">
      <h1> <img src="/images/heading.gif" /> </h1>
    </div>
- <hr />
+  <hr />
     <% if flash[:notice] %>
        <div class="notice">
          <p> <%= flash[:notice] %> </p>
@@ -33,9 +33,11 @@
     <% flash[:notice] = nil  %>
     <% end %>
   <div class="main">
-      <div class="wrapper">
+
+      <%= render :partial => 'shared/right' %>
+
        <%= yield  %>
-      </div>
+
    </div>
 
 
