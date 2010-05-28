@@ -22,7 +22,7 @@
   </tr>
 
   <% @users.each do |user| -%>
-    <tr>
+   <tr class="<%= cycle('odd', 'even')%>">
         <td> <%= user.name %> </td>
         <td> <%= "$ #{user.points}" %> </td>
         <td> <%= link_to "points details", admin_point_path(user.id) ,:rel => 'facebox' %></td>
