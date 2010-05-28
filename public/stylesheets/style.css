@@ -267,6 +267,7 @@ ul#tree li ul li {
          border:1px solid #ddd;
 	 padding:10px 5px;
 	 margin-bottom:25px;
+	 background-color:#f1f1f1;
 }
 
 .listing p{padding-top:5px;line-height:22px;color:#191717;}
@@ -274,15 +275,15 @@ ul#tree li ul li {
 
 .listing h3 a{font-size:18px;color:#6d550d;text-decoration:none;width:100%;}
 
-.listing_btm{padding:10px 5px 10px 0px;background-color:#fffeec; margin-top:5px;}
+.listing_btm{padding:10px 5px 10px 0px;background-color:#ececec; margin-top:5px;}
 
 .listing_btm p{color:#000;}
 
 .links{float:right;}
 
-.links ul li{margin:0px;padding:0px;display:inline;list-style:none;}
+.links ul li{margin:0px 2px;padding:4px 8px;border:1px solid #701500;display:inline;list-style:none;background-color:#8a1a00;}
 
-.links ul li a{display:inline;color:#191717;}
+.links ul li a{display:inline;color:#fff;text-decoration:none;font-size:11px;}
 
 
 
