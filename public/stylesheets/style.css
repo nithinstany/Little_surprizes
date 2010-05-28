@@ -267,7 +267,7 @@ ul#tree li ul li {
 
 .listing{
          border:1px solid #ddd;
-	 background-color:#f2f2f2;
+	 background-color:#fffef4;
 	 padding:10px 5px;
 	 margin-bottom:20px;
 }
@@ -278,7 +278,7 @@ ul#tree li ul li {
 
 .listing h3 a{font-size:15px;color:#1e1e1e;text-decoration:none;width:100%;}
 
-.listing_btm{text-align:right;padding:10px;background-color:#eaeaea;}
+.listing_btm{text-align:right;padding:10px;background-color:#fffddf;}
 
 
 .listing hr{border-top:1px solid #ddd;border-bottom:1px solid #fff;}
