@@ -6,19 +6,19 @@
 <div class="sidebar">
 <% form_for(:gift , :url => admin_user_gifts_path(@user.id) ,:html => { :method => :post }) do |f| %>
   <%= f.error_messages %>
-  <table class="formstyle"  cellpadding="15px;" border="1">
-    <tr> <th> Total points Available : </th> <td> <%= @user.points %> </td> </tr>
+  
+    <p> Total points Available : <b> <%= @user.points %></b> </p>
     <%= f.hidden_field :user_id ,:value => @user.id %>
-   <tr> <th> Wish list </th> <td> <%= f.select :wish_list_id ,@user.wish_lists.collect { |p| [p.name,p.id] },{:prompt => 'Select wishlist'}%> </td> </tr>
-   <tr> <th> Comments </th> <td> <%= f.text_field :comments %></td> </tr>
-
-   <tr> Category
+  <p> Wish list  <%= f.select :wish_list_id ,@user.wish_lists.collect { |p| [p.name,p.id] },{:prompt => 'Select wishlist'}%> </p>
+   <p> Comments  <%= f.text_field :comments %></p>
+   <br />
+   <p> Category
 
    <ul id='tree'>
        <%= render :partial => 'category_list', :collection => @parent, :as => :category ,:locals => { :f => f} %>
    </ul>
-  </tr>
-  </table>
+  </p>
+ 
  <div id="btn">
    <%= f.submit 'Create' %> or <%= link_to 'Back', :back %>
  </div>

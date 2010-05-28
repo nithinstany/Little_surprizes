@@ -529,9 +529,10 @@ table.formstyle tr td input:focus{
 .sidebar{
 	width:25%;
 	border-right:1px solid #9d1e00;
-	backXground-color:#9d1e00;
         margin-top:20px;
 }
+
+.sidebar p{color:#000;margin:10px 0px;}
 
 .sidebar h2{width:100%;padding-top:0px;}
 

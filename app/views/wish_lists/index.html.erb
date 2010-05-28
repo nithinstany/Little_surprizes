@@ -65,7 +65,7 @@
                             <li><%= link_to 'Publish to Facebook', publish_wish_list_path(wish_list.id)%></li>
                             </ul>
                   </div>
-		              <p> Created at:<%=Time.parse(wish_list.created_at.to_s).strftime('%m/%d/%Y') %> </p>
+		              <p> Created at: <b><%=Time.parse(wish_list.created_at.to_s).strftime('%m/%d/%Y') %> </b></p>
               </div>
          </div>
       <%end%>
