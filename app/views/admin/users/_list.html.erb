@@ -11,7 +11,7 @@
    <tr class="<%= cycle('odd', 'even')%>">
         <td> <%= user.name %> </td>
         <td> <%= "$ #{user.points}" %> </td>
-        <td> <%= link_to "Gift",  admin_user_points_path(user.id)  %> </td>
+        <td> <%= link_to "Points",  admin_user_points_path(user.id)  %> </td>
         <td>  <% if user.points.to_i == 0 %>
                 <b> No sufficient points Available. </b>
               <%else%>

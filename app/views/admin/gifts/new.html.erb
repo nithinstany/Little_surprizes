@@ -6,7 +6,7 @@
     <tr>  <th> Total points Available : </th><td><b> <%= "$ #{@user.points}" %></b></td> </tr>
     <%= f.hidden_field :user_id ,:value => @user.id %>
     <tr> <th> select wishlist to which you want to contribute :</th> <td> <%= f.select :wish_list_id ,@user.wish_lists.collect { |p| [p.name,p.id] },{:prompt => 'Select wishlist'}%> </td></tr>
-    <tr><th>  Comments  : </th> <td> <%= f.text_field :comments %> </td> </tr>
+    <tr><th>  Comments  : </th> <td> <%= f.text_area :comments %> </td> </tr>
 
 
 
