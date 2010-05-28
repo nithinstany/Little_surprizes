@@ -5,11 +5,14 @@
 
   <div class="clear"></div>
 	<div id = 'category-list'>
+                <div class="rt">
 	 	<%= link_to 'Add new category', new_admin_category_path %> <b> | </b> &nbsp;
-	  <%= link_to 'Add subcategory', subcategory_new_admin_categories_path %>  <b> | </b> &nbsp;
+	        <%= link_to 'Add subcategory', subcategory_new_admin_categories_path %>   
+                </div>
 	  <%= render :partial => 'list' %>
 	</div>
 </div>
+
 <div class="sidebar">
 	<h2 class="banner">Category List</h2>
 	 <ul id='tree'><%= render :partial => 'category_list', :collection => @parent, :as => :category %></ul>
