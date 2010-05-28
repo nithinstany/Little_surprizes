@@ -11,7 +11,7 @@
    <tr> <th> Wish list </th> <td> <%= f.select :wish_list_id ,@user.wish_lists.collect { |p| [p.name,p.id] },{:prompt => 'Select wishlist'}%> </td> </tr>
 
   </table>
- <div class="btn">
+ <div id="btn">
    <%= f.submit 'Create' %> or <%= link_to 'Back', :back %>
  </div>
 <% end %>
