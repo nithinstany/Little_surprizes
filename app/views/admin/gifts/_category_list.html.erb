@@ -1,6 +1,6 @@
 <li>
 
-   <%= f.radio_button :category_id ,category.id%> <%= category.name %><%= category.lowest_number_of_points_needed %>
+   <%= f.radio_button :category_id ,category.id%> <%= category.name %> - <b> <%= "$ #{category.lowest_number_of_points_needed}" %> </b>
    <span></span>
    <% unless category.children.empty? %>
 	    <ul>

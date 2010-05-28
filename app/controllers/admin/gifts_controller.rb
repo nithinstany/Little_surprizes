@@ -41,14 +41,21 @@ class Admin::GiftsController < ApplicationController
   # POST /gifts
   # POST /gifts.xml
   def create
-    @gift = Admin::Gift.new(params[:gift])
+
+   @gift = Gift.new(params[:gift])
 
     respond_to do |format|
       if @gift.save
-        flash[:notice] = 'Admin::Gift was successfully created.'
-        format.html { redirect_to(admin_users_points(@user.id) ) }
+        @catogery = Category.find(params[:gift][:category_id])
+        @gift.update_attributes(:points => @catogery.lowest_number_of_points_needed)
+        value = (@user.points.to_i - @catogery.lowest_number_of_points_needed.to_i)
+        @user.points = value.to_f
+        @user.save_with_validation(false)
+        flash[:notice] = 'Gift was successfully created. '
+        format.html { redirect_to( admin_user_points_path(@user.id) ) }
         format.xml  { render :xml => @gift, :status => :created, :location => @gift }
       else
+         @parent = Category.find_all_by_parent_id(nil)
         format.html { render :action => "new" }
         format.xml  { render :xml => @gift.errors, :status => :unprocessable_entity }
       end
