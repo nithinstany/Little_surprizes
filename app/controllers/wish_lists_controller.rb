@@ -77,12 +77,10 @@ class WishListsController < ApplicationController
           flash[:notice] = 'Wish list was successfully updated  and Published to Facebook'
           @user = facebook_user
            if @user.has_permissions?('publish_stream')
-             @user.publish_to(@user, :message => 'has added new product categories to wishlist.',
+             @user.publish_to(@user, :message => "has added new product categories to wishlist '#{@wish_list.name}'.",
                 :action_links => [:text => "visit wishlist",:href => "http://apps.facebook.com/littlesurprizes/users/#{user.id}/wish_lists"],
 
-                 :attachment =>  { :name => "#{@wish_list.name}",
-                         :description => "#{@wish_list.description}",
-                         :media => [{ :type => 'image',
+                 :attachment =>  { :media => [{ :type => 'image',
                                       :src => "#{SITE_URL}images/facebook_publish.jpg",
                                       :href => "http://apps.facebook.com/littlesurprizes"
                                     }]
@@ -129,12 +127,10 @@ class WishListsController < ApplicationController
     @wish_list = WishList.find(params[:id])
     @user = facebook_user
     if @user.has_permissions?('publish_stream')
-      @user.publish_to(@user, :message => 'has added new product categories to wishlist.',
+      @user.publish_to(@user, :message => "has added new product categories to wishlist '#{@wish_list.name}' .",
        :action_links => [:text => "visit wishlist",:href => "http://apps.facebook.com/littlesurprizes/users/#{user.id}/wish_lists"],
 
-       :attachment =>  { :name => "#{@wish_list.name}",
-                         :description => "#{@wish_list.description}",
-                         :media => [{ :type => 'image',
+       :attachment =>  { :media => [{ :type => 'image',
                                       :src => "#{SITE_URL}images/facebook_publish.jpg",
                                       :href => "http://apps.facebook.com/littlesurprizes"
                                     }]

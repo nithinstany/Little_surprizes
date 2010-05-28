@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="lt">
 		<h3>Categories</h3>
-	</div><br />
+	</div>
 	<div class="rt">
      <%= render :partial => 'shared/right' %>
 	</div>
@@ -22,6 +22,11 @@
              <%= link_to "Edit banner",edit_admin_banner_path(banner)%> |
              <%= link_to 'Destroy', admin_banner_path(banner), :confirm => 'Are you sure?', :method => :delete %><br/>
            </div>
+          <%end%>
+          <% if @banners.size < 2 %>
+           <div class = 'banner'>
+                <%= link_to(image_tag('banner.gif'), new_admin_banner_path) %><br />
+             </div>
           <%end%>
        <%else%>
 
