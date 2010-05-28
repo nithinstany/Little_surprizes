@@ -9,15 +9,13 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users ,:member => {  :express => :post } ,:has_many => [:orders]
   map.resource :user_session, :member => {:logout => :get}
   map.resource :wish_list_item, :member => {:edit => :get}
-  map.resource :admin,      :member => {:user_list => :get,:index => :get}
-  #map.resource :home,       :member => {:index => :get}
-  #map.resources :user_sessions
-  #map.resources :users
+
 
   map.login "login", :controller => "user_sessions", :action => "new"
   map.logout "logout", :controller => "user_sessions", :action => "destroy"
 
    map.namespace(:admin) do |admin|
+    admin.root :controller => 'categories', :action => 'index'
     admin.resources :users, :controller => 'users' do |user|
       user.resources :points
     end
