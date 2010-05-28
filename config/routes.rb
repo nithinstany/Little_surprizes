@@ -2,9 +2,6 @@ ActionController::Routing::Routes.draw do |map|
  # map.resources :orders
 
 
-
-
-
   #map.resources :wish_lists, :collection => {:add_to_wishlist => :get, :remove_category => :any , :category_list => :any}, :member => {:publish_to_friends => :any}
 
 
@@ -21,10 +18,12 @@ ActionController::Routing::Routes.draw do |map|
   map.logout "logout", :controller => "user_sessions", :action => "destroy"
 
    map.namespace(:admin) do |admin|
-    admin.resources :users, :controller => 'users'
+    admin.resources :users, :controller => 'users' do |user|
+      user.resources :points
+    end
     admin.resources :categories , :controller => 'categories',:collection => {:subcategory_new => :get}
     admin.resources :banners
-    admin.resources :points
+
    end
 
   #map.resources :categories

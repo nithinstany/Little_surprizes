@@ -1,16 +1,17 @@
- <ul>
-<% @users.each do |user| %>
-   	<li>
-    	<%=h user.name %>
-  
-    	<!--<td><%= link_to 'Show', user %></td>
-    	<td><%= link_to 'Edit', edit_user_path(user) %></td>
-    	<td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>-->
-  	</li>
-<% end %>	
-</ul>
 
+ <table class="admin_listing">
+  <tr>
+     <th> Name </th>
+     <th> Points earned</th>
+     <th> Details </th>
+  </tr>
 
+  <% @users.each do |user| -%>
+   <tr class="<%= cycle('odd', 'even')%>">
+        <td> <%= user.name %> </td>
+        <td> <%= "$ #{user.points}" %> </td>
+        <td> <%= link_to "Point details",  admin_user_points_path(user.id)  %></td>
+    </tr>
 
-
+  <% end -%>
 

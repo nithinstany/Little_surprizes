@@ -4,6 +4,7 @@ class Admin::UsersController < ApplicationController
 
   def index
     @search = User.new_search(params[:search])
+    @search.conditions.id_not_equal = current_user.id
     @users = @search.all
     respond_to do |format|
       format.html # index.html.erb

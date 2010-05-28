@@ -1,21 +1,20 @@
 <div class="clear"></div>
-<div class="main">
+
 <h2 class="form_heading">Users</h2>
-<table class="formstyle"  cellpadding="15px;" border="1">
+<table class="formstyle"  cellpadding="15px;">
 	<tr>
-    	   <% form_tag(admin_users_path, :method => "get" )do %>
-    	      <% fields_for @search do |f|%>
-    		<% f.fields_for @search.conditions do |user| %>
-       			<th>Search</th>
-			<td><%= user.text_field :name_like   %> </td>
- 		<%end%>
-  	     <%end%> 
-   	     <td><%=  submit_tag "Search" %></td><td></td>
-   	    <%end%>
+	   <th> Search </th>
+    <% form_tag(admin_users_path, :method => "get" )do %>
+      <% fields_for @search do |f|%>
+    	  <% f.fields_for @search.conditions do |user| %>
+			    <td> <%= user.text_field :name_like   %>  </td>
+    		<%end%>
+  	  <%end%>
+   	  <td><%=  submit_tag "Search" %> </td>
+   	<%end%>
 	</tr>
 </table>
 <div id = 'dealer-list'>
-	<h3>Name</h3>
-  	<%=render :partial => "list"%>
+   <%=render :partial => "list"%>
 </div>
-</div>
+
