@@ -4,14 +4,14 @@
     <hr />
     <p> <%= @wish_list.description%> </p>
 
-    <table class="admin_listing">
+     <table class="admin_listing">
       <tr>
 	      <th> Category name </th>
 	      <th> Comment </th>
 	      <th class="last"> Points needed </th>
       </tr>
       <% @wish_list.category_wish_lists.each do |wish_catogery|%>
-        <tr>
+        <tr class="<%= cycle('odd', 'even')%>">
         	<td> <%= radio_button_tag("gift[category_id]",wish_catogery.category.id) %> <%= wish_catogery.category.name %></td>
         	<td> <%= wish_catogery.custom_description %></td>
         	<td class="last"> <%= "$ #{wish_catogery.category.lowest_number_of_points_needed}" %> </td>
