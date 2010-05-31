@@ -5,16 +5,17 @@
  <hr />
  <p><%= @wish_list.description%></p>
 <div class="points">
-<table>
+<table class="admin_listing">
+    <tr>
 	<th>Category name</th>
 	<th>Comment</th>
-	<th> Points needed </th>
+	<th class="last"> Points needed </th>
    </tr>
  <% @wish_list_categories.each do |wish_catogery|%>
     <tr>
 	<td> <%= radio_button_tag("gift[category_id]",wish_catogery.category_id ) %><%= wish_catogery.category.name %></td>
 	<td> <%= wish_catogery.custom_description %></td>
-	<td> <%= "$ #{wish_catogery.category.lowest_number_of_points_needed}" %> </td>
+	<td class="last"> <%= "$ #{wish_catogery.category.lowest_number_of_points_needed}" %> </td>
    </tr>
  <% end %>
 </table>
