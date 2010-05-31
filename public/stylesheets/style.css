@@ -306,7 +306,7 @@ ul#tree li ul li {
 	width:100%;
 	border:collapse;
 	border:1px solid #ddd;
-	border-bottom:none;
+	
 }
 
 .admin_listing th {
@@ -349,12 +349,12 @@ ul#tree li ul li {
 	background-color:#fff;
 
 }
+.admin_listing tr.even td{border-top: #dadeec 1px solid;}
 
+.admin_listing tr.odd td{border-top: #dadeec 1px solid;}
 
-.admin_listing tr.odd td{border-top: #dadeec 1px solid;border-bottom: #dadeec 1px solid;}
-
-.admin_listing tr.odd td.last{border-right:0px solid #ddd;}
-.admin_listing tr.even td.last{border-right:0px solid #ddd;}
+.admin_listing tr.odd td.last{border-right:none;}
+.admin_listing tr.even td.last{border-right:none;}
 
 .lt{
 	float:left;
