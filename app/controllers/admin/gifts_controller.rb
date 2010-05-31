@@ -55,15 +55,14 @@ class Admin::GiftsController < ApplicationController
         format.html { redirect_to( admin_user_points_path(@user.id) ) }
         format.xml  { render :xml => @gift, :status => :created, :location => @gift }
       else
-
+        @wish_list = @user.wish_lists.find(params[:gift][:wish_list_id])
         format.html { render :action => "new" }
         format.xml  { render :xml => @gift.errors, :status => :unprocessable_entity }
       end
     end
   end
 
-  # PUT /gifts/1
-  # PUT /gifts/1.xml
+
   def update
     @gift = Gift.find(params[:id])
 

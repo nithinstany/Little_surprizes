@@ -12,9 +12,11 @@
 
    <tr>
     <td colspan="2">
-    <div id="wish_list_replace">
-
-    <div>
+      <div id="wish_list_replace">
+        <% if @gift.wish_list_id %>
+          <%= render :partial => 'admin/wish_lists/wish_list' %>
+        <%end%>
+      <div>
     </td>
     <tr>
 
