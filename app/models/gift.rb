@@ -6,7 +6,7 @@ class Gift < ActiveRecord::Base
     errors.add_to_base("Please select category") if self.category_id.blank?
     errors.add_to_base("Please select wishlist") if self.wish_list_id.blank?
     unless self.category_id.blank?
-     errors.add_to_base("Not sufficient points Available for this catogery") if self.check_points_available
+     errors.add_to_base("Not sufficient points available for this catogery") if self.check_points_available
     end
 
   end
