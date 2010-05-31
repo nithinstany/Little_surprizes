@@ -305,7 +305,8 @@ ul#tree li ul li {
 .admin_listing {
 	width:100%;
 	border:collapse;
-	
+	border:1px solid #ddd;
+	border-bottom:none;
 }
 
 .admin_listing th {
@@ -315,11 +316,11 @@ ul#tree li ul li {
 	font-size:15px;
 	background: url(/images/th_header.jpg) repeat-x;
         font-weight:normal;
-	border:1px solid #ddd;
-	border-right:none;
+	border-right:1px solid #ddd;
+	
 }
 
-.admin_listing th.last{border-right:1px solid #ddd;}
+.admin_listing th.last{border-right:none;}
 
 
 .admin_listing td {
@@ -327,9 +328,7 @@ ul#tree li ul li {
 	color: #2a2828;
 	text-align: left;
 	padding: 8px 0px 8px 10px;
-	border:1px solid #ddd;
-	border-right:none;
-	border-top:none;
+	border-right:1px solid #ddd;	
 }
 
 
@@ -344,7 +343,6 @@ ul#tree li ul li {
 
 .admin_listing tr.even td {
 	background-color:#f8f8f8;
-
 }
 
 .admin_listing tr.even:hover td {
@@ -353,10 +351,10 @@ ul#tree li ul li {
 }
 
 
-.admin_listing tr.odd td {border-top: #dadeec 1px solid;border-bottom: #dadeec 1px solid;}
+.admin_listing tr.odd td{border-top: #dadeec 1px solid;border-bottom: #dadeec 1px solid;}
 
-.admin_listing tr.odd td.last{border-right:1px solid #ddd;}
-.admin_listing tr.even td.last{border-right:1px solid #ddd;}
+.admin_listing tr.odd td.last{border-right:0px solid #ddd;}
+.admin_listing tr.even td.last{border-right:0px solid #ddd;}
 
 .lt{
 	float:left;
