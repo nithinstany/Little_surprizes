@@ -3,13 +3,13 @@ class Gift < ActiveRecord::Base
 
   validates_presence_of :category_id ,:wish_list_id
 
-  def validate
-    errors.add_to_base("Not sufficient points Available for this catogery") if self.test
-  end
+ # def validate
+ #   errors.add_to_base("Not sufficient points Available for this catogery") if self.test
+ # end
 
 
 
-  def test
+  def before_create
     catogery = Category.find(self.category_id)
     user = User.find(self.user_id)
     if catogery.lowest_number_of_points_needed.to_i > user.points.to_i
