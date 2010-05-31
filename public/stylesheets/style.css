@@ -130,9 +130,9 @@ h1, h2, h3, h4, h5, a{font-family:URW Gothic L;}
 }
 
 .main h2{
-	color:#ae4238;
-	font-size:25px;
-	font-weight:bold;
+	color:#b13403;
+	font-size:28px;
+	font-weight:normal;
 	padding:0px;
 	margin:10px 0px 0px 0px;
 }
@@ -264,18 +264,18 @@ ul#tree li ul li {
 }
 
 .listing{
-         border:1px solid #ddd;
-	 padding:10px 5px;
+         border:1px solid #d4dbba;
+	 padding:8px 5px;
 	 margin-bottom:25px;
-	 background-color:#eff0f2;
+	 background:#fffcf4 url(/images/listing.jpg) repeat-x;
 }
 
 .listing p{padding-top:5px;line-height:22px;color:#191717;}
 
 
-.listing h3 a{font-size:18px;color:#6d550d;text-decoration:none;width:100%;}
+.listing h3 a{font-size:18px;color:#634b02;text-decoration:none;width:100%;}
 
-.listing_btm{padding:10px 5px 10px 0px;background-color:#ececec; margin-top:5px;}
+.listing_btm{padding:10px 5px 10px 0px;baXckground-color:#ececec; margin-top:5px;}
 
 .listing_btm p{color:#000;}
 
@@ -379,13 +379,13 @@ height : 19px;
 
 
 /*..........................button css..........................*/
-.awesome{margin-top: 20px; margin-bottom:5px;}
-.awesome a{text-decoration: none;color:#535151;}
+.awesome{margin-top: 15px; margin-bottom:10px;}
+.awesome a{text-decoration: none;color:#535151;font-size:15px;}
 
 .awesome, .awesome:visited, #wish_list_submit{
 	background: #f3f6fb url(/images/btn.gif) repeat-x;
 	display: inline-block;
-	padding: 5px 10px 5px;
+	padding: 5px 12px 5px;
 	color: #535151;
 	text-decoration: none;
 	-moz-border-radius: 5px;
