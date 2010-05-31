@@ -4,7 +4,7 @@
      <th> Name </th>
      <th> Points earned </th>
      <th> Points </th>
-     <th> Gift </th>
+     <th class="last"> Gift </th>
   </tr>
 
   <% @users.each do |user| -%>
@@ -12,10 +12,10 @@
         <td> <%= user.name %> </td>
         <td> <%= "$ #{user.points}" %> </td>
         <td> <%= link_to "Points",  admin_user_points_path(user.id)  %> </td>
-        <td>  <% if user.points.to_i == 0 %>
-                <b> No sufficient points Available. </b>
+        <td class="last">  <% if user.points.to_i == 0 %>
+                 No sufficient points. 
               <%else%>
-                <%= link_to "Give out gifts",  new_admin_user_gift_path(user.id) %>
+                <%= link_to "Give out gift",  new_admin_user_gift_path(user.id) %>
                <%end%> </td>
     </tr>
 
