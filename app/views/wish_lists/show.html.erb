@@ -18,7 +18,7 @@
      <table class="admin_listing" width="100%">
       <tr>
           <th> Category  </th>
-          <th> Comments </th>
+          <th class='last'> Comments </th>
       </tr>
 
      <% for wish_category in @wish_list.category_wish_lists -%>
@@ -26,7 +26,7 @@
          <td width="25%">
             <%= wish_category.category.name %>
           </td>
-          <td width="52%">
+          <td width="52%" class='last'>
             <%= wish_category.custom_description %>
           </td>
      <% end -%>
