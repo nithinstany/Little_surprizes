@@ -126,7 +126,7 @@ h1, h2, h3, h4, h5, a{font-family:URW Gothic L;}
 	height:auto !important;
     	height:900px;
     	padding:20px 5px 3px 5px;
-        background:#fff url(/images/top.jpg) repeat-x;
+        background:#fdf9ee url(/images/top.jpg) repeat-x;
 }
 
 .main h2{
@@ -267,7 +267,7 @@ ul#tree li ul li {
          border:1px solid #ddd;
 	 padding:10px 5px;
 	 margin-bottom:25px;
-	 background-color:#f1f1f1;
+	 background-color:#eff0f2;
 }
 
 .listing p{padding-top:5px;line-height:22px;color:#191717;}
@@ -281,13 +281,25 @@ ul#tree li ul li {
 
 .links{float:right;}
 
-.links ul li{margin:0px 2px;padding:4px 8px;border:1px solid #701500;display:inline;list-style:none;background-color:#8a1a00;}
+.links_btn{margin-top: 5px; }
+.links_btn a{text-decoration: none;color:#535151;font-size:11px;}
 
-.links ul li a{display:inline;color:#fff;text-decoration:none;font-size:11px;}
+.links_btn, .awesome:visited, #wish_list_submit{
+	background: #f3f6fb url(/images/btn.gif) repeat-x;
+	display: inline-block;
+	padding: 4px 3px;
+	color: #535151;
+	text-decoration: none;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+	border: 1px solid rgba(0,0,0,0.25);
+	position: relative;
+	cursor: pointer;
+}
 
-
-
-.listing hr{border-top:1px solid #ddd;border-bottom:1px solid #fff;}
+.links_btn:hover{ background: #f3f6fb url(/images/btn_hr.gif) repeat-x;  color: #535151; }
+.links_btn:active	{ top: 1px; }
 
 
 .admin_listing {
