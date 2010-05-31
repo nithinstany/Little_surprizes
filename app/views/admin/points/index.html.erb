@@ -5,6 +5,7 @@
  <table class="admin_listing">
    <tr>
      <th> Paypal user name </th>
+     <th> User name </th>
      <th> Express token  </th>
      <th> Payer id </th>
      <th> Date </th>
@@ -16,6 +17,7 @@
 
    <tr class="<%= cycle('odd', 'even')%>">
      <td> <%= "#{gift.first_name} #{gift.last_name}" %>  </td>
+     <td> <%= User.find(gift.payer_id).name %></td>
      <td> <%= gift.express_token %> </td>
      <td> <%= gift.express_payer_id %>  </td>
      <td> <%= Time.parse(gift.created_at.to_s).strftime('%d-%m-%y %H:%M').to_s%> </td>
