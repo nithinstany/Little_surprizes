@@ -52,53 +52,6 @@ body { margin: 0px 0px 0px 0px; padding: 0px; color: #6d6c67; font-family: Arial
 	text-align:center;
 }
 
-.Login{
-	width:25%;
-	background-color:#9d1e00;
-	margin:0 auto;
-	padding:50px 20px;
-}
-
-.Login p {
-	color: #fff;
-	text-align: left;
-	font-weight:normal;
-	font-size:14px;
-    	padding-left:15px;
-	padding-right:15px;
-	margin-top:10px;
-}
-
-.Login  a{
-	color:#fff;
-}
-
-.Login p input{
-	border:2px solid #bebebe;
-	padding:3px;
-	width:90%;
-}
-
-.Login p input:focus{
-	border:2px solid #e8c382;
-
-}
-
-.login_btn{
-        margin:20px 0px 10px 18px;
-}
-
-.login_btn input{
-    	color:#000;
-    	padding:1px 3px;
-}
-
-
-.spacing{
-	padding:35px 0px;
-}
-
-
 .header{
 	height:45px;
 	background: url(/images/logo.gif) no-repeat;
