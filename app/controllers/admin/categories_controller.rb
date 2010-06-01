@@ -1,14 +1,13 @@
 class Admin::CategoriesController < ApplicationController
   layout 'admin'
-before_filter :check_logged_in
-before_filter :check_admin,:except => :index
+  before_filter :check_logged_in
+  before_filter :check_admin,:except => :index
 
   def index
 
 
      @search = Category.new_search(params[:search])
       if !params[:category_id].blank?
-
        @search.conditions.parent_id = params[:category_id] if params[:category_id]
      else
        if params[:id]

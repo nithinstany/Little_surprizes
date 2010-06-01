@@ -1,10 +1,11 @@
+<div id="category-list">
 <% @categories.each do |category| %>
 <div class="outer_box">
 	<div class="box">
 		<div class="heading"><%=h category.name %></div>
-	
+
 		<div class="box_lt">
-			<%unless find_root(category).children.blank?%>    
+			<%unless find_root(category).children.blank?%>
 		      <center><%=link_to "#{image_tag category.avatar.url(:thumb)}",admin_categories_path(:category_id => category.id)%></center>
            <%else%>
               <center><%= image_tag(category.avatar.url(:thumb)) %></center>
@@ -31,3 +32,5 @@
 	jQuery(".box").corner("corner 10px");
 	jQuery(".heading").corner("top 10px");
 </script>
+</div>
+

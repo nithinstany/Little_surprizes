@@ -5,12 +5,13 @@
 
 
                 <div class="rt links">
-	 	<%= link_to 'Add new category', new_admin_category_path %> <b> | </b> &nbsp;
-	        <%= link_to 'Add subcategory', subcategory_new_admin_categories_path %>   
+	 	       <%= link_to 'Add new category', new_admin_category_path %> <b> | </b> &nbsp;
+	             <%= link_to 'Add subcategory', subcategory_new_admin_categories_path %>
                 </div>  <div class="clear"></div>
 <hr />
+    <div id='category-list'>
 	  <%= render :partial => 'list' %>
-	
+    </div>
 </div>
 
 <div class="sidebar">
