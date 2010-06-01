@@ -5,7 +5,7 @@
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title><%= controller.controller_name %>: <%= controller.action_name %></title>
-  <%= stylesheet_link_tag  'style','jquery.treeview'%>
+  <%= stylesheet_link_tag  'admin','jquery.treeview'%>
   <%= javascript_include_tag :defaults,'jquery.treeview.min','jquery.corner','jquery_corner' %>
   <script type="text/javascript">
     jQuery(function() {
@@ -23,10 +23,10 @@
 
 <body>
    <div class="header">
-          <h1 class="logo"> <img src="/images/heading.gif" /> 
-         </h1>
+        <div class="header_left">  <h1>Little Surprizes</h1></div>
+ <div class="header_right"><%= render :partial => 'shared/right' %></div>
    </div>
-  <hr />
+
     <% if flash[:notice] %>
        <div class="notice">
          <p> <%= flash[:notice] %> </p>
@@ -34,7 +34,7 @@
     <% flash[:notice] = nil  %>
     <% end %>
   <div class="main">
-       <div class="rt"><%= render :partial => 'shared/right' %></div>
+      
 	<div class="clear"></div>
        <%= yield  %>
 

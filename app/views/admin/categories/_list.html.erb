@@ -1,4 +1,3 @@
-<br /><br />
 <% @categories.each do |category| %>
 <div class="outer_box">
 	<div class="box">
@@ -15,14 +14,14 @@
    			<p></b><%=h category.description %></p>
   			<a><%=h category.url %></a>
         	</div>
-		<div class="points">
+		<div class="lt points">
     			Lowest points needed:<%=h category.lowest_number_of_points_needed %>
-	
+	</div>
       		<%if admin?%>
-      		<%= link_to 'Edit', edit_admin_category_path(category) %>
-      		<%= link_to 'Destroy', admin_category_path(category), :confirm => 'Are you sure?', :method => :delete %>
+      		<div class="rt links"><%= link_to 'Edit', edit_admin_category_path(category) %> |
+      		<%= link_to 'Destroy', admin_category_path(category), :confirm => 'Are you sure?', :method => :delete %></div>
       		<%end%>
-</div>
+
 </div>
 </div>
  <% end %>

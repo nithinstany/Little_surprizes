@@ -1,7 +1,5 @@
-
 <div class="clear"></div>
-
-<h2 class="form_heading">Add new sub category </h2>
+<h2>Add new sub category </h2>
 <% form_for([:admin,@category],:html => {:id =>'main_form'},:html => { :multipart => true }) do |f| %>
   <%= f.error_messages %>
 <table class="formstyle"  cellpadding="15px;" border="1">
@@ -35,7 +33,7 @@
 	</tr>
 </table>
 <div id="btn">
-   <%= f.submit 'Create' %> or <%= link_to 'Back', :back  %>
+   <%= f.submit 'Create' %> - or - <%= link_to 'Back', :back  %>
 </div>
 <% end -%>
 

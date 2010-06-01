@@ -3,14 +3,14 @@
 		<h3>Categories</h3>
 	</div>
 
-  <div class="clear"></div>
-	<div id = 'category-list'>
-                <div class="rt">
+
+                <div class="rt links">
 	 	<%= link_to 'Add new category', new_admin_category_path %> <b> | </b> &nbsp;
 	        <%= link_to 'Add subcategory', subcategory_new_admin_categories_path %>   
-                </div>
+                </div>  <div class="clear"></div>
+<hr />
 	  <%= render :partial => 'list' %>
-	</div>
+	
 </div>
 
 <div class="sidebar">
