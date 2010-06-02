@@ -59,7 +59,7 @@
         		 <p><%=h wish_list.description %></p>
         		 <div class="listing_btm">
 	                <div class="links" style ='display:none'>
-			    <%= link_to 'Delete', wish_list_path(wish_list),:confirm => "Are you sure want delete wishlist ?", :method => :delete ,:class=>"links_btn"%>
+			    <%= button_to 'Delete', wish_list_path(wish_list),:confirm => "Are you sure want delete wishlist ?", :method => :delete ,:class=>"links_btn"%>
 	                    <%= link_to 'Edit', edit_wish_list_path(wish_list),:class=>"links_btn" %>
                             <%= link_to 'Publish to Facebook', publish_wish_list_path(wish_list.id) ,:class=>"links_btn"%>
 
