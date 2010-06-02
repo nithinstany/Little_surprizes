@@ -15,9 +15,9 @@
 </div>
 
 <div class="sidebar">
-	<h2 class="banner">Category List</h2>
+	<h2 class="banner">Category List</h2><hr />
 	 <ul id='tree'><%= render :partial => 'category_list', :collection => @parent, :as => :category %></ul>
-     <h2 class="banner">Banners</h2>
+     <h2 class="banner">Banners</h2><hr />
      <div id = "banners">
        <% unless @banners.blank? %>
          <% @banners.each do |banner| %>

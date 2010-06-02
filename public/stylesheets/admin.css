@@ -281,7 +281,7 @@ h2.banner{
 }
 
 .box_rt {
-	width:140px;
+	width:155px;
 	float:right;
 	overflow:hidden;
         height:140px;
@@ -289,10 +289,12 @@ h2.banner{
 }
 
 .box_rt p{
-     	height:75px;
-      	margin:0px;
+     	height:95px;
+      	margin:0px 0px 3px 0px;
      	overflow:hidden;
 }
+
+.box_rt a{padding:3px 0px;cursor:pointer;}
 
 
 .points{

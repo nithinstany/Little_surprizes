@@ -240,11 +240,11 @@ ul#tree li ul li {
 .links_btn, .awesome:visited, #wish_list_submit{
 	background: #f3f6fb url(/images/btn.gif) repeat-x;
 	display: inline-block;
-	padding: 4px 3px;
+	padding: 4px 5px;
 	color: #535151;
 	text-decoration: none;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
 	-moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
 	border: 1px solid rgba(0,0,0,0.25);
 	position: relative;
