@@ -219,7 +219,7 @@ ul#tree li ul li {
 .listing{
          border:1px solid #d4dbba;
 	 padding:8px 5px;
-	 margin-bottom:25px;
+	 margin-bottom:30px;
 	 background:#fffcf4 url(/images/listing.jpg) repeat-x;
 }
 
@@ -234,13 +234,17 @@ ul#tree li ul li {
 
 .links{float:right;}
 
+.links ul{margin:0px;padding:0px;}
+
+.links ul li {display:block;margin:0px;padding:0px;}
+
 .links_btn{margin-top: 5px; }
-.links_btn a{text-decoration: none;color:#535151;font-size:11px;}
+
 
 .links_btn, .awesome:visited, #wish_list_submit{
 	background: #f3f6fb url(/images/btn.gif) repeat-x;
 	display: inline-block;
-	padding: 4px 5px;
+	padding: 2px 5px;
 	color: #535151;
 	text-decoration: none;
 	-moz-border-radius: 15px;
