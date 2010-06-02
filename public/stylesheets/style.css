@@ -234,10 +234,6 @@ ul#tree li ul li {
 
 .links{float:right;}
 
-.links ul{margin:0px;padding:0px;}
-
-.links ul li {display:block;margin:0px;padding:0px;}
-
 .links_btn{margin-top: 5px; }
 
 
@@ -276,7 +272,6 @@ padding : 2px 2px;
 width : 60px;
 height : 19px;
 }
-
 
 
 /*..........................button css..........................*/
