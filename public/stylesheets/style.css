@@ -218,8 +218,11 @@ ul#tree li ul li {
 
 .listing{
          border:1px solid #d4dbba;
+	 -moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
 	 padding:8px 5px;
-	 margin-bottom:30px;
+	 margin-bottom:35px;
 	 background:#fffcf4 url(/images/listing.jpg) repeat-x;
 }
 
@@ -231,6 +234,8 @@ ul#tree li ul li {
 .listing_btm{padding:10px 5px 10px 0px;baXckground-color:#ececec; margin-top:5px;}
 
 .listing_btm p{color:#000;}
+
+.date{background:url(/images/caXlendar-icon.png) no-repeat left bottom;}
 
 .links{float:right;}
 
@@ -252,25 +257,18 @@ ul#tree li ul li {
 }
 
 .links_btn:hover{ background: #f3f6fb url(/images/btn_hr.gif) repeat-x;  color: #535151; }
-.links_btn:active{ top: 1px; }
 
 
-.lt{
-	float:left;
+.lt{float:left;}
 
-}
-
-.rt {
-
-	float:right;
-}
+.rt {float:right;}
 
 input.textbox-small {
-border : 1px solid #838F99;
-background : #ffffff
-padding : 2px 2px;
-width : 60px;
-height : 19px;
+	border : 1px solid #838F99;
+	background : #ffffff
+	padding : 2px 2px;
+	width : 60px;
+	height : 19px;
 }
 
 
