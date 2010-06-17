@@ -1,3 +1,5 @@
+<div class="heading">
+<div class="lt_text"><h2>my wishlists</h2></div>
 <% if @from_mail_user && check_user %>
    <div class="rt awesome"> <%= link_to "View My Wish List", wish_lists_path %> </div>
 <%end%>
@@ -6,12 +8,13 @@
         <%=fb_name(@from_mail_user.facebook_id, :linked => false)%>'s  wishlist
   </h2>
      <%else%>
-  <div class="rt awesome">
+  <div class="rt_link">
 	<%= link_to 'Create new wishlist', new_wish_list_path %>
   </div>
-  <h2>My wishlists</h2>
+</div>
 <%end%>
-<div class="clear"></div>
+
+ <div class="main">
 
 <% if @from_mail_user && check_user %>
   <% unless @from_mail_user.wish_lists.blank? %>
@@ -67,11 +70,13 @@
 			    </table>
                         </div>
 			<div class="date">
-		        <p><b><%=Time.parse(wish_list.created_at.to_s).strftime('%m/%d/%Y') %> </b></p>
+		        <p>created at <b><%=Time.parse(wish_list.created_at.to_s).strftime('%m/%d/%Y') %> </b></p>
 			</div>
               </div>
          </div>
       <%end%>
      <% end %>
+</div>
 <%end%>
+
 

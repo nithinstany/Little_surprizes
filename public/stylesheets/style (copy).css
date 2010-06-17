@@ -35,7 +35,7 @@ quotes : "" "";
 }
 /*******************************************************/
 
-body { margin: 0px 0px 0px 0px; padding: 0px; color: #6d6c67; font-family: Arial, Helvetica, sans-serif; font-style: normal; font-variant: normal; font-weight: normal; font-size: 13px; line-height: normal;height:100%; }
+body { margin: 0px 0px 0px 0px; padding: 0px; color: #6d6c67; font-family: Arial, Helvetica, sans-serif; font-style: normal; font-variant: normal; font-weight: normal; font-size: 13px; line-height: normal;height:100%; backgroXund:#3f0224 url(/images/bodXy.jpg) repeat-x;}
 
 
 .notice{
@@ -53,15 +53,16 @@ body { margin: 0px 0px 0px 0px; padding: 0px; color: #6d6c67; font-family: Arial
 }
 
 .header{
-	height:70px;
+	height:50px;
+	background: url(/images/logo.gif) no-repeat;
 	margin:0px 10px 5px 0px;
-	padding:20px 0px 0px 0px;background: url(/images/logo.gif) no-repeat;
+	padding:20px 0px 0px 130px;
 }
 
 .header h1{
         font-family:URW Gothic L;
-	color:#49112c;
-	font-size:40px;padding-left:130px;
+	color:#310016;
+	font-size:38px;
 }
 
 .header h1 span{color:#b04273;} 
@@ -79,53 +80,23 @@ h1{font-family:URW Gothic L;}
 	min-height:900px;
 	height:auto !important;
     	height:900px;
-    	padding:10px 8px 3px 8px;
-	borXder:2px solid #d43364;
-        background:#f6e4ec url(/images/mxain.jpg) repeat-x;
+    	padding:5px 5px 3px 5px;
+	border:2px solid #9e855d;
+        background:#b9a580 url(/images/liXsting.jpg) repeat-y;
 }
 
 .heading{
-	background: url(/images/heading.jpg) repeat-x;
-	margin:5px 0px 0px 0px;
-	height:50px;
-	padding:15px 10px 0px 10px;
+	background:#c3b394 url(/images/headXing.jpg) repeat-x;
+	padding:2px 4px;
+	margin:10px 0px 20px 0px;
 	
-}
-.lt_text{
-	width:49%;
-	float:left;
-	border-right:1px solid #fbdcea;
-	background:url(/images/pinXk_icon.png) no-repeat left;
-}
-
-.lt_text h2{
-	color:#7c4d36;
-	font-size:30px;
-	font-weight:normal;
-	}
-
-.rt_link{
-	margin-top:5px;
-	float:right;
-}
-.rt_link a{
-	background:url(/images/create_bg.jpg) repeat-x;
-	padding:8px 20px;
-	background-color:#b04273;
-	-moz-border-radius: 8px;
-	-webkit-border-radius: 8px;
-	position: relative;
-	cursor: pointer;
-	color:#fff;
-	font-size:20px;
-	text-decoration:none;
 }
 
 .main h2{
 	color:#49112c;
-	font-size:22px;
+	font-size:28px;
 	font-weight:normal;
-	margin:5px 0px;
+	margin:0px;
 	padding:0px;
 	
 }
@@ -257,28 +228,27 @@ ul#tree li ul li {
 }
 
 .listing{
-         border:1px solid #7c4d36;
-	 -moz-border-radius: 8px;
+        border:1px solid #583015;
+	-moz-border-radius: 8px;
 	-webkit-border-radius: 8px;
-	 padding:8px 5px;
-	 margin-bottom:30px;
-	background-color:#fffdfe;
-	
+	padding:8px 5px;
+	margin-bottom:30px;
+	background-color:#fcfff4;
 }
 
-
+.listing:hover{background-color:#ffecf4;}
 
 .listing p{padding-top:5px;line-height:22px;color:#462232;font-size:13px;}
 
 
-.listing h3 a{font-size:18px;color:#82543d;text-decoration:none;width:100%;
+.listing h3 a{font-size:18px;color:#000;text-decoration:none;width:100%;
 background:url(/images/icon.gif) no-repeat;padding-left:24px;}
 
 .listing_btm{padding:10px 5px 10px 0px;margin-top:5px;}
 
 .listing_btm p{color:#000;}
 
-.date p{backgXround-color:#86c222; color:#881046;width:10%;padding-left:5px;}
+.date p{background-color:#c90e6f; color:#fff;width:10%;padding-left:5px;}
 
 .links{float:right;}
 
