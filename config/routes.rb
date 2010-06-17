@@ -1,6 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
 
 
+
+
+
+
  # map.resources :orders
 
 
@@ -23,7 +27,10 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :users, :controller => 'users' do |user|
       user.resources :points
       user.resources :gifts
+      user.resources :messages
     end
+    admin.resources :saved_messages
+
     admin.resources :categories , :controller => 'categories',:collection => {:subcategory_new => :get}
     admin.resources :banners
 

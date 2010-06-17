@@ -1,0 +1,13 @@
+<% saved_message = SavedMessage.first %> 
+
+<table class="formstyle"  cellpadding="15px;" border="1">
+	<tr>
+     <th> <%= f.label :subject %></th>
+     <td> <%= f.text_field :subject, :value => saved_message.blank?? ' ' : saved_message.subject %> </td>
+  </td>
+  <tr>
+     <th> <%= f.label :body %> </th>
+     <td> <%= f.text_area :body, :value => saved_message.blank?? ' ' : saved_message.body %> </td>
+  </tr>
+
+ </table>

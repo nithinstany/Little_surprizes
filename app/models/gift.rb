@@ -1,4 +1,6 @@
 class Gift < ActiveRecord::Base
+  
+    
   belongs_to :user
 
   def validate
@@ -10,9 +12,9 @@ class Gift < ActiveRecord::Base
   end
 
   def check_points_available
-    catogery = Category.find(self.category_id)
+
     user = User.find(self.user_id)
-    if catogery.lowest_number_of_points_needed.to_i > user.points.to_i
+    if self.points.to_i > user.points.to_i
       return true
     end
     return false

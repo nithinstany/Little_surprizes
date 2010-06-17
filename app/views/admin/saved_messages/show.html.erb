@@ -1,0 +1,13 @@
+<p>
+  <b>Subject:</b>
+  <%=h @saved_message.subject %>
+</p>
+
+<p>
+  <b>Messge body:</b>
+  <%=h @saved_message.messge_body %>
+</p>
+
+
+<%= link_to 'Edit', edit_saved_message_path(@saved_message) %> |
+<%= link_to 'Back', saved_messages_path %>

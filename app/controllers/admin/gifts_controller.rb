@@ -1,6 +1,7 @@
 class Admin::GiftsController < ApplicationController
   layout 'admin'
   before_filter :find_user
+ 
   def index
     @gifts = @user.gifts.all
 
@@ -10,8 +11,7 @@ class Admin::GiftsController < ApplicationController
     end
   end
 
-  # GET /gifts/1
-  # GET /gifts/1.xml
+
   def show
     @gift = Gift.find(params[:id])
 
@@ -21,44 +21,30 @@ class Admin::GiftsController < ApplicationController
     end
   end
 
-  # GET /gifts/new
-  # GET /gifts/new.xml
+
   def new
     @gift = Gift.new
-
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @gift }
-    end
   end
 
-  # GET /gifts/1/edit
+
   def edit
     @gift = Gift.find(params[:id])
   end
 
-  # POST /gifts
-  # POST /gifts.xml
+
   def create
-
-   @gift = Gift.new(params[:gift])
-
-    respond_to do |format|
-      if @gift.save
-        @catogery = Category.find(params[:gift][:category_id])
-        @gift.update_attributes(:points => @catogery.lowest_number_of_points_needed)
-        value = (@user.points.to_i - @catogery.lowest_number_of_points_needed.to_i)
-        @user.points = value.to_f
-        @user.save_with_validation(false)
-        flash[:notice] = 'Gift was successfully created. '
-        format.html { redirect_to( admin_user_points_path(@user.id) ) }
-        format.xml  { render :xml => @gift, :status => :created, :location => @gift }
-      else
-        @wish_list = @user.wish_lists.find(params[:gift][:wish_list_id])
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @gift.errors, :status => :unprocessable_entity }
-      end
+    @gift = Gift.new(params[:gift])
+    @gift.points = params[:"#{params[:gift][:category_id]}"][:points] unless params[:gift][:category_id].blank?
+    
+    if @gift.save 
+      value = (@user.points.to_i - @gift.points.to_i)
+      @user.points = value.to_f
+      @user.save_with_validation(false)
+      flash[:notice] = 'Gift was successfully created. '
+      redirect_to( admin_user_points_path(@user.id) )  
+    else
+      @wish_list = @user.wish_lists.find(params[:gift][:wish_list_id]) unless  params[:gift][:wish_list_id].blank?
+      render :action => "new"
     end
   end
 

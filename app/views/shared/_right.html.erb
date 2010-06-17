@@ -1,4 +1,14 @@
 <%if admin?%>
-  <%= link_to "Users" , admin_users_path %>  |<%= link_to "Categories", admin_categories_path %>  |<%= link_to "Logout", log_out_path %>
+  <%= link_to "Users" , admin_users_path %>  |<%= link_to "Categories", admin_categories_path %>  |
+  
+  <% saved_message = SavedMessage.first %>
+  
+  <% if saved_message -%>
+     <%= link_to 'Edit SavedMessage', edit_admin_saved_message_path(saved_message)  %>
+  <% else -%>
+     <%= link_to 'New SavedMessage', new_admin_saved_message_path  %>
+  <% end -%> |
+  
+  <%= link_to "Logout", log_out_path %>
 <%end%>
 

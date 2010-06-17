@@ -45,7 +45,7 @@ end
 
 def notification_email(user,sender,friends,date,wish_list)
     send_as :email
-    recipients friends
+    recipients friends 
     from sender
     title "Birthday reminder"
     fbml  <<-MESSAGE

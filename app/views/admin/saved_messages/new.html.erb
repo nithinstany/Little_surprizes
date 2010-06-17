@@ -1,0 +1,14 @@
+<h2> New Saved Message <h2>
+
+<% form_for([:admin,@saved_message]) do |f| %>
+  <%= f.error_messages %>
+
+  <%= render :partial => "form_fields" ,:locals => { :f => f } %>
+  
+  <div id="btn">
+    <%= f.submit 'Save saved_message' %> - or - <%= link_to 'Back', :back %>
+  </div>
+   
+<% end %>
+
+

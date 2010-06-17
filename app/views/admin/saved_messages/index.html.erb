@@ -1,0 +1,22 @@
+<h1>Listing saved_messages</h1>
+
+<table>
+  <tr>
+    <th>Subject</th>
+    <th>Messge body</th>
+  </tr>
+
+<% @saved_messages.each do |saved_message| %>
+  <tr>
+    <td><%=h saved_message.subject %></td>
+    <td><%=h saved_message.messge_body %></td>
+    <td><%= link_to 'Show', saved_message %></td>
+    <td><%= link_to 'Edit', edit_saved_message_path(saved_message) %></td>
+    <td><%= link_to 'Destroy', saved_message, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New saved_message', new_saved_message_path %>

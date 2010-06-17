@@ -49,13 +49,16 @@ class WishListsController < ApplicationController
     @facebook_user = facebook_user
     @wish_list = WishList.new(params[:wish_list])
     @wish_list.user = user
-
-    if @wish_list.save
+    @current_user = user 
+    
+    if params[:email] && @wish_list.save
+      @current_user.email = params[:email]
+      @current_user.save_with_validation(false)
       flash[:notice] = "Wish list has been created successfully."
       facebook_permissions(@facebook_user) ?  (redirect_to(wish_lists_path)) : (  redirect_to(grant_permission_wish_lists_path) )
 
     else
-      flash[:error] = "Make sure that all required fields are entered."
+      flash[:notice] = "Make sure that all required fields are entered."
       @wish_list = nil
       render :action => 'new'
     end

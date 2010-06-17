@@ -41,7 +41,6 @@ end
 
 def WishList.birthday_reminder
   fb_session = Facebooker::Session.new('d7069c71e7b928287fccf3c74f67beec', '4c425b88e6730e941276904269779024') # api key and secret
-
   for user in User.find(:all, :conditions => ["facebook_id IS NOT  NULL"])
     begin
       fb_session.secure_with!(user.session_key, user.facebook_id, 2.hour.from_now)

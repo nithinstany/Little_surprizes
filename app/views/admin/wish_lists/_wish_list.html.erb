@@ -14,7 +14,7 @@
         <tr class="<%= cycle('odd', 'even')%>">
         	<td> <%= radio_button_tag("gift[category_id]",wish_catogery.category.id) %> <%= wish_catogery.category.name %></td>
         	<td> <%= wish_catogery.custom_description %></td>
-        	<td class="last"> <%= "$ #{wish_catogery.category.lowest_number_of_points_needed}" %> </td>
+        	<td class="last"> $ <%= text_field_tag "#{wish_catogery.category.id}][points]", wish_catogery.category.lowest_number_of_points_needed ,:class => 'text_small' %> </td>
         </tr>
       <% end %>
     </table>
