@@ -485,5 +485,7 @@ table.formstyle tr td input:focus{
  	list-style: square;
 }
 
-
+table.admin_listing tr td.last input {
+	width:15%; 
+}
 
