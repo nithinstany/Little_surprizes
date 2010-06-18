@@ -35,7 +35,7 @@ quotes : "" "";
 }
 /*******************************************************/
 
-body { margin: 0px 0px 0px 0px; padding: 0px; color: #6d6c67; font-family: Arial, Helvetica, Sans-Serif; font-style: normal; font-variant: normal; font-weight: normal; font-size: 13px; line-height: normal;height:100%; backgrXound:#fdf7e7 url(/images/bXody.jpg) repeat-x;border:1px solid #c3c3a7;}
+body { margin: 0px 0px 0px 0px; padding: 0px; color: #6d6c67; font-family: Arial, Helvetica, Sans-Serif; font-style: normal; font-variant: normal; font-weight: normal; font-size: 13px; line-height: normal;height:100%; border:1px solid #c3c3a7;}
 
 
 .notice{
@@ -101,7 +101,6 @@ body { margin: 0px 0px 0px 0px; padding: 0px; color: #6d6c67; font-family: Arial
 
 .header{
 	height:45px;
-	background: url(/images/logXo.gif) no-repeat;
 	margin:20px 10px 0px 10px;
 	
 }
@@ -143,7 +142,7 @@ h1, h2, h3, h4, h5, a{font-family:URW Gothic L;}
 	-webkit-border-radius: 5px;
 	-moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
 	border: 1px solid rgba(0,0,0,0.5);
-	background:#f5fafe url(/images/main.jpg) repeat-y;
+	background-color:#f5fafe;
 }
 
 .main h2{
@@ -224,7 +223,7 @@ h2.banner{
 .container{
 	width:71.5%;
 	height:auto !important;
-	float:right;baXckground-color:#f4f6eb;
+	float:right;
 	padding:10px;
 	
 }
