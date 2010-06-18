@@ -1,13 +1,13 @@
-<h2> Edit your wishlist</h2>
+<h2 class="sub_heading"> Edit your wishlist</h2>
 <% form_for(@wish_list) do |f| %>
 	<%= f.error_messages %>
   		<div class="form">
 			<table cellpadding="3px">
 		    <tr>
-  				<td><label>Wishlist Name: </label></td><td><%= f.text_field :name %></td>
+  				<td><label>Wishlist Name</label></td><td><%= f.text_field :name %></td>
 			   </tr>
 			   <tr>
-  				<td><label>Wishlist Description: </label></td><td><%= f.text_field :description %></td>
+  				<td><label>Wishlist Description</label></td><td><%= f.text_field :description %></td>
 			   </tr>
 			</table>
   		
@@ -15,10 +15,9 @@
           			<ul id='tree'>
               				<%= render :partial => 'category_list', :collection => @parent, :as => :category ,:locals => { :f => f} %>
           			</ul>
-      	       </div>
-
-    	<div class="clear"></div>
-	<hr />
+      	       <div class="clear"></div>
 	<%= f.submit 'Save to wishlist',:class => "large awesome" %> -or- <%= f.submit 'Save and Publish' ,:class => "large awesome"%> -or- <%= link_to 'Back', wish_lists_path %>
 <% end %>
+</div>
 
+    	

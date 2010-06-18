@@ -1,4 +1,4 @@
-<h2> New wish list </h2> 
+<h2 class="sub_heading"> New wish list </h2> 
 <% form_for :wish_list, :url => wish_lists_path,:html => { :multipart => true }  do |f| %>
   <%= f.error_messages %>
 <div class="form">
@@ -6,13 +6,13 @@
 
     
         <tr>
-  		<td> <label>Wishlist Name: </label> </td><td><%= f.text_field :name %> <span> * </span> </td>
+  		<td> <label>Wishlist Name </label> </td><td><%= f.text_field :name %> <span> * </span> </td>
         </tr>
         <tr>
-          <td> <label>Wishlist Description: </label> </td><td><%= f.text_field :description %></td>
+          <td> <label>Wishlist Description </label> </td><td><%= f.text_field :description %></td>
         </tr>
               <tr>
-  		<td> <label>Email: This will be used to communicate regarding gifts </label> </td><td><%= text_field_tag 'email', @current_user.email ,:size => "30" %>   <span> * </span></td>
+  		<td> <label>Email( This will be used to communicate regarding gifts )</label> </td><td><%= text_field_tag 'email', @current_user.email ,:size => "30" %>   <span> * </span></td>
         </tr>
    	<tr>
 		<td></td>

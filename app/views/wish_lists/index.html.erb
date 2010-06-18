@@ -1,5 +1,16 @@
 <div class="heading">
-<div class="lt_text"><h2>my wishlists</h2></div>
+<div class="heading_lt">
+<h1>Send surprise gifts to your friends on facebook</h1>
+<p>You can create a wishlist and start contributing for your own <br />littlesurprizes gift too! </p>
+</div>
+<div class="heading_rt">
+<img src="/images/box1.png" align="right"/>
+</div>
+</div>
+
+ <div class="main">
+
+<div class="lt"><h2>my wishlists</h2></div>
 <% if @from_mail_user && check_user %>
    <div class="rt awesome"> <%= link_to "View My Wish List", wish_lists_path %> </div>
 <%end%>
@@ -8,13 +19,13 @@
         <%=fb_name(@from_mail_user.facebook_id, :linked => false)%>'s  wishlist
   </h2>
      <%else%>
-  <div class="rt_link">
+  <div class="rt create_btn">
 	<%= link_to 'Create new wishlist', new_wish_list_path %>
   </div>
-</div>
+
 <%end%>
 
- <div class="main">
+<div class="clear"></div>
 
 <% if @from_mail_user && check_user %>
   <% unless @from_mail_user.wish_lists.blank? %>
@@ -63,14 +74,14 @@
 	        	<div class="links" style ='display:none'>
                            <table>
 			      <tr>
-			        <td><%= button_to 'Delete', wish_list_path(wish_list),:confirm => "Are you sure want delete wishlist ?", :method => :delete ,:class=>"links_btn" %></td>
 	                        <td><%= button_to 'Edit', edit_wish_list_path(wish_list),:method => :get ,:class=>"links_btn" %></td>
                                 <td><%= button_to 'Publish to Facebook', publish_wish_list_path(wish_list.id),:method => :get ,:class=>"links_btn"%></td>
+				 <td><%= button_to 'Delete', wish_list_path(wish_list),:confirm => "Are you sure want delete wishlist ?", :method => :delete ,:class=>"links_btn" %></td>
                               </tr>
 			    </table>
                         </div>
 			<div class="date">
-		        <p>created at <b><%=Time.parse(wish_list.created_at.to_s).strftime('%m/%d/%Y') %> </b></p>
+		        <p>created at : <b><%=Time.parse(wish_list.created_at.to_s).strftime('%m/%d/%Y') %> </b></p>
 			</div>
               </div>
          </div>
