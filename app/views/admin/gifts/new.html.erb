@@ -24,18 +24,12 @@
                                <div>
     			</td>
     		<tr>
-    		
-  	
-    		
 	</table>
-	
-	
-	
  	<div id="btn">
    		<%= f.submit 'Give out Gift' %> - or - <%= link_to 'Back', admin_users_path %>
  	</div>
 	<% end %>
-<div class="clear"> </div>
+
 	<%= image_tag("spinner.gif",
               :align => "absmiddle",
               :border => 0,
@@ -49,4 +43,6 @@
                     :method => :get,
                     :with => "'wish_list_id=' + value"
                   )%>
+                  
+<div class="clear"> </div>                  
 
