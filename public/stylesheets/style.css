@@ -60,11 +60,11 @@ body { margin: 0px 0px 0px 0px; padding: 0px; color: #6d6c67; font-family: Arial
 
 .header h1{
         font-family:URW Gothic L;
-	color:#49112c;
+	color:#6b4432;
 	font-size:40px;padding-left:130px;
 }
 
-.header h1 span{color:#b04273;} 
+.header h1 span{color:#ff68ac;} 
 
 
 .header_rt {float:right;width:50%;margin:0px;padding:0px;}
@@ -99,18 +99,18 @@ h1{font-family:URW Gothic L;}
 }
 
 .lt_text h2{
-	color:#7c4d36;
+	color:#ec006a;
 	font-size:30px;
 	font-weight:normal;
 	}
 
 .rt_link{
-	margin-top:5px;
+	margin-top:8px;
 	float:right;
 }
 .rt_link a{
 	background:url(/images/create_bg.jpg) repeat-x;
-	padding:8px 20px;
+	padding:5px 20px;
 	background-color:#b04273;
 	-moz-border-radius: 8px;
 	-webkit-border-radius: 8px;
@@ -121,13 +121,12 @@ h1{font-family:URW Gothic L;}
 	text-decoration:none;
 }
 
-.main h2{
+h2{
 	color:#49112c;
 	font-size:22px;
 	font-weight:normal;
 	margin:5px 0px;
 	padding:0px;
-	
 }
 
 .main h2 span {
@@ -257,7 +256,7 @@ ul#tree li ul li {
 }
 
 .listing{
-         border:1px solid #7c4d36;
+         border:1px solid #e8629e;
 	 -moz-border-radius: 8px;
 	-webkit-border-radius: 8px;
 	 padding:8px 5px;
@@ -271,14 +270,14 @@ ul#tree li ul li {
 .listing p{padding-top:5px;line-height:22px;color:#462232;font-size:13px;}
 
 
-.listing h3 a{font-size:18px;color:#82543d;text-decoration:none;width:100%;
+.listing h3 a{font-size:18px;color:#d70839;text-decoration:none;width:100%;
 background:url(/images/icon.gif) no-repeat;padding-left:24px;}
 
 .listing_btm{padding:10px 5px 10px 0px;margin-top:5px;}
 
 .listing_btm p{color:#000;}
 
-.date p{backgXround-color:#86c222; color:#881046;width:10%;padding-left:5px;}
+.date p{backgXround-color:#86c222; color:#881046;width:30%;padding-left:5px;}
 
 .links{float:right;}
 
