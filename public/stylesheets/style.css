@@ -78,8 +78,8 @@ hr{border-top:1px solid #ffe58a;border-bottom:1px solid #fff9e6;}
 	height:auto !important;
     	height:900px;
     	padding:12px 8px 3px 8px;
-	border:1px solid #f92e5d;
-	background-color:#ffdeeb;
+	
+
 	
 }
 
@@ -123,7 +123,7 @@ hr{border-top:1px solid #ffe58a;border-bottom:1px solid #fff9e6;}
 }
 
 .main h2{
-	color:#f92e5d;
+	color:#18467b;
 	font-size:25px;
 	font-weight:normal;
 	padding:0px 5px;
@@ -280,12 +280,12 @@ ul#tree li ul li {
 }
 
 .listing{
-         border:1px solid #ff6a8d;
+         border:1px solid #aeb7c1;
 	 -moz-border-radius: 8px;
 	-webkit-border-radius: 8px;
 	 padding:8px 5px;
 	 margin-bottom:30px;
-	background-color:#fff;
+	background-color:#fafbfc;
 }
 
 
@@ -293,8 +293,8 @@ ul#tree li ul li {
 .listing p{padding:5px 0px 0px 8px;line-height:22px;color:#462232;font-size:13px;}
 
 
-.listing h3 a{font-size:18px;color:#ff194f;text-decoration:none;width:100%;
-background:url(/images/icon.gif) no-repeat;padding-left:24px;}
+.listing h3 a{font-size:18px;text-decoration:none;width:100%;
+/*background:url(/images/icon.gif) no-repeat;padding-left:24px;*/}
 
 .listing_btm{padding:10px 5px 10px 0px;margin-top:5px;}
 
