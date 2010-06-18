@@ -10,15 +10,17 @@
 
  <div class="main">
 
-<div class="lt"><h2>my wishlists</h2></div>
+
 <% if @from_mail_user && check_user %>
-   <div class="rt awesome"> <%= link_to "View My Wish List", wish_lists_path %> </div>
+
+   <div class="rt create_btn"> <%= link_to "View My Wish List", wish_lists_path %> </div>
 <%end%>
 <% if @from_mail_user && (@facebook_user.facebook_id.to_s != @from_mail_user.facebook_id.to_s) %>
    <h2>
         <%=fb_name(@from_mail_user.facebook_id, :linked => false)%>'s  wishlist
   </h2>
      <%else%>
+<div class="lt"><h2>my wishlists</h2></div>
   <div class="rt create_btn">
 	<%= link_to 'Create new wishlist', new_wish_list_path %>
   </div>

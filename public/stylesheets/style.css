@@ -35,7 +35,7 @@ quotes : "" "";
 }
 /*******************************************************/
 
-body { margin: 0px 0px 0px 0px; padding:0px; color: #6d6c67; font-family: Arial, Helvetica, sans-serif; font-style: normal; font-variant: normal; font-weight: normal; font-size: 13px; line-height: normal;height:100%; background-color:#fff0ba;}
+body { margin: 0px 0px 0px 0px; padding:0px; color: #6d6c67; font-family: Arial, Helvetica, sans-serif; font-style: normal; font-variant: normal; font-weight: normal; font-size: 13px; line-height: normal;height:100%; backgXround-color:#fff0ba;}
 
 
 .notice{
@@ -78,13 +78,14 @@ hr{border-top:1px solid #ffe58a;border-bottom:1px solid #fff9e6;}
 	height:auto !important;
     	height:900px;
     	padding:12px 8px 3px 8px;
-	border-top:3px solid #fff;
-        backgrXound:#f6e4ec url(/images/mxain.jpg) repeat-x;
+	border:1px solid #f92e5d;
+	background-color:#ffdeeb;
+	
 }
 
 .heading{
-	background: #10b4f1 url(/images/heading1.jpg) repeat-x;
-	margin:10px 8px 0px 8px;
+	background-color: #10b4f1;
+	margin:10px 0px 0px 0px;
 	height:120px;
 	padding:15px 10px 0px 0px;
 	-moz-border-radius: 5px;
@@ -279,7 +280,7 @@ ul#tree li ul li {
 }
 
 .listing{
-         border:1px solid #cdbc6b;
+         border:1px solid #ff6a8d;
 	 -moz-border-radius: 8px;
 	-webkit-border-radius: 8px;
 	 padding:8px 5px;
