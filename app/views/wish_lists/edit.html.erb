@@ -1,3 +1,19 @@
+<% content_for :head do -%>
+    <%= stylesheet_link_tag  'jquery.treeview'%>
+  <%= javascript_include_tag  'jquery.treeview.min' %>
+  <script type="text/javascript">
+    jQuery(function() {
+      jQuery("#tree").treeview({
+         collapsed: false,
+         animated: "medium",
+         control:"#sidetreecontrol",
+         persist: "location"
+      });
+   })
+  </script>
+<% end -%>
+
+
 <h2 class="sub_heading"> Edit your wishlist</h2>
 <% form_for(@wish_list) do |f| %>
 	<%= f.error_messages %>
@@ -19,5 +35,6 @@
 	<%= f.submit 'Save to wishlist',:class => "large awesome" %> -or- <%= f.submit 'Save and Publish' ,:class => "large awesome"%> -or- <%= link_to 'Back', wish_lists_path %>
 <% end %>
 </div>
+
 
     	

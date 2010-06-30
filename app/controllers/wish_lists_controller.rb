@@ -6,6 +6,7 @@ class WishListsController < ApplicationController
    def index
     @from_mail_user = User.find(params[:user_id]) if params[:user_id]  # when user click on mail link
     @facebook_user = user
+    @friend_lists =  facebook_user.friend_lists rescue nil
    end
 
   def show
@@ -25,22 +26,12 @@ class WishListsController < ApplicationController
     @current_user = user
     @wishlist_items = @wish_list.category_ids rescue nil
     @parent = Category.find_all_by_parent_id(nil)
-=begin
-    Category.find(:all,:select => 'id').each do |category|
-       unless CategoryWishList.find_by_wish_list_id_and_category_id(@wish_list.id, category.id) # written in  FieldValue model
-          category_wish_list  = @wish_list.category_wish_lists.build
-          category_wish_list.category_id = category.id
-       end
-    end
-=end
-     respond_to do |format|
-       format.html {
-                   }
+    respond_to do |format|
+       format.html
        format.js {  render :update do |page|
                        page.replace_html 'category-list', :partial => 'list'
                     end
                   }
-
      end
 
   end
@@ -48,8 +39,9 @@ class WishListsController < ApplicationController
   def create
     @facebook_user = facebook_user
     @wish_list = WishList.new(params[:wish_list])
-    @wish_list.user = user
     @current_user = user 
+    @wish_list.user = @current_user
+    
     
     if params[:email] && @wish_list.save
       @current_user.email = params[:email]
@@ -77,25 +69,23 @@ class WishListsController < ApplicationController
        end
 
        if params[:commit] == "Save and Publish"
-          flash[:notice] = 'Wish list was successfully updated  and Published to Facebook'
+          
           @user = facebook_user
-           if @user.has_permissions?('publish_stream')
-             @user.publish_to(@user, :message => "has added new product categories to wishlist '#{@wish_list.name}'.",
-                :action_links => [:text => "visit wishlist",:href => "http://apps.facebook.com/littlesurprizes/users/#{user.id}/wish_lists"],
-
-                 :attachment =>  { :media => [{ :type => 'image',
-                                      :src => "#{SITE_URL}images/facebook_publish.jpg",
-                                      :href => "http://apps.facebook.com/littlesurprizes"
-                                    }]
-                       }
-      )
-             redirect_to(wish_lists_path)
-          else
-            flash[:notice] = "You Don't a have permissions to publish on wall, Please click on grant permissions Button ."
-            @facebook_user = facebook_user
+           #if @user.has_permissions?('publish_stream')
+             @friend_lists =  facebook_user.friend_lists rescue nil
+             if @friend_lists
+               flash[:notice] = 'Wish list was successfully updated.'
+               redirect_to publish_wish_list_path(@wish_list)
+             else
+               flash[:notice] = 'Wish list was successfully updated  and Published to Facebook'
+               redirect_to(wish_lists_path)
+             end
+          #else
+          #  flash[:notice] = "You Don't a have permissions to publish on wall, Please click on grant permissions Button ."
+          #  @facebook_user = facebook_user
             #@test = "/wish_lists/#{@wish_list.id}/edit"
-           redirect_to grant_permission_wish_lists_path
-          end
+         #  redirect_to grant_permission_wish_lists_path
+        #  end
        else
          flash[:notice] = 'Wish list was successfully updated.'
          redirect_to(wish_lists_path)
@@ -113,85 +103,45 @@ class WishListsController < ApplicationController
     redirect_to(wish_lists_path)
   end
 
-  def add_to_wishlist
-    @wish_list = user.wish_list
-    category = Category.find(params[:category_id])
-
-    unless @wish_list.blank?
-      @wish_list.categories << category
-      redirect_to(wish_list_path(@wish_list))
-    else
-      flash[:notice] = 'Please create wish list first.'
-      redirect_to(new_wish_list_path)
-    end
-  end
-
   def publish
-
     @wish_list = WishList.find(params[:id])
     @user = facebook_user
-    if @user.has_permissions?('publish_stream')
-      @user.publish_to(@user, :message => "has added new product categories to wishlist '#{@wish_list.name}' .",
-       :action_links => [:text => "visit wishlist",:href => "http://apps.facebook.com/littlesurprizes/users/#{user.id}/wish_lists"],
+    @friend_lists =  @user.friend_lists rescue nil
 
-       :attachment =>  { :media => [{ :type => 'image',
-                                      :src => "#{SITE_URL}images/facebook_publish.jpg",
-                                      :href => "http://apps.facebook.com/littlesurprizes"
-                                    }]
-                       }
-      )
+  end
+  
+  def wish_list_publish
+    @wish_list = WishList.find(params[:id])
+    @user = facebook_user
+   
+    if @user.has_permissions?('publish_stream')
+      if params[:friend_list]
+        friend_ids = get_friends_friend_list(params[:friend_list])
+        friend_ids.each do |friend_facebook_id|
+          publish_to_facebook(@wish_list, friend_facebook_id)
+        end 
+      else
+        publish_to_facebook(@wish_list, @user.id)
+      end 
       flash[:notice] = "Published to Facebook"
       redirect_to(wish_lists_path)
     else
+      store_location
       @facebook_user = facebook_user
-      flash[:notice] = "You Don't a have permissions to publish on wall, Please click on grant permissions Button ."
-     # redirect_to grant_permission_wish_lists_path
-      # @test = "/wish_lists"
-       redirect_to grant_permission_wish_lists_path
+      flash[:notice] = "You Don't have a permissions to publish on wall, Please click on grant permissions Button ."
+      redirect_to grant_permission_wish_lists_path
     end
+    
   end
-
+  
 
   def grant_permission
-
     @facebook_user = facebook_user
     if facebook_permissions(facebook_user)
       flash[:notice] = "Facebook Permissions are set."
-      redirect_to wish_lists_path
+      redirect_back_or_default(wish_lists_path)
     end
   end
-
-  def remove_category
-    @wish_list =  user.wish_list
-    @wish_list.categories.delete(Category.find(params[:id]))
-    redirect_to(wish_list_path(@wish_list))
-  end
-
-  def category_list
-  @categories = Category.all
-  end
-
-
-  def update_wishlist
-   wish_list = WishList.find(params[:wish_list])
-   @wishlist_items = CategoryWishList.find(:all, :conditions => { :wish_list_id => params[:wish_list] }) rescue nil
-     categories = Category.find(params[:categories])
-   if @wishlist_items
-     @wishlist_items.each do |wish_list_item|
-       wish_list_item.destroy
-     end
-   end
-
-   categories.each do |category|
-     categories_wishlist = CategoryWishList.find_or_create_by_wish_list_id_and_category_id(wish_list,category)
-     categories_wishlist.wish_list_id = wish_list.id
-     categories_wishlist.category_id = category.id
-     categories_wishlist.custom_description = "desc"
-     categories_wishlist.save
-    end
-     redirect_to (wish_list_categories_path(wish_list))
-  end
-
 
 
 
@@ -206,7 +156,32 @@ private
       flash[:error] = "you are not authorised to acess this page"
     end
   end
+  
+  def get_friends_friend_list(flist_id) # this is used get friends facebook id from friend list
+    options = {:uid => facebook_user.id, :flid => flist_id }
+    facebook_session.post('facebook.friends.get', options, user.session_key)
+  end
 
+  def publish_to_facebook(wish_list,target) # this method is used to publish whistlist to facebook
+    facebook_session.post('facebook.stream.publish', 
+      { :uid => facebook_session.user.id, 
+        :target_id => target ,
+        :message => "has added new product categories to wishlist '#{wish_list.name}'.",
+        :action_links => [ 'text' => "visit wishlist",
+                           'href' => "http://apps.facebook.com/littlesurprizes/users/#{user.id}/wish_lists"
+                         ],
+          :attachment =>   { 'media' => [ 
+                                       { 'type' => 'image',
+                                         'src' => "#{SITE_URL}images/facebook_publish.jpg",
+                                         'href' => "http://apps.facebook.com/littlesurprizes"
+                                       }
+                                     ]
+                          }.to_json   
+       })
+  end
+  
+  
+  
    def user
     user = User.find_by_facebook_id(facebook_session.user.to_i)
     user ||= set_current_user
@@ -217,12 +192,14 @@ private
   end
 
   def facebook_permissions(facebook_user)
-     permissions = ["offline_access","publish_stream",'email'] #"", "share_item","status_update", , "read_stream"
-     for per in permissions
-        value = facebook_user.has_permissions?("#{per}")
-        return false if !value
-     end
-     return true
+     permissions = ["offline_access","publish_stream",'email'] 
+     facebook_user.has_permissions?(["offline_access","publish_stream",'email'])
+    
+     #for per in permissions
+     #   value = facebook_user.has_permissions?("#{per}")
+     #   return false if !value
+    # end
+    # return true
   end
 
 

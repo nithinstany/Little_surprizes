@@ -134,6 +134,13 @@ hr{border-top:1px solid #ffe58a;border-bottom:1px solid #fff9e6;}
         width:60%;
 }
 
+h4 {
+
+	font-size:15px;
+	font-weight:normal;
+	padding:0px 5px;
+}
+
 .create_btn{margin-bottom:15px;}
 
 .create_btn a{
@@ -293,7 +300,7 @@ ul#tree li ul li {
 .listing p{padding:5px 0px 0px 8px;line-height:22px;color:#462232;font-size:13px;}
 
 
-.listing h3 a{font-size:18px;text-decoration:none;width:100%;
+.listing h3 a{font-size:18px;text-decoration:none;width:100%;}
 /*background:url(/images/icon.gif) no-repeat;padding-left:24px;*/}
 
 .listing_btm{padding:10px 5px 10px 0px;margin-top:5px;}
@@ -306,6 +313,9 @@ ul#tree li ul li {
 
 .links_btn{margin-top: 5px; }
 
+.links  a {
+  font-size:14px;
+}
 
 .links_btn, .awesome:visited, #wish_list_submit{
 	background: #f3f6fb url(/images/btn.gif) repeat-x;

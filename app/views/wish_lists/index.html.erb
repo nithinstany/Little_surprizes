@@ -53,8 +53,9 @@
       <% end -%>
      <%end%>
 <%else%>
-<script type="text/javascript">
+<% content_for :head do -%>
 
+  <script type="text/javascript">
     $(document).ready(function($) {
       $(".listing").hover(
        function(){
@@ -66,7 +67,16 @@
        });
      });
   </script>
+  <%= stylesheet_link_tag  'facebox'%>
+  <%= javascript_include_tag  'facebox' %>
+  
+   <script type="text/javascript">
+     jQuery(document).ready(function() {
+       jQuery('a[rel*=facebox]').facebox()
 
+     })
+   </script>
+<% end -%>
    <% unless @facebook_user.wish_lists.blank? %>
       <% @facebook_user.wish_lists.each do |wish_list| %>
       	 <div class="listing">
@@ -74,11 +84,32 @@
         	<p><%=h wish_list.description %></p>
         	<div class="listing_btm">
 	        	<div class="links" style ='display:none'>
-                           <table>
-			      <tr>
-	                        <td><%= button_to 'Edit', edit_wish_list_path(wish_list),:method => :get ,:class=>"links_btn" %></td>
-                                <td><%= button_to 'Publish to Facebook', publish_wish_list_path(wish_list.id),:method => :get ,:class=>"links_btn"%></td>
-				 <td><%= button_to 'Delete', wish_list_path(wish_list),:confirm => "Are you sure want delete wishlist ?", :method => :delete ,:class=>"links_btn" %></td>
+              <table>
+			          <tr>
+	                <td><%= button_to 'Edit', edit_wish_list_path(wish_list),:method => :get ,:class=>"links_btn" %></td>
+                   <td>
+                     <% if @friend_lists.blank? %>
+                       <%= button_to 'Publish to Facebook', wish_list_publish_wish_list_path(wish_list),:method => :get ,:class=>"links_btn" %>
+                       
+                      <%else%>
+                        <%= link_to 'Publish to Facebook',"#wish_list_#{wish_list.id}" , :class=>"links_btn", :rel => "facebox" %>
+                        
+                         <div id="wish_list_<%= wish_list.id %>"   style='display:none;'>
+                            <% form_tag wish_list_publish_wish_list_path(wish_list) do -%>
+                            <table>
+                            <tr> <td> <h4> Select a friend list :</h4> </td> <td>  <%= select_tag "friend_list", options_for_select(@friend_lists.collect { |list| [list.name,list.flid] }) %> </td> </tr>
+                            </table> <br />
+                            <p> <%= submit_tag "Publish to selected friend list" %>   </p>
+
+                            <%end-%>
+                            &nbsp;&nbsp;&nbsp; -or- 
+                            <% form_tag wish_list_publish_wish_list_path(wish_list) do -%>
+                              <%= submit_tag "Publish to wall" %>
+                            <%end%>
+                         </div>            
+                      <%end%>              
+                    </td>
+				           <td> <%= button_to 'Delete', wish_list_path(wish_list),:confirm => "Are you sure want delete wishlist ?", :method => :delete ,:class=>"links_btn" %></td>
                               </tr>
 			    </table>
                         </div>
