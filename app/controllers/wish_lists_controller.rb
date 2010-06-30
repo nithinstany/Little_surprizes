@@ -77,6 +77,7 @@ class WishListsController < ApplicationController
                flash[:notice] = 'Wish list was successfully updated.'
                redirect_to publish_wish_list_path(@wish_list)
              else
+               publish_to_facebook(@wish_list, @user.id)
                flash[:notice] = 'Wish list was successfully updated  and Published to Facebook'
                redirect_to(wish_lists_path)
              end
