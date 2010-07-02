@@ -9,8 +9,6 @@
 </div>
 
  <div class="main">
-
-
 <% if @from_mail_user && check_user %>
 
    <div class="rt create_btn"> <%= link_to "View My Wish List", wish_lists_path %> </div>
@@ -114,7 +112,7 @@
 			    </table>
                         </div>
 			<div class="date">
-		        <p>created at : <b><%=Time.parse(wish_list.created_at.to_s).strftime('%m/%d/%Y') %> </b></p>
+		        <p>created at: <b><%=Time.parse(wish_list.created_at.to_s).strftime('%m/%d/%Y') %> </b></p>
 			</div>
               </div>
          </div>
