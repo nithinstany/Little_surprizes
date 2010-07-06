@@ -151,14 +151,14 @@ h4 {
 	-webkit-border-radius: 8px;
 	position: relative;
 	cursor: pointer;
-	color: #3f3f3f;
+	color: #ab1920;
 	font-weight:normal;
 	font-size:18px;
 	border:1px solid #d0d0d0;
 	text-decoration:none;
 }
 
-.create_btn a:hover{color:#fff;}
+.create_btn a:hover{color:#3f3f3f;}
 
 .main h2 span a{
 	float:left;
