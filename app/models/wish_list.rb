@@ -51,9 +51,9 @@ def WishList.birthday_reminder
         birthday = DateTime.parse("#{date.month}/#{date.day}/#{year}").to_date
         if (birthday - Date.today >= 1 and birthday - Date.today <= 30)
           unless user.wish_lists.nil?
-              FacebookPublisher.deliver_notification_email(user,fb_user,fb_user.friends,birthday,user.wish_lists.last.id)
+            FacebookPublisher.deliver_notification_email(user,fb_user,fb_user.friends,birthday,user.wish_lists.last.id)
           else
-              FacebookPublisher.deliver_notification_email_without_wish_list(user,fb_user,fb_user.friends,birthday)
+            FacebookPublisher.deliver_notification_email_without_wish_list(user,fb_user,fb_user.friends,birthday)
           end
       end
     end
