@@ -1,0 +1,23 @@
+<h2></h2>
+
+<table class="admin_listing">
+  <tr>
+     <th>Receiver name</th>
+     <th>payer name</th>
+     <th> Wish list Name </th>
+     <th>Amount </th>
+   </tr>
+
+  <% @transactions.each do |transaction| -%>
+   <tr class="<%= cycle('odd', 'even')%>">
+        <td> <%= User.find(transaction.reciver_id).name %> </td>
+         <td> <%=User.find(transaction.payer_id).name unless transaction.payer_id.nil?%> </td>
+        <td> <%= transaction.wish_list.name %> </td>
+         <td><%= transaction.amount%>
+        
+    </tr>
+
+  <% end -%>
+  </table>
+  <h2>Total amount: $<%=@total_amount_of_transactions%></h2>
+ 

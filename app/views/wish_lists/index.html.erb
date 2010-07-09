@@ -35,20 +35,26 @@
             <p><%=h wish_list.description %></p>
             <div class="date">
 		<p>Created at: <b><%=Time.parse(wish_list.created_at.to_s).strftime('%m/%d/%Y') %></b></p>
-	    </div>
+	  </div>
+<% form_tag(express_user_path(@facebook_user.id) )  do  -%>
+       <%= hidden_field_tag "user_id", @from_mail_user.id %>
+       <%= hidden_field_tag "wish_list_id", wish_list.id %>
+         <p>Want to contribute for  <%= wish_list.name%>  wishlist?</p>
+       <table>
+        <tr>
+          <td valign="top">  <%= text_field_tag "points" , '',:class => 'textbox-small' %> $ </td>
+          <td><%= image_submit_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif") %></td>
+        </tr>
+       </table>
+     <% end -%>
+ 
+   
+
       </div>
+
        <% end %>
       <br />
-      <% form_tag(express_user_path(@facebook_user.id) )  do  -%>
-        <%= hidden_field_tag "user_id",@from_mail_user.id %>
-	  <p>Want to contribute for  <%=fb_name(@from_mail_user.facebook_id, :linked => false)%>'s  wishlist?</p>
-        <table>
-         <tr>
-           <td valign="top">  <%= text_field_tag "points" , '',:class => 'textbox-small' %> $ </td>
-           <td><%= image_submit_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif") %></td>
-         </tr>
-        </table>
-      <% end -%>
+      
      <%end%>
 <%else%>
 <% content_for :head do -%>
@@ -84,7 +90,7 @@
 	        	<div class="links" style ='display:none'>
               <table>
 			          <tr>
-	                <td><%= button_to 'Edit', edit_wish_list_path(wish_list),:method => :get ,:class=>"links_btn" %></td>
+	                <td><%= button_to 'Add item to your wishlist', edit_wish_list_path(wish_list),:method => :get ,:class=>"links_btn" %></td>
                    <td>
                      <% if @friend_lists.blank? %>
                        <%= button_to 'Publish to Facebook', wish_list_publish_wish_list_path(wish_list),:method => :get ,:class=>"links_btn" %>
@@ -95,7 +101,7 @@
                          <div id="wish_list_<%= wish_list.id %>"   style='display:none;'>
                             <% form_tag wish_list_publish_wish_list_path(wish_list) do -%>
                             <table>
-                            <tr> <td> <h4> Select a friend list :</h4> </td> <td>  <%= select_tag "friend_list", options_for_select(@friend_lists.collect { |list| [list.name,list.flid] }) %> </td> </tr>
+                            <tr> <td> <h4> Select a friend list :</h4> </td> <td><% for  friendlist in @friend_lists%> <%= check_box_tag "friend_list",friendlist.flid %><%=friendlist.name%> <%end%></td> </tr>
                             </table> <br />
                             <p> <%= submit_tag "Publish to selected friend list" %>   </p>
 
@@ -107,7 +113,7 @@
                          </div>            
                       <%end%>              
                     </td>
-				           <td> <%= button_to 'Delete', wish_list_path(wish_list),:confirm => "Are you sure want delete wishlist ?", :method => :delete ,:class=>"links_btn" %></td>
+				           <!-- <td> <%= button_to 'Delete', wish_list_path(wish_list),:confirm => "Are you sure want delete wishlist ?", :method => :delete ,:class=>"links_btn" %></td> -->
                               </tr>
 			    </table>
                         </div>

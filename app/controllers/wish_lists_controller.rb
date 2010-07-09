@@ -18,6 +18,7 @@ class WishListsController < ApplicationController
     @user = facebook_user
     @wish_list = WishList.new
     @current_user = user rescue nil
+    @parent = Category.find_all_by_parent_id(nil)
   end
 
 
@@ -41,17 +42,29 @@ class WishListsController < ApplicationController
     @wish_list = WishList.new(params[:wish_list])
     @current_user = user 
     @wish_list.user = @current_user
-    
-    
+     
+     if params[:categories].blank?
+       @parent = Category.find_all_by_parent_id(nil)
+       flash[:notice] = "Please select category"
+       render :action => "new"
+       return nil
+    end
     if params[:email] && @wish_list.save
+       unless params[:categories].blank?
+         params[:categories].each do |category_id|
+           CategoryWishList.create({ :category_id => category_id ,:wish_list_id => @wish_list.id , :custom_description => params["category_#{category_id}_custom_description"] })
+         end
+       end
       @current_user.email = params[:email]
       @current_user.save_with_validation(false)
       flash[:notice] = "Wish list has been created successfully."
       facebook_permissions(@facebook_user) ?  (redirect_to(wish_lists_path)) : (  redirect_to(grant_permission_wish_lists_path) )
 
     else
+       
       flash[:notice] = "Make sure that all required fields are entered."
       @wish_list = nil
+      @parent = Category.find_all_by_parent_id(nil)
       render :action => 'new'
     end
 
@@ -117,10 +130,12 @@ class WishListsController < ApplicationController
    
     if @user.has_permissions?('publish_stream')
       if params[:friend_list]
-        friend_ids = get_friends_friend_list(params[:friend_list])
-        friend_ids.each do |friend_facebook_id|
-          publish_to_facebook(@wish_list, friend_facebook_id)
-        end 
+        for friend_list in params[:friend_list]
+          friend_ids = get_friends_friend_list(friend_list)
+          friend_ids.each do |friend_facebook_id|
+            publish_to_facebook(@wish_list, friend_facebook_id)
+          end 
+        end
       else
         publish_to_facebook(@wish_list, @user.id)
       end 

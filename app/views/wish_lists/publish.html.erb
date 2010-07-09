@@ -5,7 +5,7 @@
 <% unless @friend_lists.blank? %>
   <% form_tag wish_list_publish_wish_list_path(@wish_list) do -%>
 	<table>
-	<tr> <td> <h4> Select a friend list :</h4> </td> <td>  <%= select_tag "friend_list", options_for_select(@friend_lists.collect { |list| [list.name,list.flid]} ) %> </td> </tr>
+	<tr> <td> <h4> Select a friend list :</h4> </td> <td>  <% for  friendlist in @friend_lists%> <%= check_box_tag "friend_list",friendlist.flid %><%=friendlist.name%> <%end%> </td> </tr>
 	</table> <br />
     <p> <%= submit_tag "Publish to selected friend list" %> -or-   </p>
 

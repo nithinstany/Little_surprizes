@@ -1,6 +1,6 @@
 class Gift < ActiveRecord::Base
   
-    
+  belongs_to :wish_list 
   belongs_to :user
 
   def validate
@@ -13,8 +13,8 @@ class Gift < ActiveRecord::Base
 
   def check_points_available
 
-    user = User.find(self.user_id)
-    if self.points.to_i > user.points.to_i
+    #user = User.find(self.user_id)
+    if self.points.to_f > self.wish_list.points.to_f
       return true
     end
     return false

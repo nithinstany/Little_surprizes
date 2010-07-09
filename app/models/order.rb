@@ -2,7 +2,7 @@ class Order < ActiveRecord::Base
 
   belongs_to :user
   has_one :transaction, :class_name => "OrderTransaction"
-
+  belongs_to :wish_list
   def express_token=(token)
     self[:express_token] = token
     if new_record? && !token.blank?

@@ -13,7 +13,8 @@ ActionController::Routing::Routes.draw do |map|
   map.namespace(:admin) do |admin|
     admin.root :controller => 'categories', :action => 'index'
     admin.resources :wish_lists
-    admin.resources :users, :controller => 'users' do |user|
+    admin.resources :transactions
+    admin.resources :users,:controller => 'users' do |user|
       user.resources :points
       user.resources :gifts
       user.resources :messages

@@ -29,7 +29,7 @@
   		
           		<h2>Category list</h2>
           			<ul id='tree'>
-              				<%= render :partial => 'category_list', :collection => @parent, :as => :category ,:locals => { :f => f} %>
+              				<%= render :partial => 'edit_category_list', :collection => @parent, :as => :category ,:locals => { :f => f} %>
           			</ul>
       	       <div class="clear"></div>
 	<%= f.submit 'Save to wishlist',:class => "large awesome" %> -or- <%= f.submit 'Save and Publish' ,:class => "large awesome"%> -or- <%= link_to 'Back', wish_lists_path %>

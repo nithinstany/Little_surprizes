@@ -8,14 +8,16 @@
       <tr>
 	      <th> Category name </th>
 	      <th> Comment </th>
+                <th class="last"> Value of the gift </th>
 	      <th class="last"> Points needed </th>
       </tr>
       <% @wish_list.category_wish_lists.each do |wish_catogery|%>
         <tr class="<%= cycle('odd', 'even')%>">
         	<td> <%= radio_button_tag("gift[category_id]",wish_catogery.category.id) %> <%= wish_catogery.category.name %></td>
         	<td> <%= wish_catogery.custom_description %></td>
-        	<td class="last"> $ <%= text_field_tag "#{wish_catogery.category.id}][points]", wish_catogery.category.lowest_number_of_points_needed ,:class => 'text_small' %> </td>
-        </tr>
+        	<td class="last"> $ <%= text_field_tag "#{wish_catogery.category.id}][points]"%> </td>
+            <td class ="last">$<%=wish_catogery.category.lowest_number_of_points_needed%></td>
+           </tr>
       <% end %>
     </table>
   

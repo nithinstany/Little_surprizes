@@ -26,7 +26,7 @@ class Admin::MessagesController < ApplicationController
 
   def create
     @message = Message.new(params[:message])
-    puts "pppppppppppppppppppppppppp #{@user.email}"
+    
     respond_to do |format|
       if @message.save
         

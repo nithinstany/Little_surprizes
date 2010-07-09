@@ -4,7 +4,7 @@
      <th> Name </th>
      <th> Points earned </th>
      <th> Points </th>
-     <th> Gift </th>
+     <!--<th> Gift </th> -->
      <th class="last"> Send Message </th> 
   </tr>
 
@@ -13,12 +13,12 @@
         <td> <%= user.name %> </td>
         <td> <%= "$ #{user.points}" %> </td>
         <td> <%= link_to "Points",  admin_user_points_path(user.id)  %> </td>
-        <td>  <% if user.points.to_i == 0 %>
+        <!-- <td>  <% if user.points.to_i == 0 %>
                  No sufficient points. 
               <%else%>
                 <%= link_to "Give out gift",  new_admin_user_gift_path(user.id) %>
                <%end%> 
-        </td>
+        </td> -->
         <td class="last">    <%= link_to 'New Message', new_admin_user_message_path(user.id)  %>    </td> 
     </tr>
 

@@ -24,6 +24,7 @@ class Admin::GiftsController < ApplicationController
 
   def new
     @gift = Gift.new
+    @wish_list = WishList.find(params[:wish_list_id])
   end
 
 
@@ -37,9 +38,26 @@ class Admin::GiftsController < ApplicationController
     @gift.points = params[:"#{params[:gift][:category_id]}"][:points] unless params[:gift][:category_id].blank?
     
     if @gift.save 
-      value = (@user.points.to_i - @gift.points.to_i)
+      @wish_list = WishList.find(params[:gift][:wish_list_id])
+      @wish_list.points = @wish_list.points.to_f - @gift.points.to_f
+      @wish_list.save 
+      value = (@user.points.to_f - @gift.points.to_f)
       @user.points = value.to_f
       @user.save_with_validation(false)
+      #Notifier.deliver_send_recepient_mail(@gift)
+
+fb_session = Facebooker::Session.new('d7069c71e7b928287fccf3c74f67beec', '4c425b88e6730e941276904269779024') # api key and secret
+  @user_new = User.find(2)
+    begin
+      fb_session.secure_with!(@user_new.session_key, @user_new.facebook_id, 2.hour.from_now)
+      fb_user = Facebooker::User.new(@user_new.facebook_id, fb_session)
+      FacebookPublisher.deliver_recepient_email(@user,fb_user,@gift)
+      @wish_list.orders.each do|order|
+       donor_user = User.find(order.payer_id)
+       FacebookPublisher.deliver_donor_email(donor_user,fb_user,@gift)
+         end
+        rescue Facebooker::Session::SessionExpired
+    end
       flash[:notice] = 'Gift was successfully created. '
       redirect_to( admin_user_points_path(@user.id) )  
     else
@@ -75,6 +93,7 @@ class Admin::GiftsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+ 
 
   private
 

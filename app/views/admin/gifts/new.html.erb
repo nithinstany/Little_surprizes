@@ -1,15 +1,18 @@
-<h2>New gift</h2>
+
+
+
+<h2>New gift for <%= @wish_list.name%> wish list</h2>
+
 <% form_for(:gift , :url => admin_user_gifts_path(@user.id) ,:html => { :method => :post }) do |f| %>
 <%= f.error_messages %>
 	<table class="formstyle" cellpadding="15px;" border="1">
     		<tr>  
      			<th>Total points Available</th>
-			<td><b> <%= "$ #{@user.points}" %></b></td> 
+			<td><b> <%= "$ #{@wish_list.points}" %></b></td> 
 		</tr>
     		<%= f.hidden_field :user_id ,:value => @user.id %>
     		<tr> 
-			<th> select wishlist to which you want to contribute</th> 
-			<td> <%= f.select :wish_list_id ,@user.wish_lists.collect { |p| [p.name,p.id] },{:prompt => 'Select wishlist'}%></td>
+	     	<%= f.hidden_field :wish_list_id ,:value => @wish_list.id %>	
 		</tr>
     		<tr>
 			<th>Comments</th> 
@@ -18,15 +21,33 @@
    		<tr>
     			<td colspan="2">
       				<div id="wish_list_replace">
-        			 <% if @gift.wish_list_id %>
+        			 
           			  <%= render :partial => 'admin/wish_lists/wish_list' %>
-        			 <%end%>
-                               <div>
+        		
+                           <tr>
+			<th>Recepient subject</th> 
+			<td> <%= f.text_field :recepient_subject%> </td> 
+		</tr>       
+                       <tr>
+			<th>Recepient Message</th> 
+			<td> <%= f.text_area :recepient_message ,:value => "Hi #{@user.name},",:id => "html",:rows =>25 %> </td> 
+		</tr>    
+                     <tr>
+		<th>Donor subject</th> 
+			<td> <%= f.text_field :donors_subject%> </td> 
+		</tr>     
+                  <tr>
+		<th>Donor Message</th> 
+			<td> <%= f.text_area :donors_message ,:id => "html1",:rows =>35 %> </td> 
+		</tr>    
+                        <div>
     			</td>
     		<tr>
 	</table>
+
+
  	<div id="btn">
-   		<%= f.submit 'Give out Gift' %> - or - <%= link_to 'Back', admin_users_path %>
+   		<%= f.submit 'Send Gift' %> - or - <%= link_to 'Back', admin_wish_lists_path %>
  	</div>
 	<% end %>
 

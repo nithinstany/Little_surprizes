@@ -1,0 +1,31 @@
+<h2>Wish lists</h2>
+
+<table class="admin_listing">
+  <tr>
+     <th> Name </th>
+     <th> Wish list Name </th>
+     <th>Balance </th>
+       <th> Due date</th> 
+      <th> Gift </th>
+     
+     
+  </tr>
+
+  <% @wish_lists.each do |wish_list| -%>
+   <tr class="<%= cycle('odd', 'even')%>">
+        <td> <%= wish_list.user.name %> </td>
+         <td> <%= wish_list.name %> </td>
+        <td> <%= "$ #{wish_list.points}" %> </td>
+         <td><%= Time.parse(wish_list.date.to_s).strftime('%d-%m-%Y')%></td>
+<td>  <% if wish_list.points.to_f == 0.0 %>
+                 No sufficient points. 
+              <%else%>
+                <%= link_to "Send gift",  new_admin_user_gift_path(wish_list.user.id,:wish_list_id => wish_list.id) %>
+               <%end%> 
+        </td>
+       
+        
+    </tr>
+
+  <% end -%>
+</table>

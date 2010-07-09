@@ -42,15 +42,41 @@ def news_feed(recipients, title, body)
   self.title( title )
 
 end
+ def recepient_email(user,fb_user,gift)
+    send_as :email
+    recipients user.facebook_id
+    from fb_user
+    title "#{gift.recepient_subject}"
+    fbml  <<-MESSAGE
+  	  <fb:fbml>
+         #{gift.recepient_message} <br/><br/>
+
+  	  </fb:fbml>
+  	MESSAGE
+ end
+def donor_email(user,fb_user,gift)
+    send_as :email
+    recipients user.facebook_id
+    from fb_user
+    title "#{gift.donors_subject}"
+    fbml  <<-MESSAGE
+  	  <fb:fbml>
+         #{gift.donors_message} <br/><br/>
+
+  	  </fb:fbml>
+  	MESSAGE
+ end
+
+
 
 def notification_email(user,sender,friends,date,wish_list)
     send_as :email
     recipients friends 
     from sender
-    title "Birthday reminder"
+    title "#{wish_list.name} reminder"
     fbml  <<-MESSAGE
   	  <fb:fbml>
-         #{user.name}'s birthday is on #{date.strftime("%B #{date.day.ordinalize}")} <br/><br/>
+         #{user.name}'s wishlist for #{wish_list.name} is on #{date.strftime("%B #{date.day.ordinalize}")} <br/><br/>
 
         Click here to view #{user.name}'s wishlist http://apps.facebook.com/littlesurprizes/users/#{user.id}/wish_lists
 

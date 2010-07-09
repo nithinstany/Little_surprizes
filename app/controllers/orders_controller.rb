@@ -25,6 +25,7 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new(:express_token => params[:token])
+     @order.wish_list_id = params[:wish_list_id]
     @details = EXPRESS_GATEWAY.details_for(params[:token])
     @confirmed = Order.find_by_express_token(params[:token]) ? true : false
 
@@ -44,9 +45,14 @@ class OrdersController < ApplicationController
     @order = Order.new(params[:order])
     @order.payer_id =  @facebook_user.id
     @order.reciver_id =  @reciver_user.id
+    
     if @order.save && @order.purchase
-       @reciver_user.points = (@reciver_user.points.to_i + @order.amount.to_i)
+       amount = @order.amount - 15/100.to_f*@order.amount
+       @reciver_user.points = (@reciver_user.points.to_f + amount.to_f)
        @reciver_user.save_with_validation(false)
+       wish_list = WishList.find(@order.wish_list_id)
+       wish_list.points = wish_list.points + amount
+       wish_list.save
        flash[:notice] = "Successfully gifted $#{@order.amount}"
     else
        flash[:notice] = "Failure: #{@order.transaction.message} "

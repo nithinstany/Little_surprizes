@@ -5,8 +5,8 @@
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title><%= controller.controller_name %>: <%= controller.action_name %></title>
-  <%= stylesheet_link_tag  'admin', 'jquery.treeview' %>
-  <%= javascript_include_tag :defaults, 'jquery.treeview.min', 'jquery.corner' %>
+  <%= stylesheet_link_tag  'admin', 'jquery.treeview','html_editor_style1','html_editor_style2' %>
+  <%= javascript_include_tag :defaults, 'jquery.treeview.min', 'jquery.corner','jquery.markitup.js','set.js' %>
   <script type="text/javascript">
     jQuery(function() {
       jQuery("#tree").treeview({
@@ -18,7 +18,17 @@
    })
   </script>
 
+   <script type="text/javascript">
+jQuery(document).ready(function()	{
+   jQuery('#html').markItUp(myHtmlSettings);
+});
+</script>
 
+ <script type="text/javascript">
+jQuery(document).ready(function()	{
+   jQuery('#html1').markItUp(myHtmlSettings);
+});
+</script>
 </head>
 
 <body>
