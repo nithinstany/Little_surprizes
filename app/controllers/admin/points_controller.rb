@@ -8,7 +8,7 @@ class Admin::PointsController < ApplicationController
    begin
       fb_session.secure_with!(@user.session_key, @user.facebook_id, 2.hour.from_now)
       @fb_user = Facebooker::User.new(@user.facebook_id, fb_session)
-       puts"SSSSSSSSSSSSSSSSSSSSSSSSSS #{@fb_user.name}"
+       
       rescue Facebooker::Session::SessionExpired
   end
   end
