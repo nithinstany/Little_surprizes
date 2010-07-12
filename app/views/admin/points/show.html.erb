@@ -1,29 +1,35 @@
-
- <h2> Points Details for <%= @user.name %> </h2>
-
-
- <table class="admin_listing">
+<h2> Gift delivered to <%= @user.name %> </h2>
+<table class="formstyle" border="1" cellpadding="15px">
+  <tr>
+    <th>Wish list name</th>
+    <td><%=h WishList.find(@gift.wish_list_id).name %></td>
+  </tr>
    <tr>
-     <th> Paypal user name </th>
-     <th> Express token  </th>
-     <th> Payer id </th>
-     <th> Date </th>
-     <th> Amount </th>
-   </tr>
-
-<% @user.recived_gifts.each do |gift| -%>
-
-
-   <tr class="<%= cycle('odd', 'even')%>">
-     <td> <%= "#{gift.first_name} #{gift.last_name}" %>  </td>
-     <td> <%= gift.express_token %> </td>
-     <td> <%= gift.express_payer_id %>  </td>
-     <td> <%= Time.parse(gift.created_at.to_s).strftime('%d-%m-%y %H:%M').to_s%> </td>
-     <td> <%= "$ #{gift.amount}" %> </td>
-
-   </tr>
-<% end -%>
+   <th>Date</th>
+   <td><%=h WishList.find(@gift.wish_list_id).date.strftime('%d-%m-%Y').to_s %></td>
+  </tr>
+  <tr>
+   <th>Value of the gift</th>
+   <td><%= "$ #{@gift.points}" %></td>
+  </tr>
+  <tr>
+   <th>Total points</th>
+   <td><%=h WishList.find(@gift.wish_list_id).points %></td>
+  </tr>
+  <tr>
+   <th>Comments:</th>
+   <td><%=h @gift.comments %></td>
+ </tr>
 </table>
-
+<h2>Contributions</h2>
+<table class="formstyle" border="1" cellpadding="15px">  
+  <% @orders.each do |order| %>
+  <tr>
+    <th><%=h User.find(order.payer_id).name unless order.payer_id.nil?%></th>
+    <td>$<%=h order.amount%></td>
+  </tr>
+<%end%>
+</table>
 <%= link_to "Back" ,:back%>
+
 

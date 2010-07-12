@@ -1,14 +1,18 @@
-
- <h2> Points Details for <%= @user.name %> </h2>
- <br />
-
+<div class="users_show">  
+<%= image_tag(@fb_user.pic_small) unless @fb_user.pic_small.nil? %>
+  <h3><%=@user.name%></h3>
+  <p>Sign up date: <b><%= Time.parse(@user.created_at.to_s).strftime('%d-%m-%Y').to_s%></b></p>
+ </div>
+<hr />
+<h2> Payment Details for <%= @user.name %> </h2>
  <table class="admin_listing">
    <tr>
      <th> Paypal user name </th>
-     <th> User name </th>
+     <th> Payer name </th>
      <th> Express token  </th>
      <th> Payer id </th>
      <th> Date </th>
+      <th>Wish list</th> 
      <th class='last'> Amount </th>
    </tr>
 
@@ -17,10 +21,11 @@
 
    <tr class="<%= cycle('odd', 'even')%>">
      <td> <%= "#{gift.first_name} #{gift.last_name}" %>  </td>
-     <td> <%= User.find(gift.payer_id).name %></td>
+     <td> <%= User.find(gift.payer_id).name unless gift.payer_id.nil?%></td>
      <td> <%= gift.express_token %> </td>
      <td> <%= gift.express_payer_id %>  </td>
      <td> <%= Time.parse(gift.created_at.to_s).strftime('%d-%m-%y %H:%M').to_s%> </td>
+     <td> <%= WishList.find(gift.wish_list_id).name %></td>
      <td class='last'> <%= "$ #{gift.amount}" %> </td>
 
    </tr>
@@ -32,18 +37,18 @@
  <br />
  <table class="admin_listing">
    <tr>
-     <th> Wishlist </th>
-     <th> Category </th>
-     <th> Comment </th>
-     <th class='last'> points </th>
-
+     <th> Wish list </th>
+     <th> Date </th>
+     <th> Value of the gift </th>
+     <th class='last'>Show</th>
+       
    </tr>
 <% @user.gifts.each do |gift| -%>
    <tr class="<%= cycle('odd', 'even')%>">
      <td> <%= WishList.find(gift.wish_list_id).name %></td>
-     <td> <%= Category.find(gift.category_id).name %> </td>
-     <td> <%= gift.comments %></td>
-     <td class='last'>  <%= "$ #{gift.points}" %></td>
+     <td> <%= WishList.find(gift.wish_list_id).date.strftime('%d-%m-%Y').to_s %> </td>
+     <td>  <%= "$ #{gift.points}" %></td>
+      <td class ='last'>  <%=link_to "show",admin_user_point_path(@user,gift.id) %></td>
    </tr>
 <%end%>
 </table>

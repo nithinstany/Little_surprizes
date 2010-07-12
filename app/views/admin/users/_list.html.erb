@@ -2,24 +2,24 @@
  <table class="admin_listing">
   <tr>
      <th> Name </th>
-     <th> Points earned </th>
-     <th> Points </th>
-     <!--<th> Gift </th> -->
-     <th class="last"> Send Message </th> 
+     <th> Balance </th>
+     <th> Details </th>
+     <!--<th> Gift </th> 
+     <th class="last"> Send Message </th>--> 
   </tr>
 
   <% @users.each do |user| -%>
    <tr class="<%= cycle('odd', 'even')%>">
         <td> <%= user.name %> </td>
         <td> <%= "$ #{user.points}" %> </td>
-        <td> <%= link_to "Points",  admin_user_points_path(user.id)  %> </td>
+        <td> <%= link_to "Show",  admin_user_points_path(user.id)  %> </td>
         <!-- <td>  <% if user.points.to_i == 0 %>
                  No sufficient points. 
               <%else%>
                 <%= link_to "Give out gift",  new_admin_user_gift_path(user.id) %>
                <%end%> 
-        </td> -->
-        <td class="last">    <%= link_to 'New Message', new_admin_user_message_path(user.id)  %>    </td> 
+        </td> 
+        <td class="last">    <%= link_to 'New Message', new_admin_user_message_path(user.id)  %>    </td>--> 
     </tr>
 
   <% end -%>
