@@ -107,7 +107,7 @@ body { margin: 0px 0px 0px 0px; padding: 0px; color: #6d6c67; font-family: Arial
 
 .header_left{
 	float:left;
-	width:45%;
+	width:40%;
 	
 	
 }
@@ -121,7 +121,7 @@ body { margin: 0px 0px 0px 0px; padding: 0px; color: #6d6c67; font-family: Arial
 
 .header_right{
 	float:right;
-	width:40%;
+	width:55%;
 	text-align:right;
 }
 
@@ -308,6 +308,8 @@ h2.banner{
 	}
 .links a{text-decoration:none;
 	}
+
+.form{padding:10px 15px;}
 	
 
 .formstyle{
@@ -327,22 +329,29 @@ h2.banner{
 	padding-right:15px;
 }
 
-table.formstyle tr td input{
+.formstyle p {
+	color: #000;
+	font-weight:normal;
+	font-size:14px;
+    	margin:15px 0px 2px 0px;
+}
+
+.formstyle  input{
 	border:1px solid #aeaeae;
 	padding:3px;
 }
 
-table.formstyle tr td textarea{
+.formstyle textarea{
 	border:1px solid #aeaeae;
 	padding:3px;
 }
 
-table.formstyle tr td textarea:focus{
+.formstyle textarea:focus{
 	border:1px solid #e8c382;
 
 }
 
-table.formstyle tr td input:focus{
+.formstyle input:focus{
 	border:1px solid #e8c382;
 
 }

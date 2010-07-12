@@ -1,55 +1,48 @@
-
-
-
 <h2>New gift for <%= @wish_list.name%> wish list</h2>
 
 <% form_for(:gift , :url => admin_user_gifts_path(@user.id) ,:html => { :method => :post }) do |f| %>
 <%= f.error_messages %>
-	<table class="formstyle" cellpadding="15px;" border="1">
-    		<tr>  
-     			<th>Total points Available</th>
-			<td><b> <%= "$ #{@wish_list.points}" %></b></td> 
-		</tr>
-    		<%= f.hidden_field :user_id ,:value => @user.id %>
-    		<tr> 
-	     	<%= f.hidden_field :wish_list_id ,:value => @wish_list.id %>	
-		</tr>
-    		<tr>
-			<th>Comments</th> 
-			<td> <%= f.text_area :comments ,:rows =>3 %> </td> 
-		</tr>
-   		<tr>
-    			<td colspan="2">
-      				<div id="wish_list_replace">
-        			 
-          			  <%= render :partial => 'admin/wish_lists/wish_list' %>
-        		
-                           <tr>
-			<th>Recepient subject</th> 
-			<td> <%= f.text_field :recepient_subject%> </td> 
-		</tr>       
-                       <tr>
-			<th>Recepient Message</th> 
-			<td> <%= f.text_area :recepient_message ,:value => "Hi #{@user.name},",:id => "html",:rows =>25 %> </td> 
-		</tr>    
-                     <tr>
-		<th>Donor subject</th> 
-			<td> <%= f.text_field :donors_subject%> </td> 
-		</tr>     
-                  <tr>
-		<th>Donor Message</th> 
-			<td> <%= f.text_area :donors_message ,:id => "html1",:rows =>35 %> </td> 
-		</tr>    
-                        <div>
-    			</td>
-    		<tr>
-	</table>
 
+<table class="formstyle" cellpadding="15px;" border="1">
+  <tr>  
+    <th>Total points Available</th>
+    <td><b><%= "$ #{@wish_list.points}" %></b></td> 
+   </tr>
+   <%= f.hidden_field :user_id ,:value => @user.id %>
+   <%= f.hidden_field :wish_list_id ,:value => @wish_list.id %>
+</table>
+<table class="formstyle" cellpadding="15px;" border="1">
+  <tr>
+    <td colspan="2">
+      	<div id="wish_list_replace"><%= render :partial => 'admin/wish_lists/wish_list' %></div>
+    </td>
+  </tr>
+  <tr>
+    <th>Comments<br /><%= f.text_area :comments ,:rows =>3 %></th> 
+  </tr>
+</table>
 
- 	<div id="btn">
-   		<%= f.submit 'Send Gift' %> - or - <%= link_to 'Back', admin_wish_lists_path %>
- 	</div>
-	<% end %>
+<div class="formstyle form">
+  <h2>Recepient message</h2>
+                 
+  <p>Recepient subject </p>
+  <%= f.text_field :recepient_subject%>  
+		      
+  <p>Recepient Message</p>
+  <%= f.text_area :recepient_message ,:value => "Hi #{@user.name},",:id => "html",:rows =>25 %>  
+</div>
+
+<div class="formstyle form">
+   <h2>Donor message</h2>
+   <p>Donor subject<br /><%= f.text_field :donors_subject%> </p>     
+                
+   <p>Donor Message<br /><%= f.text_area :donors_message ,:id => "html1",:rows =>35 %></p>    
+</div>
+
+<div id="btn">
+   <%= f.submit 'Send Gift' %> - or - <%= link_to 'Back', admin_wish_lists_path %>
+</div>
+<% end %>
 
 	<%= image_tag("spinner.gif",
               :align => "absmiddle",
