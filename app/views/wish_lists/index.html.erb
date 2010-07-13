@@ -34,7 +34,7 @@
             <h3><%= link_to "#{wish_list.name}", wish_list %></h3>
             <p><%=h wish_list.description %></p>
             <div class="date">
-		<p>Created at: <b><%=Time.parse(wish_list.created_at.to_s).strftime('%m/%d/%Y') %></b></p>
+		<p>Created at: <b><%=Time.parse(wish_list.created_at.to_s).strftime('%d/%m/%Y') %></b></p>
 	  </div>
 <% form_tag(express_user_path(@facebook_user.id) )  do  -%>
        <%= hidden_field_tag "user_id", @from_mail_user.id %>
@@ -118,7 +118,7 @@
 			    </table>
                         </div>
 			<div class="date">
-		        <p>created at: <b><%=Time.parse(wish_list.created_at.to_s).strftime('%m/%d/%Y') %> </b></p>
+		        <p>created at: <b><%=Time.parse(wish_list.created_at.to_s).strftime('%d/%m/%Y') %> </b></p>
 			</div>
               </div>
          </div>
