@@ -90,7 +90,7 @@
 	        	<div class="links" style ='display:none'>
               <table>
 			          <tr>
-	                <td><%= button_to 'Add item to your wishlist', edit_wish_list_path(wish_list),:method => :get ,:class=>"links_btn" %></td>
+	                <td><%= button_to 'Add items to your wishlist', edit_wish_list_path(wish_list),:method => :get ,:class=>"links_btn" %></td>
                    <td>
                      <% if @friend_lists.blank? %>
                        <%= button_to 'Publish to Facebook', wish_list_publish_wish_list_path(wish_list),:method => :get ,:class=>"links_btn" %>
