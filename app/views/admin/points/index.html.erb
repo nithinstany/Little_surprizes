@@ -1,5 +1,5 @@
 <div class="users_show">  
-<%= image_tag(@fb_user.pic_small) unless @fb_user.pic_small.nil? %>
+
   <h3><%=@user.name%></h3>
   <p>Sign up date: <b><%= Time.parse(@user.created_at.to_s).strftime('%d-%m-%Y').to_s%></b></p>
  </div>
