@@ -52,14 +52,14 @@ class WishListsController < ApplicationController
        render :action => "new"
        return nil
     end
-    if params[:email] && @wish_list.save
+    if  @wish_list.save
        unless params[:categories].blank?
          params[:categories].each do |category_id|
            CategoryWishList.create({ :category_id => category_id ,:wish_list_id => @wish_list.id , :custom_description => params["category_#{category_id}_custom_description"] })
          end
        end
-      @current_user.email = params[:email]
-      @current_user.save_with_validation(false)
+     # @current_user.email = params[:email]
+     # @current_user.save_with_validation(false)
       flash[:notice] = "Wish list has been created successfully."
       facebook_permissions(@facebook_user) ?  (redirect_to(wish_lists_path)) : (  redirect_to(grant_permission_wish_lists_path) )
 

@@ -73,7 +73,7 @@ def notification_email(user,sender,friends,date,wish_list)
     send_as :email
     recipients friends 
     from sender
-    title "#{wish_list.name} reminder"
+    title "Wishlist reminder"
     fbml  <<-MESSAGE
   	  <fb:fbml>
          #{user.name}'s wishlist for #{wish_list.name} is on #{date.strftime("%B #{date.day.ordinalize}")} <br/><br/>
