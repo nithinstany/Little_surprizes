@@ -16,10 +16,12 @@
 <% if @confirmed %>
 <h2> A successful transaction has already been completed for this token. </h2>
 <%else%>
+*15% of the amount is towards transaction charges.
 <div class="borders">
  <h3> Please click the below button, to complete the payment process. </h3>
 </div>
 <%end%>
+ 
   <p>
     <% unless @confirmed %>
     <%= f.submit "Confirm payment",:class => "awesome" %> or
