@@ -10,8 +10,11 @@ class WishListsController < ApplicationController
    end
 
   def show
-    @wish_list = WishList.find(params[:id],:include => [:categories]) rescue nil
+    @from_mail_user = User.find(params[:user_id]) if params[:user_id]
+    @wish_list = WishList.find(params[:id]) rescue nil
     @current_user = user rescue nil
+    @facebook_user = user
+   
   end
 
   def new
@@ -184,7 +187,7 @@ private
         :target_id => target ,
         :message => "has added new product categories to wishlist '#{wish_list.name}'.",
         :action_links => [ 'text' => "visit wishlist",
-                           'href' => "http://apps.facebook.com/littlesurprizes/users/#{user.id}/wish_lists"
+                           'href' => "http://apps.facebook.com/littlesurprizes/users/#{user.id}/wish_lists/#{wish_list.id}"
                          ],
           :attachment =>   { 'media' => [ 
                                        { 'type' => 'image',
@@ -194,7 +197,9 @@ private
                                      ]
                           }.to_json   
        })
-  end
+  #littlesurprizes
+
+end
   
   
   

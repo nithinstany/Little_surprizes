@@ -36,7 +36,9 @@
    <h2>Donor message</h2>
    <p>Donor subject<br /><%= f.text_field :donors_subject%> </p>     
                 
-   <p>Donor Message<br /><%= f.text_area :donors_message ,:id => "html1",:rows =>35 %></p>    
+   <p>Donor Message<br /><%= f.text_area :donors_message ,:value => "Hello,
+Thanks to your contribution, Little Surprizes has sent a Gift Card for <Amount> to <Ramesh> on his Birthday on your behalf. Thank you for choosing Little Surprizes!",
+:id => "html1",:rows =>35 %></p>    
 </div>
 
 <div id="btn">

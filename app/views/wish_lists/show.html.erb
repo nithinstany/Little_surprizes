@@ -1,41 +1,52 @@
-
-<div class="lt">
- <% if @wish_list.nil? %>
-    <p> <b> Wish list does not exist. </b> </p>
- <%else%>
-
-   <h2><%=fb_name(@wish_list.user.facebook_id, :linked => false)%> 's wishlist -   <%=       @wish_list.name %></h2>
+<div class="heading">
+  <div class="heading_lt">
+    <h1>Send surprise gifts to your friends on facebook</h1>
+    <p>You can create a wishlist and start contributing for your own <br />littlesurprizes gift too! </p>
+  </div>
+  <div class="heading_rt">
+    <img src="/images/box1.png" align="right"/>
+  </div>
 </div>
 
-<div class="rt awesome">
- <%= link_to "Back to <span>#{fb_name(@wish_list.user.facebook_id, :linked => false)}</span>'s wishlist", :back %>
-</div>
+<div class="main">
+  <div class="rt create_btn"> <%= link_to "View my wish list", wish_lists_path %> </div>
+  <div class="lt"><h2><%=fb_name(@wish_list.user.facebook_id, :linked => false)%> 's wishlist</div>
 <div class="clear"></div>
-<hr />
-    <p class="post"><%= @wish_list.description %> </p>
-    <h2 class="item"> Items in  <%= @wish_list.name %> Wishlist </h2>
-  <% unless @wish_list.category_wish_lists.blank? %>
-     <table class="admin_listing" width="100%">
-      <tr>
-          <th> Category  </th>
-          <th class='last'> Comments </th>
-      </tr>
+   <div class="listing">
+    <% if @wish_list.nil? %>
+       <p><b>Wish list does not exit.</b></p>
+    <%else%>
 
-     <% for wish_category in @wish_list.category_wish_lists -%>
-       <tr class="<%= cycle('odd', 'even')%>">
-         <td width="25%">
-            <%= wish_category.category.name %>
-          </td>
-          <td width="52%" class='last'>
-            <%= wish_category.custom_description %>
-          </td>
+    <h3><%=@wish_list.name %></h3>
+  <div class="paypal">
+  <% form_tag(express_user_path(@facebook_user.id) )  do  -%>
+       <%= hidden_field_tag "user_id", @from_mail_user.id %>
+       <%= hidden_field_tag "wish_list_id", @wish_list.id %><br />
+       <p>Want to contribute for <%=fb_name(@wish_list.user.facebook_id, :linked => false)%> 's  <%= @wish_list.name%>?</p>
+       <table>
+        <tr>
+          <td valign="top">  <%= text_field_tag "points" , '',:class => 'textbox-small' %> $ </td>
+          <td><%= image_submit_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif") %></td>
+        </tr>
+       </table>
      <% end -%>
-  </table>
+    </div>
+     <div class="clear"></div>
+    <h3 class="large">Items in  <%= @wish_list.name %> wishlist</h3>
+    <div class="clear"></div>
+    <% unless @wish_list.category_wish_lists.blank? %>
+     <% for wish_category in @wish_list.category_wish_lists -%>
+       
+            <%= image_tag wish_category.category.avatar.url(:thumb) %>
+            <p class="name"><%= wish_category.category.name %></p>
+            <p><%= wish_category.custom_description %></p><br />
+        
+     <% end -%>
   <%else%>
-    <p> There are no items in <%=fb_name(@wish_list.user.facebook_id, :linked => false)%>'s wishlist </p>
+  <p> There are no items in <%=fb_name(@wish_list.user.facebook_id, :linked => false)%>'s wishlist </p>
   <%end%>
-
-<%end%>
-
+<%end%> 
+ </div>
+</div>
 <div class="clear"></div>
 

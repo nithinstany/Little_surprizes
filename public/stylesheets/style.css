@@ -192,6 +192,24 @@ h4 {
 	padding:0px  0px 4px 0px;
 	margin:0px 0px 0px 0px;
 }
+.main p{
+	color:#000;
+	
+	
+}
+
+.main p.name{
+	color:#000;
+	font-size:14px;
+	
+}
+
+.main h3.large{
+	color:#000;
+	font-size:18px;
+	margin-top:5px;
+}
+
 
 .main p span,a{
 	color:#284785;
@@ -286,6 +304,12 @@ ul#tree li ul li {
 	text-decoration:none;
 	border:1px solid #224472;
 }
+.paypal{
+         border:1px solid #e5e5e5;
+	 padding:2px 5px;
+	 background:#fafaff;
+	 margin:8px 0px;
+}
 
 .listing{
          border:1px solid #cccccc;
@@ -300,7 +324,7 @@ ul#tree li ul li {
 
 .listing p{padding:5px 0px 0px 8px;line-height:25px;color:#462232;font-size:13px;}
 
-
+.listing h3{font-size:18px;text-decoration:none;width:100%;color:#fff;}
 .listing h3 a{font-size:18px;text-decoration:none;width:100%;color:#fff;}
 /*background:url(/images/icon.gif) no-repeat;padding-left:24px;*/}
 

@@ -26,7 +26,7 @@
   				<td><label>Wishlist Description</label></td><td><%= f.text_field :description %></td>
 			   </tr>
                   <tr>
-  				<td><label>Due date:</label></td><td><%=@wish_list.date %></td>
+  				<td><label>Due date:</label></td><td><%=@wish_list.date.strftime('%d-%m-%Y').to_s %></td>
 			   </tr>
 			</table>
   		

@@ -27,14 +27,9 @@
         </tr> 
          
           <tr>
-          <td> <label>Date </label> </td><td><%= f.date_select :date %></td>
+          <td> <label>Date </label> </td><td><%= f.date_select :date,:default => 7.days.from_now %></td>
         </tr
-              <tr>
-  		<td> <label>Email</label> </td><td><%= text_field_tag 'email', @current_user.email ,:size => "30" %>   <span> * </span>This will be used to communicate regarding gifts.</td>
-        </tr>
-   
-
-      <tr>
+          <tr>
 <td colspan="3">
 <h2>Category list</h2>
       <ul id='tree'>
