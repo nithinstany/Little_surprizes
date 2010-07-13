@@ -3,7 +3,7 @@ class Admin::WishListsController < ApplicationController
   layout 'admin'
   def index
     
-    @wish_lists = WishList.find(:all,:order => 'date ASC',:conditions =>['points > ? and date>=? and date<=?' ,0,Date.today,Date.today.advance(:days => 5)])
+    @wish_lists = WishList.find(:all,:order => 'date ASC',:conditions =>['points > ?' ,0])
   
     #@wish_list = WishList.find(params[:wish_list_id],:include => [:category_wish_lists, :categories ])
 
