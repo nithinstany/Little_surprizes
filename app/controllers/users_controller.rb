@@ -35,7 +35,9 @@ class UsersController < ApplicationController
 
    def express
      unless params[:points].blank?
-       response = EXPRESS_GATEWAY.setup_purchase((params[:points].to_i * 100 ).round,
+     session[:points] = params[:points].to_f
+     points = params[:points].to_f+ 3/100.to_f*params[:points].to_f
+     response = EXPRESS_GATEWAY.setup_purchase((points * 100 ).round,
                   :ip                => request.remote_ip,
                   :return_url        => "#{FACEBOOK_URL}users/#{params[:user_id]}/orders/new?wish_list_id=#{params[:wish_list_id]}",
                   :cancel_return_url =>  "#{FACEBOOK_URL}users/#{params[:user_id]}/wish_lists"

@@ -11,12 +11,12 @@
     <h3><%=h @details.params["country_name"] %></h3>
     <h3><%=h @details.params["postal_code"] %> </h3>
 <br />
-<h3> Payment : $<%=h @details.params["order_total"].to_i %> </h3>
+<h3> Payment : $<%=h @details.params["order_total"].to_f %> </h3>
  <%= f.hidden_field :wish_list_id %>
 <% if @confirmed %>
 <h2> A successful transaction has already been completed for this token. </h2>
 <%else%>
-*15% of the amount is towards transaction charges.
+*3% of the amount is towards transaction charges.
 <div class="borders">
  <h3> Please click the below button, to complete the payment process. </h3>
 </div>

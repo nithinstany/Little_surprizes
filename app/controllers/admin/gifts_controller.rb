@@ -14,7 +14,7 @@ class Admin::GiftsController < ApplicationController
 
   def show
     @gift = Gift.find(params[:id])
-
+     
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @gift }
@@ -23,8 +23,10 @@ class Admin::GiftsController < ApplicationController
 
 
   def new
+     
     @gift = Gift.new
     @wish_list = WishList.find(params[:wish_list_id])
+    @orders = Order.find(:all,:conditions => ['wish_list_id =?',@wish_list.id])
   end
 
 
