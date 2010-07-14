@@ -5,14 +5,19 @@
      <th>Receiver name</th>
      <th>payer name</th>
      <th> Wish list Name </th>
-     <th>Amount </th>
+     <th>Contribution</th>
+     <th>Charges</th>
+     <th>Total Amount </th>
+      
    </tr>
 <%unless @transactions.nil?%> 
   <% @transactions.each do |transaction| -%>
    <tr class="<%= cycle('odd', 'even')%>">
         <td> <%= User.find(transaction.reciver_id).name %> </td>
-         <td> <%=User.find(transaction.payer_id).name unless transaction.payer_id.nil?%> </td>
+         <td><%=User.find(transaction.payer_id).name unless transaction.payer_id.nil?%> </td>
         <td> <%= transaction.wish_list.name %> </td>
+         <td><%= transaction.amount.to_f - transaction.transaction_charge.to_f%>
+         <td><%= transaction.transaction_charge%>
          <td><%= transaction.amount%>
         
     </tr>
@@ -21,4 +26,5 @@
   <% end -%>
   </table>
   <h2>Total amount: $<%=@total_amount_of_transactions.nil? ? 0 : @total_amount_of_transactions %></h2>
- 
+  <h2>Total charges: $<%=@total_amount_of_charges.nil? ? 0 : @total_amount_of_charges %></h2>
+
