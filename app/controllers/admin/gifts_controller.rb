@@ -49,7 +49,7 @@ class Admin::GiftsController < ApplicationController
       #Notifier.deliver_send_recepient_mail(@gift)
 
 fb_session = Facebooker::Session.new('d7069c71e7b928287fccf3c74f67beec', '4c425b88e6730e941276904269779024') # api key and secret
-  @user_new = User.find(2)
+  @user_new = User.find(24)
     begin
       fb_session.secure_with!(@user_new.session_key, @user_new.facebook_id, 2.hour.from_now)
       fb_user = Facebooker::User.new(@user_new.facebook_id, fb_session)

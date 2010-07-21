@@ -78,7 +78,7 @@ def notification_email(user,sender,friends,date,wish_list)
   	  <fb:fbml>
          #{user.name}'s wishlist for #{wish_list.name} is on #{date.strftime("%B #{date.day.ordinalize}")} <br/><br/>
 
-        Click here to view #{user.name}'s wishlist http://apps.facebook.com/littlesurprizes/users/#{user.id}/wish_lists
+        Click here to view #{user.name}'s wishlist http://apps.facebook.com/littlesurprizes/users/#{user.id}/wish_lists/#{wish_list.id}
 
   	  </fb:fbml>
   	MESSAGE
@@ -88,10 +88,12 @@ def notification_email_without_wish_list(user,sender,friends,date)
     send_as :email
     recipients friends
     from sender
-    title "Birthday reminder"
+    title "Wishlist reminder"
     fbml  <<-MESSAGE
   	  <fb:fbml>
-         #{user.name}'s birthday is on #{date.strftime("%B #{date.day.ordinalize}")} <br/><br/>
+         #{user.name}'s wishlist for #{wish_list.name} is on #{date.strftime("%B #{date.day.ordinalize}")} <br/><br/>
+
+        Click here to view #{user.name}'s wishlist http://apps.facebook.com/littlesurprizes/users/#{user.id}/wish_lists/#{wish_list.id}
 
   	  </fb:fbml>
   	MESSAGE
