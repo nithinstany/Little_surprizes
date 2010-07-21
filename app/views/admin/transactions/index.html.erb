@@ -16,9 +16,9 @@
         <td> <%= User.find(transaction.reciver_id).name %> </td>
          <td><%=User.find(transaction.payer_id).name unless transaction.payer_id.nil?%> </td>
         <td> <%= transaction.wish_list.name %> </td>
-         <td><%= transaction.amount.to_f - transaction.transaction_charge.to_f%>
+         <td><%= transaction.amount.to_f %>
          <td><%= transaction.transaction_charge%>
-         <td><%= transaction.amount%>
+         <td><%= transaction.amount.to_f +  transaction.transaction_charge.to_f%>
         
     </tr>
 
