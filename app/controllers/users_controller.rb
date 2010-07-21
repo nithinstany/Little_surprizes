@@ -37,15 +37,15 @@ class UsersController < ApplicationController
      unless params[:points].blank?
      session[:points] = params[:points].to_f
      points = params[:points].to_f+ 3/100.to_f*params[:points].to_f
-     response = EXPRESS_GATEWAY.setup_purchase((points * 100 ).round,
+     response = EXPRESS_GATEWAY.setup_purchase((points * 100 ),
                   :ip                => request.remote_ip,
                   :return_url        => "#{FACEBOOK_URL}users/#{params[:user_id]}/orders/new?wish_list_id=#{params[:wish_list_id]}",
-                  :cancel_return_url =>  "#{FACEBOOK_URL}users/#{params[:user_id]}/wish_lists"
+                  :cancel_return_url =>  "#{FACEBOOK_URL}users/#{params[:user_id]}/wish_lists/#{params[:wish_list_id]}"
         )
        redirect_to EXPRESS_GATEWAY.redirect_url_for(response.token)
      else
        flash[:notice] = "Please fill some points"
-       redirect_to "/users/#{params[:user_id]}/wish_lists"
+       redirect_to "/users/#{params[:user_id]}/wish_lists/#{params[:wish_list_id]}"
      end
    end
 

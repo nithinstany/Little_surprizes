@@ -46,18 +46,18 @@ class OrdersController < ApplicationController
     @order.payer_id =  @facebook_user.id
     @order.reciver_id =  @reciver_user.id
     if @order.save && @order.purchase
-       @order.transaction_charge = @order.amount - session[:points].to_f
+       @order.transaction_charge = @order.amount.to_f - session[:points].to_f
        @order.save 
        @reciver_user.points = (@reciver_user.points.to_f + session[:points].to_f)
        @reciver_user.save_with_validation(false)
        wish_list = WishList.find(@order.wish_list_id)
        wish_list.points = wish_list.points + session[:points].to_f
        wish_list.save
-       flash[:notice] = "Successfully gifted $#{@order.amount}"
+       flash[:notice] = "Successfully gifted $#{@order.amount.to_f - @order.transaction_charge.to_f}"
     else
        flash[:notice] = "Failure: #{@order.transaction.message} "
     end
-    redirect_to "/users/#{@reciver_user.id}/wish_lists"
+    redirect_to "/users/#{@reciver_user.id}/wish_lists/#{wish_list.id}"
   end
 
   def update

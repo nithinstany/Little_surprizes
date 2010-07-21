@@ -97,12 +97,5 @@ def notification_email_without_wish_list(user,sender,friends,date)
   	MESSAGE
  end
 
-
-
-
-
-
-
-
 end
 

@@ -10,15 +10,13 @@ class UserSessionsController < ApplicationController
   def create
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
+flash[:notice] = "Login successful!"
       if current_user.has_role?(:admin)
         redirect_to  admin_categories_path
       else
-        if current_user.wish_list.blank?
-          redirect_to  root_url
-        else
-          flash[:notice] = "Login successful!"
-          redirect_to  root_url
-        end
+        
+          redirect_to  "http://apps.facebook.com/testlittlesurpize/"
+        
       end
     else
       render :action => :new
