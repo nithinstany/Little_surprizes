@@ -54,7 +54,7 @@ class OrdersController < ApplicationController
        wish_list = WishList.find(@order.wish_list_id)
        wish_list.points = wish_list.points + session[:points].to_f
        wish_list.save
-       flash[:notice] = "Successfully gifted $#{@order.amount.to_f - @order.transaction_charge.to_f}"
+       flash[:notice] = "Successfully gifted $#{@order.amount.to_f}"
     else
        flash[:notice] = "Failure: #{@order.transaction.message} "
     end
