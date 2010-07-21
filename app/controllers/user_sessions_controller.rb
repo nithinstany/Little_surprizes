@@ -15,7 +15,7 @@ flash[:notice] = "Login successful!"
         redirect_to  admin_categories_path
       else
         
-          redirect_to  "http://apps.facebook.com/testlittlesurpize/"
+          redirect_to  root_path
         
       end
     else

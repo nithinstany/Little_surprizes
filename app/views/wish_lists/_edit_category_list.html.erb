@@ -1,8 +1,9 @@
 <li>
   <%= image_tag category.avatar.url(:thumb) %>
-   <%= check_box_tag("categories[]", category.id, @wishlist_items.blank?? false : @wishlist_items.include?(category.id)) %>
+   <%= check_box_tag("categories[]", category.id, category_id_include_in_params_edit(category.id)) %>
    <%= category.name %>
-   <span><%= text_field_tag "category_#{category.id}_custom_description", find_by_wish_list_and_category(@wish_list.id,category.id) %></span>
+   <span><%= text_field_tag "category_#{category.id}_custom_description", get_value_from_params_edit(category.id)
+    %></span>
    <% unless category.children.empty? %>
 	    <ul>
                

@@ -20,7 +20,7 @@
   		<div class="form">
 			<table cellpadding="3px">
 		    <tr>
-  				<td><label>Wishlist Name</label></td><td><%= f.text_field :name %></td>
+  				<td><label>Wishlist Name</label></td><td><%= f.text_field :name %>  <span> * </span></td>
 			   </tr>
 			   <tr>
   				<td><label>Wishlist Description</label></td><td><%= f.text_field :description %></td>
@@ -29,6 +29,7 @@
   				<td><label>Due date:</label></td><td><%=@wish_list.date.strftime('%d-%m-%Y').to_s %></td>
 			   </tr>
 			</table>
+			
   		
           		<h2>Category list</h2>
           			<ul id='tree'>

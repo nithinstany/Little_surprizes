@@ -28,7 +28,6 @@ class WishListsController < ApplicationController
   def edit
     @wish_list = WishList.find(params[:id],:include =>[:categories, :category_wish_lists])
     @current_user = user
-    @wishlist_items = @wish_list.category_ids rescue nil
     @parent = Category.find_all_by_parent_id(nil)
     respond_to do |format|
        format.html
@@ -46,7 +45,7 @@ class WishListsController < ApplicationController
     @current_user = user 
     @wish_list.user = @current_user
      
-     if params[:categories].blank?
+    if params[:categories].blank?
        @parent = Category.find_all_by_parent_id(nil)
        flash[:notice] = "Please select category"
        render :action => "new"
@@ -58,13 +57,12 @@ class WishListsController < ApplicationController
            CategoryWishList.create({ :category_id => category_id ,:wish_list_id => @wish_list.id , :custom_description => params["category_#{category_id}_custom_description"] })
          end
        end
-     # @current_user.email = params[:email]
-     # @current_user.save_with_validation(false)
+
       flash[:notice] = "Wish list has been created successfully."
       facebook_permissions(@facebook_user) ?  (redirect_to(wish_lists_path)) : (  redirect_to(grant_permission_wish_lists_path) )
 
     else
-       
+      @params =  params
       flash[:notice] = "Make sure that all required fields are entered."
       @wish_list = nil
       @parent = Category.find_all_by_parent_id(nil)
@@ -76,6 +74,14 @@ class WishListsController < ApplicationController
 
   def update
     @wish_list = WishList.find(params[:id])
+    
+    if params[:categories].blank?
+       @parent = Category.find_all_by_parent_id(nil)
+       flash[:notice] = "Please select category"
+       render :action => "edit"
+       return nil
+    end
+    
     if @wish_list.update_attributes(params[:wish_list])
        CategoryWishList.delete_all(["wish_list_id = ?", @wish_list.id]) # delete CategoryWishList all records of wish_list using single step
        unless params[:categories].blank?
@@ -87,7 +93,6 @@ class WishListsController < ApplicationController
        if params[:commit] == "Save and Publish"
           
           @user = facebook_user
-           #if @user.has_permissions?('publish_stream')
              @friend_lists =  facebook_user.friend_lists rescue nil
              if @friend_lists
                flash[:notice] = 'Wish list was successfully updated.'
@@ -97,17 +102,16 @@ class WishListsController < ApplicationController
                flash[:notice] = 'Wish list was successfully updated  and Published to Facebook'
                redirect_to(wish_lists_path)
              end
-          #else
-          #  flash[:notice] = "You Don't a have permissions to publish on wall, Please click on grant permissions Button ."
-          #  @facebook_user = facebook_user
-            #@test = "/wish_lists/#{@wish_list.id}/edit"
-         #  redirect_to grant_permission_wish_lists_path
-        #  end
+
        else
          flash[:notice] = 'Wish list was successfully updated.'
          redirect_to(wish_lists_path)
        end
     else
+      @params =  params
+      flash[:notice] = "Make sure that all required fields are entered."
+      @parent = Category.find_all_by_parent_id(nil)
+      
        render :action => 'edit'
     end
   end

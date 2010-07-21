@@ -1,9 +1,9 @@
-
+    <h2 class="sub_heading"> Your Paypal Details </h2>
 <% form_for([@reciver_user,@order]) do |f| %>
   <%= f.error_messages %>
-
+  		<div class="form">
     <%= f.hidden_field :express_token %>
-    <h2> Your Paypal Details </h2>
+
     <h3><%=h @order.first_name %> <%=h @order.last_name %> </h3> 
     <h3><%=h @details.params["street1"] %>  <%=h @details.params["street2"] %> </h3>
     <h3><%=h @details.params["city_name"] %></h3>
@@ -11,22 +11,24 @@
     <h3><%=h @details.params["country_name"] %></h3>
     <h3><%=h @details.params["postal_code"] %> </h3>
 <br />
-<h3> Payment : $<%=h @details.params["order_total"].to_f %> </h3>
+<h3> Payment :<b>$<%=h @details.params["order_total"].to_f %> </b></h3>
  <%= f.hidden_field :wish_list_id %>
-<% if @confirmed %>
-<h2> A successful transaction has already been completed for this token. </h2>
-<%else%>
-*3% of the amount is towards transaction charges.
-<div class="borders">
- <h3> Please click the below button, to complete the payment process. </h3>
-</div>
-<%end%>
- 
-  <p>
+    <% if @confirmed %>
+    <h2> A successful transaction has already been completed for this token. </h2>
+    <%else%>
+    <p> *3% of the amount is towards transaction charges.  </p> <br />
+    <div class="borders">
+     <h3> Please click the below button, to complete the payment process. </h3>
+    </div>
+    <%end%>
+  
+  <div class="clear"></div>
+  <br />
     <% unless @confirmed %>
-    <%= f.submit "Confirm payment",:class => "awesome" %> or
-    <%end%> <%= link_to 'Cancel', "/users/#{@reciver_user.id}/wish_lists",:class => "awesome"  %>
-  </p>
+    <%= f.submit "Confirm payment",:class => "large awesome" %> or
+    <%end%> <%= link_to 'Cancel', "/users/#{@reciver_user.id}/wish_lists",:class => "large awesome"  %>
+ 
+  </div>
 <% end %>
 
 

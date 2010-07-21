@@ -47,6 +47,7 @@ class OrdersController < ApplicationController
     @order.reciver_id =  @reciver_user.id
     if @order.save && @order.purchase
        @order.transaction_charge = @order.amount.to_f - session[:points].to_f
+       @order.amount = session[:points].to_f
        @order.save 
        @reciver_user.points = (@reciver_user.points.to_f + session[:points].to_f)
        @reciver_user.save_with_validation(false)

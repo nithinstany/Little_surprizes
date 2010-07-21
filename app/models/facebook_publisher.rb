@@ -49,7 +49,7 @@ end
     title "#{gift.recepient_subject}"
     fbml  <<-MESSAGE
   	  <fb:fbml>
-         #{gift.recepient_message} <br/><br/>
+         #{gift.recepient_message} <br/>
 
   	  </fb:fbml>
   	MESSAGE
@@ -61,7 +61,7 @@ def donor_email(user,fb_user,gift)
     title "#{gift.donors_subject}"
     fbml  <<-MESSAGE
   	  <fb:fbml>
-         #{gift.donors_message} <br/><br/>
+         #{gift.donors_message} <br/>
 
   	  </fb:fbml>
   	MESSAGE

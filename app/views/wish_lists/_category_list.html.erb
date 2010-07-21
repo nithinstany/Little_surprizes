@@ -1,8 +1,8 @@
 <li>
   <%= image_tag category.avatar.url(:thumb) %>
-   <%= check_box_tag("categories[]", category.id,  false) %>
+   <%= check_box_tag("categories[]", category.id, category_id_include_in_params(category.id) ) %>
    <%= category.name %>
-   <span><%= text_field_tag "category_#{category.id}_custom_description",''%></span>
+   <span><%= text_field_tag "category_#{category.id}_custom_description", get_value_from_params(category.id)%></span>
    <% unless category.children.empty? %>
 	    <ul>
                
