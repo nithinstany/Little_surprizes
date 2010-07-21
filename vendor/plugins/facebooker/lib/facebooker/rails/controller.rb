@@ -175,7 +175,7 @@ module Facebooker
       
       #override to specify where the user should be sent after logging in
       def after_facebook_login_url
-        nil
+        root_path
       end
 
       def default_after_facebook_login_url
@@ -189,7 +189,7 @@ module Facebooker
       def create_new_facebook_session_and_redirect!
         session[:facebook_session] = new_facebook_session
         next_url = after_facebook_login_url || default_after_facebook_login_url
-        top_redirect_to session[:facebook_session].login_url({:next => next_url, :canvas=>params[:fb_sig_in_canvas]}) unless @installation_required
+        top_redirect_to session[:facebook_session].login_url({:next => next_url, :canvas=> "true"}) unless @installation_required
         false
       end
       
