@@ -43,7 +43,7 @@ def WishList.send_mail
 end
 
 def WishList.birthday_reminder
-   fb_session = Facebooker::Session.new('160ff3da7db8f04a75fe58ca5ab90d11', 'def046826bbe6f68b1befa7f4eab9007')  # api key and secret
+  fb_session = Facebooker::Session.new('d7069c71e7b928287fccf3c74f67beec', '4c425b88e6730e941276904269779024') # api key and secret
   for user in User.find(:all, :conditions => ["facebook_id IS NOT  NULL"])
     begin
       fb_session.secure_with!(user.session_key, user.facebook_id, 2.hour.from_now)
@@ -51,9 +51,11 @@ def WishList.birthday_reminder
       wish_lists = user.wish_lists 
       unless wish_lists.nil?
         wish_lists.each do| wish_list|
-          if (wish_list.date - Date.today == 30 ||  wish_list.date - Date.today == 7 || wish_list.date - Date.today <=2)
-       FacebookPublisher.deliver_notification_email(user,fb_user,fb_user.friends,wish_list.date,wish_list)
-          end
+          unless wish_list.date.blank?
+            if (wish_list.date - Date.today == 30 ||  wish_list.date - Date.today == 7 || wish_list.date - Date.today <=2)
+          FacebookPublisher.deliver_notification_email(user,fb_user,fb_user.friends,wish_list.date,wish_list)
+            end
+         end 
       end
     end
       rescue Facebooker::Session::SessionExpired
