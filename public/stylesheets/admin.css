@@ -378,7 +378,7 @@ h2.banner{
         text-align: left;
         padding: 6px 10px;
 	font-size:15px;
-	background: url(/images/table_header.jpg) repeat-x;
+	background:#dddddd url(/images/table_header.jpg) repeat-x;
         font-weight:normal;
 	border-right:1px solid #ddd;
 	
