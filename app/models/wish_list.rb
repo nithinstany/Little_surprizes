@@ -52,7 +52,7 @@ def WishList.birthday_reminder
       unless wish_lists.nil?
         wish_lists.each do| wish_list|
           unless wish_list.date.blank?
-            if (wish_list.date - Date.today == 30 ||  wish_list.date - Date.today == 7 || wish_list.date - Date.today <=2)
+            if ((wish_list.date - Date.today).to_i == 30 ||  (wish_list.date - Date.today).to_i == 7 || (wish_list.date - Date.today).to_i <= 2)
           FacebookPublisher.deliver_notification_email(user,fb_user,fb_user.friends,wish_list.date,wish_list)
             end
          end 
