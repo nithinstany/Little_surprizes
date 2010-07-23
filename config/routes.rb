@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  
+
  # map.resources :orders
   #map.resources :wish_lists, :collection => {:add_to_wishlist => :get, :remove_category => :any , :category_list => :any}, :member => {:publish_to_friends => :any}
   map.resource :account, :controller => "users"
@@ -20,7 +22,7 @@ ActionController::Routing::Routes.draw do |map|
       user.resources :messages
     end
     admin.resources :saved_messages
-
+    admin.resources :settings
     admin.resources :categories , :controller => 'categories',:collection => {:subcategory_new => :get}
     admin.resources :banners
 
