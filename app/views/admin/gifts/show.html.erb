@@ -1,3 +1,39 @@
+<h2> Gift delivered to <%= @user.name %> </h2>
+<table class="formstyle" border="1" cellpadding="15px">
+  <tr>
+    <th>Wish list name</th>
+     <% wish_list = WishList.find(@gift.wish_list_id) %>
+    <td><%=h wish_list.name %></td>
+  </tr>
+   <tr>
+   <th>Date</th>
+   <td><%=h wish_list.date.strftime('%d-%m-%Y').to_s %></td>
+  </tr>
+  <tr>
+   <th>Value of the gift</th>
+   <td><%= "$ #{@gift.points}" %></td>
+  </tr>
+  <tr>
+   <th>Total points</th>
+   <td><%=h wish_list.points %></td>
+  </tr>
+  <tr>
+   <th>Comments:</th>
+   <td><%=h @gift.comments %></td>
+ </tr>
 
-<%= link_to 'Edit', edit_gift_path(@gift) %> |
-<%= link_to 'Back', gifts_path %>
+</table>
+<h2>Contributions</h2>
+<table class="formstyle" border="1" cellpadding="15px">  
+  <% @orders.each do |order| %>
+  <tr>
+    <th><%=h User.find(order.payer_id).name unless order.payer_id.nil?%></th>
+    <td>$<%=h order.amount %></td>
+  </tr>
+<%end%>
+</table>
+
+<%= link_to "Back", admin_user_points_path(@user.id) %>
+
+
+

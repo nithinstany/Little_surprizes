@@ -46,14 +46,23 @@ class OrdersController < ApplicationController
     @order.payer_id =  @facebook_user.id
     @order.reciver_id =  @reciver_user.id
     if @order.save && @order.purchase
-       @order.transaction_charge = @order.amount.to_f - session[:points].to_f
+      
+       paypal = Setting.find_by_name("paypal_fee").value.to_f # paypal % value
+       process = Setting.find_by_name("processing_fee").value.to_f # processing fees in cents
+       little = Setting.find_by_name("little_surprizes_fee").value.to_f # little_surprizes_fee in cents
+      
        @order.amount = session[:points].to_f
+       @order.paypal_fee = ((paypal * session[:points].to_f) / 100.0).to_f # paypal fees
+       @order.processing_fee = (process/ 100.0)
+       @order.little_surprizes_fee = (little/ 100.0)
+       
        @order.save 
        @reciver_user.points = (@reciver_user.points.to_f + session[:points].to_f)
        @reciver_user.save_with_validation(false)
        wish_list = WishList.find(@order.wish_list_id)
-       wish_list.points = wish_list.points + session[:points].to_f
+       wish_list.points = (wish_list.points.to_f + session[:points].to_f)
        wish_list.save
+       session[:points] = nil
        flash[:notice] = "Successfully gifted $#{@order.amount.to_f}"
     else
        flash[:notice] = "Failure: #{@order.transaction.message} "

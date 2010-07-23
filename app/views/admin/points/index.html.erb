@@ -48,7 +48,7 @@
      <td> <%= WishList.find(gift.wish_list_id).name %></td>
      <td> <%= WishList.find(gift.wish_list_id).date.strftime('%d-%m-%Y').to_s %> </td>
      <td>  <%= "$ #{gift.points}" %></td>
-      <td class ='last'>  <%=link_to "show",admin_user_point_path(@user,gift.id) %></td>
+      <td class ='last'>  <%=link_to "gift details",admin_user_gift_path(@user, gift) %></td>
    </tr>
 <%end%>
 </table>

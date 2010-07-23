@@ -35,14 +35,24 @@ class UsersController < ApplicationController
 
    def express
      unless params[:points].blank?
-     session[:points] = params[:points].to_f
-     points = params[:points].to_f+ 3/100.to_f*params[:points].to_f
-     response = EXPRESS_GATEWAY.setup_purchase((points * 100 ),
-                  :ip                => request.remote_ip,
-                  :return_url        => "#{FACEBOOK_URL}users/#{params[:user_id]}/orders/new?wish_list_id=#{params[:wish_list_id]}",
-                  :cancel_return_url =>  "#{FACEBOOK_URL}users/#{params[:user_id]}/wish_lists/#{params[:wish_list_id]}"
-        )
-       redirect_to EXPRESS_GATEWAY.redirect_url_for(response.token)
+       session[:points] = params[:points] # store the value in session
+      
+       paypal = Setting.find_by_name("paypal_fee").value.to_f # paypal % value
+       process = Setting.find_by_name("processing_fee").value.to_f # processing fees in cents
+       little = Setting.find_by_name("little_surprizes_fee").value.to_f # little_surprizes_fee in cents
+      
+      
+
+       paypal_fee =  ((paypal * params[:points].to_f) / 100.0).to_f
+       points = params[:points].to_f + paypal_fee + (process/ 100.0) + (little/ 100.0) # add all
+      
+
+       response = EXPRESS_GATEWAY.setup_purchase((points * 100.0 ),
+                    :ip                => request.remote_ip,
+                    :return_url        => "#{FACEBOOK_URL}users/#{params[:user_id]}/orders/new?wish_list_id=#{params[:wish_list_id]}",
+                    :cancel_return_url =>  "#{FACEBOOK_URL}users/#{params[:user_id]}/wish_lists/#{params[:wish_list_id]}"
+          )
+         redirect_to EXPRESS_GATEWAY.redirect_url_for(response.token)
      else
        flash[:notice] = "Please fill some points"
        redirect_to "/users/#{params[:user_id]}/wish_lists/#{params[:wish_list_id]}"

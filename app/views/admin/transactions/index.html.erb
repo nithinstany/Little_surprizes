@@ -2,12 +2,14 @@
 
 <table class="admin_listing">
   <tr>
-     <th>Receiver name</th>
-     <th>payer name</th>
+     <th> Receiver name</th>
+     <th> payer name</th>
      <th> Wish list Name </th>
-     <th>Contribution</th>
-     <th>Charges</th>
-     <th>Total Amount </th>
+     <th> Contribution</th>
+     <th> Paypal fee</th>
+     <th> Processing fee </th>
+     <th> Little surprizes fee </th>
+     <th> Total Amount </th>
       
    </tr>
 <%unless @transactions.nil?%> 
@@ -17,14 +19,19 @@
          <td><%=User.find(transaction.payer_id).name unless transaction.payer_id.nil?%> </td>
         <td> <%= transaction.wish_list.name %> </td>
          <td><%= transaction.amount.to_f %>
-         <td><%= transaction.transaction_charge%>
-         <td><%= transaction.amount.to_f +  transaction.transaction_charge.to_f%>
+         <td><%= transaction.paypal_fee %> </td>
+         <td><%= transaction.processing_fee %> </td>
+         <td><%= transaction.little_surprizes_fee %> </td>
+         <td><%= transaction.amount.to_f +  transaction.paypal_fee.to_f + transaction.processing_fee.to_f + transaction.little_surprizes_fee.to_f %>
         
     </tr>
 
   <% end -%>
   <% end -%>
   </table>
+   <br />
   <h2>Total amount: $<%=@total_amount_of_transactions.nil? ? 0 : @total_amount_of_transactions %></h2>
-  <h2>Total charges: $<%=@total_amount_of_charges.nil? ? 0 : @total_amount_of_charges %></h2>
+  <h2>Paypal fees: $<%= @paypal_fees.nil? ? 0 : @paypal_fees %></h2>
+  <h2>Processing fees: $<%= @processing_fees.nil? ? 0 : @processing_fees %></h2>
+  <h2>Little Surprizes fees: $<%= @little_surprizes_fees.nil? ? 0 : @little_surprizes_fees %></h2>
 

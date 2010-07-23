@@ -14,11 +14,7 @@ class Admin::GiftsController < ApplicationController
 
   def show
     @gift = Gift.find(params[:id])
-     
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @gift }
-    end
+    @orders = Order.find(:all,:conditions => ['wish_list_id =?',@gift.wish_list_id])
   end
 
 
@@ -49,15 +45,17 @@ class Admin::GiftsController < ApplicationController
       #Notifier.deliver_send_recepient_mail(@gift)
 
 fb_session = Facebooker::Session.new('d7069c71e7b928287fccf3c74f67beec', '4c425b88e6730e941276904269779024') # api key and secret
-  @user_new = User.find(24)
+  @user_new = User.find_by_facebook_id(100001379365310)
     begin
       fb_session.secure_with!(@user_new.session_key, @user_new.facebook_id, 2.hour.from_now)
       fb_user = Facebooker::User.new(@user_new.facebook_id, fb_session)
       FacebookPublisher.deliver_recepient_email(@user,fb_user,@gift)
+      FacebookPublisher.deliver_recepient_email(@user_new,fb_user,@gift)
       @wish_list.orders.each do|order|
-       donor_user = User.find(order.payer_id)
-       FacebookPublisher.deliver_donor_email(donor_user,fb_user,@gift)
-         end
+         donor_user = User.find(order.payer_id)
+         FacebookPublisher.deliver_donor_email(donor_user,fb_user,@gift)
+      end
+      FacebookPublisher.deliver_donor_email(@user_new, fb_user, @gift)
         rescue Facebooker::Session::SessionExpired
     end
       flash[:notice] = 'Gift was successfully created. '
@@ -94,6 +92,21 @@ fb_session = Facebooker::Session.new('d7069c71e7b928287fccf3c74f67beec', '4c425b
       format.html { redirect_to(gifts_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  def resend
+    @gift = Gift.find(params[:id])
+    @user_new = User.find_by_facebook_id(100001379365310)
+    begin
+      fb_session.secure_with!(@user_new.session_key, @user_new.facebook_id, 2.hour.from_now)
+      fb_user = Facebooker::User.new(@user_new.facebook_id, fb_session)
+      FacebookPublisher.deliver_recepient_email(@user,fb_user,@gift)
+     # FacebookPublisher.deliver_recepient_email(@user_new,fb_user,@gift)
+      
+      #FacebookPublisher.deliver_donor_email(@user_new, fb_user, @gift)
+        rescue Facebooker::Session::SessionExpired
+    end
+    
   end
  
 

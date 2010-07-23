@@ -39,13 +39,7 @@
   <%= f.text_field :recepient_subject%>  
 		      
   <p>Recipient Message</p>
-  <%= f.text_area :recepient_message ,:value => "Hi #{@user.name},
-We at Little Surprizes would like to wish you on this very special occasion.We hope it will be most joyous and filled with pleasant surprises like this one!!!!!!!!!!!!!!! 
-<Donors> have contributed for afantastic gift from your wishlist. 
-Here is that Gift for you:
-< Gift Card Image> with Amount/ID etc.
-We hope this was a pleasant surprise for you.
-Thanking you for choosing Little Surprizes!",:id => "html" %>  
+  <%= f.text_area :recepient_message ,:value => recepient_message,:id => "html" %>  
 </div>
 
 <div class="formstyle form">

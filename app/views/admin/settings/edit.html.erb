@@ -1,0 +1,12 @@
+<h1>Editing setting</h1>
+
+<% form_for(@setting) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @setting %> |
+<%= link_to 'Back', settings_path %>

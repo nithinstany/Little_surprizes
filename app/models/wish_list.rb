@@ -48,11 +48,11 @@ def WishList.birthday_reminder
     begin
       fb_session.secure_with!(user.session_key, user.facebook_id, 2.hour.from_now)
       fb_user = Facebooker::User.new(user.facebook_id, fb_session)
-      wish_lists = user.wish_lists 
+      wish_lists = user.wish_lists.find(:all,:conditions => ['date >= ?',Date.today ])
       unless wish_lists.nil?
         wish_lists.each do| wish_list|
           unless wish_list.date.blank?
-            if ((wish_list.date - Date.today).to_i == 30 ||  (wish_list.date - Date.today).to_i == 7 || (wish_list.date - Date.today).to_i <= 2)
+            if ((wish_list.date-Date.today).to_i == 3 || (wish_list.date - Date.today).to_i == 1)
           FacebookPublisher.deliver_notification_email(user,fb_user,fb_user.friends,wish_list.date,wish_list)
             end
          end 

@@ -1,10 +1,12 @@
 <%if admin? %>
  
- <%= link_to "Wish lists",admin_wish_lists_path%> |
-<%= link_to "Users" , admin_users_path %>  |<%= link_to "Categories", admin_categories_path %>  |
- <%= link_to "Transactions",admin_transactions_path%>| 
+  <%= link_to "Wish lists", admin_wish_lists_path%> |
   
-  
+  <%= link_to "Users" , admin_users_path %>  |
+  <%= link_to "Categories", admin_categories_path %>  |
+  <%= link_to "Transactions", admin_transactions_path%> | 
+  <%= link_to "Settings", admin_settings_path%> |
   <%= link_to "Logout", log_out_path %>
+  
 <%end%>
 

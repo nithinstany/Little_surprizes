@@ -1,0 +1,29 @@
+<h2>Listing settings</h2>
+
+
+<%form_for([:admin,Setting.new]) do |f| %>
+<table class="formstyle" cellpadding="15px;" border="1">
+  <tr> <th> Name </th> <th> Value </th> </th></tr>
+  
+  <% setting = Setting.find_by_name('paypal_fee') %>
+    <tr> 
+       <th> Paypal fee </th>
+       <td> <%= text_field_tag "settings[#{setting.id}]value", setting.value %>  %</td>
+        <% setting = Setting.find_by_name('processing_fee') %>
+       <td> <%= text_field_tag "settings[#{setting.id}]value", setting.value %> cents </td>
+     </tr>
+     
+
+       <% setting = Setting.find_by_name('little_surprizes_fee') %>
+    <tr> 
+       <th> Little Surprizes fee </th>
+       <td> <%= text_field_tag "settings[#{setting.id}]value", setting.value %> cents </td>
+     </tr>
+  
+
+  
+</table>  
+  <p>  <%= f.submit 'Save'%> 
+<%end%>
+
+
