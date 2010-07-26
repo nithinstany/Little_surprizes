@@ -24,11 +24,19 @@ class OrdersController < ApplicationController
 
 
   def new
-    @order = Order.new(:express_token => params[:token])
+     @order = Order.new(:express_token => params[:token])
      @order.wish_list_id = params[:wish_list_id]
-    @details = EXPRESS_GATEWAY.details_for(params[:token])
-    @confirmed = Order.find_by_express_token(params[:token]) ? true : false
-
+     @details = EXPRESS_GATEWAY.details_for(params[:token])
+     @confirmed = Order.find_by_express_token(params[:token]) ? true : false
+      
+      paypal = Setting.find_by_name("paypal_fee").value.to_f # paypal % value
+      process = Setting.find_by_name("processing_fee").value.to_f # processing fees in cents
+      little = Setting.find_by_name("little_surprizes_fee").value.to_f # little_surprizes_fee in cents
+      
+      paypal_fee = ((paypal * session[:points].to_f) / 100.0).to_f # paypal fees
+      processing_fee = (process/ 100.0)
+      little_surprizes_fee = (little/ 100.0)
+      @processing_fees = paypal_fee + processing_fee + little_surprizes_fee
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @order }
@@ -62,8 +70,10 @@ class OrdersController < ApplicationController
        wish_list = WishList.find(@order.wish_list_id)
        wish_list.points = (wish_list.points.to_f + session[:points].to_f)
        wish_list.save
-       session[:points] = nil
-       flash[:notice] = "Successfully gifted $#{@order.amount.to_f}"
+       #session[:points] = 0.0
+       flash[:notice] = "Thank you for your
+contribution. Your friend will soon receive a surprise gift on your
+behalf"
     else
        flash[:notice] = "Failure: #{@order.transaction.message} "
     end

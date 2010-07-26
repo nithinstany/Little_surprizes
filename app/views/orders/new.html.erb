@@ -16,7 +16,8 @@
     <% if @confirmed %>
     <h2> A successful transaction has already been completed for this token. </h2>
     <%else%>
-    <p> * A small fee will be added towards handling charges  </p> <br />
+    <p> <!--* A small fee will be added towards handling charges-->
+    * This ammout is inclusive of handling charges.( <%= session[:points]%> + <%= @processing_fees %>)  </p> <br />
     <div class="borders">
      <h3> Please click the below button, to complete the payment process. </h3>
     </div>
