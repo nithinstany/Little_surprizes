@@ -189,7 +189,7 @@ private
     facebook_session.post('facebook.stream.publish', 
       { :uid => facebook_session.user.id, 
         :target_id => target ,
-        :message => "has added new product categories to wishlist '#{wish_list.name}'.",
+        :message => "has published a wishlist '#{wish_list.name}'.",
         :action_links => [ 'text' => "visit wishlist",
                            'href' => "http://apps.facebook.com/littlesurprizes/users/#{user.id}/wish_lists/#{wish_list.id}"
                          ],
