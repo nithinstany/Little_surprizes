@@ -40,8 +40,8 @@
     <% unless @wish_list.category_wish_lists.blank? %>
      <% for wish_category in @wish_list.category_wish_lists -%>
        
-            <%= image_tag wish_category.category.avatar.url(:thumb) %>
-            <p class="name"><%= wish_category.category.name %></p>
+            <%= image_tag wish_category.category.avatar.url(:thumb) unless wish_category.category.blank? %>
+            <p class="name"><%= wish_category.category.name unless wish_category.category.blank? %></p>
             <p><%= wish_category.custom_description %></p><br />
         
      <% end -%>
