@@ -8,15 +8,6 @@ def publish_battle_template
 
  end
 
-def publish_battle(category,facebook_session)
- send_as :user_action
- from facebook_session
- data:images=>[image(image_path("#{category.avatar.url(:thumb)}"),fb_categories_url)],
-     :result=>"has added" ,
-     :category=>category.name,
-     :defender=> "to wishlist"
-
-end
 
  def publish_stream(user_with_session_to_use, user_to_update)
       send_as :publish_stream
@@ -33,7 +24,7 @@ end
 end
 
 
-def news_feed(recipients, title, body)
+ def news_feed(recipients, title, body)
   send_as :story
   self.recipients(Array(recipients))
   title = title[0..60] if title.length > 60
@@ -41,7 +32,8 @@ def news_feed(recipients, title, body)
   self.body( body )
   self.title( title )
 
-end
+ end
+
  def recepient_email(user,fb_user,gift)
     send_as :email
     recipients user.facebook_id
@@ -84,20 +76,7 @@ def notification_email(user,sender,friends,date,wish_list)
   	MESSAGE
  end
 
-def notification_email_without_wish_list(user,sender,friends,date)
-    send_as :email
-    recipients friends
-    from sender
-    title "Wishlist reminder"
-    fbml  <<-MESSAGE
-  	  <fb:fbml>
-         #{user.name}'s wishlist for #{wish_list.name} is on #{date.strftime("%B #{date.day.ordinalize}")} <br/><br/>
 
-        Click here to view #{user.name}'s wishlist http://apps.facebook.com/littlesurprizes/users/#{user.id}/wish_lists/#{wish_list.id}
-
-  	  </fb:fbml>
-  	MESSAGE
- end
 
 end
 

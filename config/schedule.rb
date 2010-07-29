@@ -29,7 +29,7 @@
 
 
 #every 12.hours do
-every 12.hours do
+every 1.day do
  runner "WishList.birthday_reminder"
 end
 
