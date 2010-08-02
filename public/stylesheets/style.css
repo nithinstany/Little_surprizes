@@ -87,19 +87,20 @@ hr{border-top:1px solid #ffe58a;border-bottom:1px solid #fff9e6;}
 }
 
 .heading{
-	background:#1796c2 url(/images/head_bg.jpg) no-repeat right;
+	background:#f2b200 url(/images/img.jpg) repeat-x right;
 	margin:0px 5px 10px 5px;
-	height:200px;
+	height:230px;
 	border:4px solid #fff;
-	padding:12px 10px 0px 0px;
+	padding:0px 10px 0px 0px;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 }
 
 .heading_lt{
-	width:75%;
+	width:67%;
 	float:left;
 	height:120px;
+	padding-top:12px;
 }
 
 .heading_lt h1{
@@ -107,7 +108,7 @@ hr{border-top:1px solid #ffe58a;border-bottom:1px solid #fff9e6;}
 	font-size:28px;
 	font-weight:normal;
 	padding:0px 0px 0px 10px;
-	line-height:40px;
+	line-height:42px;
 	}
 
 .heading_lt p{
@@ -115,16 +116,19 @@ hr{border-top:1px solid #ffe58a;border-bottom:1px solid #fff9e6;}
 	font-size:20px;
 	font-weight:normal;
 	padding-left:10px;
-	line-height:32px;
+	line-height:33px;
 	}
+
+.heading_lt p.last{font-size:18px;font-style:italic;margin-top:5px;}
+
 
 
 
 .heading_rt{
-	width:22%;
+	width:32%;
 	float:right;
-	height:120px;
-	bordxer-left:1px solid #b92f35;
+	height:230px;
+	background:#f2b200 url(/images/background.gif) no-repeat right;
 }
 
 .main h2{
