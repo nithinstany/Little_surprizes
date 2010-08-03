@@ -35,7 +35,7 @@ quotes : "" "";
 }
 /*******************************************************/
 
-body { margin: 0px 0px 0px 0px; padding:0px; color: #6d6c67; font-family: Arial, Helvetica, sans-serif; font-style: normal; font-variant: normal; font-weight: normal; font-size: 13px; line-height: normal;height:100%; background:#daf0fe url(/images/main.jpg) repeat-x;border:1px solid #b0effd;}
+body { margin: 0px 0px 0px 0px; padding:0px; color: #6d6c67; font-family: Arial, Helvetica, sans-serif; font-style: normal; font-variant: normal; font-weight: normal; font-size: 13px; line-height: normal;height:100%; background:#8fb402 url(/images/body.jpg) repeat-x;border:2px solid #749a01;}
 
 
 .notice{
@@ -53,20 +53,11 @@ body { margin: 0px 0px 0px 0px; padding:0px; color: #6d6c67; font-family: Arial,
 }
 
 .header{
-	height:70px;
-	margin:10px 0px 5px 0px;
-	padding:0px 0px 0px 120px;
-	background: url(/images/logo.gif) no-repeat;
+	height:71px;
+	margin:0px 0px 5px 10px;
+	padding:13px 0px 0px 80px;
+	background: url(/images/box.png) no-repeat;
 }
-
-.header h1{
-        font-family:URW Chancery L Italic;
-	color:#f92e5d;
-	font-size:60px;
-	padding-top:10px;
-}
-
-.header h1 span{color:#a67d00;} 
 
 
 .header_rt {float:right;width:50%;margin:0px;padding:0px;}
@@ -128,7 +119,7 @@ hr{border-top:1px solid #ffe58a;border-bottom:1px solid #fff9e6;}
 	width:32%;
 	float:right;
 	height:230px;
-	background:#f2b200 url(/images/background.gif) no-repeat right;
+	background:#f2b200 url(/images/background.jpg) no-repeat right;
 }
 
 .main h2{
