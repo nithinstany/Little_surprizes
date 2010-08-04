@@ -9,7 +9,7 @@
          control:"#sidetreecontrol",
          persist: "location"
       });
-      jQuery("#wish_list_date").datepicker({showOn: 'button', buttonImage: '/images/calendar.gif', buttonImageOnly: true,altField: '#date', dateFormat: 'dd-mm-yy',minDate: 0 });
+      jQuery("#wish_list_date").datepicker({showOn: 'button', buttonImage: '/images/calendar.gif', buttonImageOnly: true,altField: '#date', dateFormat: 'mm-dd-yy'});
             
    })
   </script>
@@ -29,7 +29,7 @@
         </tr> 
          
           <tr>
-          <td> <label>Date </label> </td><td><%= f.text_field :date,:value => (Date.today + 7).strftime('%d-%m-%Y').to_s ,:id => 'wish_list_date' %><span> * </span></td>
+          <td> <label>Date </label> </td><td><%= f.text_field :date,:value => (Date.today + 7).strftime('%m-%d-%Y').to_s ,:id => 'wish_list_date' %><span> * </span></td>
         </tr
           <tr>
 <td colspan="3">

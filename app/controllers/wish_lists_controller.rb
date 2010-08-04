@@ -42,6 +42,8 @@ class WishListsController < ApplicationController
   def create
     @facebook_user = facebook_user
     @wish_list = WishList.new(params[:wish_list])
+    wish_date = params[:wish_list][:date].split('-')
+    @wish_list.date = wish_date[1] + '-' + wish_date[0]+ '-'+ wish_date[2]
     @current_user = user 
     @wish_list.user = @current_user
      
