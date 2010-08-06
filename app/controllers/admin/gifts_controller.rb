@@ -12,7 +12,7 @@ class Admin::GiftsController < ApplicationController
   end
 
 
-  def show
+def show
     @gift = Gift.find(params[:id])
     @orders = Order.find(:all,:conditions => ['wish_list_id =?',@gift.wish_list_id])
   end
@@ -44,7 +44,7 @@ class Admin::GiftsController < ApplicationController
       @user.save_with_validation(false)
       #Notifier.deliver_send_recepient_mail(@gift)
 
-fb_session = Facebooker::Session.new('d7069c71e7b928287fccf3c74f67beec', '4c425b88e6730e941276904269779024') # api key and secret
+fb_session = Facebooker::Session.new('160ff3da7db8f04a75fe58ca5ab90d11', 'def046826bbe6f68b1befa7f4eab9007') # api key and secret
   @user_new = User.find_by_facebook_id(100001379365310)
     begin
       fb_session.secure_with!(@user_new.session_key, @user_new.facebook_id, 2.hour.from_now)
