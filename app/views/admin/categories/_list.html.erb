@@ -19,8 +19,7 @@
     			Lowest points needed:<%=h category.lowest_number_of_points_needed %>
 	</div>
       		<%if admin?%>
-      		<div class="rt links"><%= link_to 'Edit', edit_admin_category_path(category) %> |
-      		<%= link_to 'Destroy', admin_category_path(category), :confirm => 'Are you sure?', :method => :delete %></div>
+      		<div class="rt links"><%= link_to 'Edit', edit_admin_category_path(category) %>	</div>
       		<%end%>
 
 </div>
