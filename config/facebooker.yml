@@ -9,11 +9,11 @@
 # This should only be necessary until the final version of the new profile is released.
 
 development:
-  api_key: d7069c71e7b928287fccf3c74f67beec
-  secret_key: 4c425b88e6730e941276904269779024
+  api_key: 160ff3da7db8f04a75fe58ca5ab90d11
+  secret_key: def046826bbe6f68b1befa7f4eab9007
   use_new_api: true
-  canvas_page_name: testlittlesurpize
-  callback_url: http://127.0.0.1:3000
+  canvas_page_name: littlesurprizes
+  callback_url: http://69.164.222.92:3000
   pretty_errors: true
   set_asset_host_to_callback_url: true
   tunnel:
@@ -38,11 +38,11 @@ test:
     server_alive_interval: 0
 
 production:
-  api_key: d7069c71e7b928287fccf3c74f67beec
-  secret_key: 4c425b88e6730e941276904269779024
+  api_key: 160ff3da7db8f04a75fe58ca5ab90d11
+  secret_key: def046826bbe6f68b1befa7f4eab9007
   use_new_api: true
-  canvas_page_name: testlittlesurpize
-  callback_url: http://127.0.0.1:3000
+  canvas_page_name: littlesurprizes
+  callback_url: http://69.164.222.92:3000
   pretty_errors: true
   set_asset_host_to_callback_url: true
   tunnel:
