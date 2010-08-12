@@ -269,6 +269,18 @@ ul#tree li ul li {
 	border-top:1px solid #fd3f6c;
 }
 
+h2.paypal_confirm{
+	color:#b62b31;
+	font-size:16px;
+	width:100%;
+	line-height:25px;
+	background:none;
+	margin:15px 0px 10px 0px;
+	padding:0px;
+	border-bottom:1px solid #fd3f6c;
+	border-top:none;
+}
+
 
 .sub_heading{
 	color:#b62b31;
@@ -449,5 +461,8 @@ input.textbox-small {
   color:red;
 }
 
+p.small {
+  font-size:10px;
 
+}
 

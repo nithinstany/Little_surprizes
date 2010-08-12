@@ -2,32 +2,38 @@
 <% form_for([@reciver_user,@order]) do |f| %>
   <%= f.error_messages %>
   		<div class="form">
-    <%= f.hidden_field :express_token %>
-
-    <h3><%=h @order.first_name %> <%=h @order.last_name %> </h3> 
-    <h3><%=h @details.params["street1"] %>  <%=h @details.params["street2"] %> </h3>
-    <h3><%=h @details.params["city_name"] %></h3>
-    <h3><%=h @details.params["state_or_province"] %> </h3>
-    <h3><%=h @details.params["country_name"] %></h3>
-    <h3><%=h @details.params["postal_code"] %> </h3>
-<br />
-<h3> Payment :<b>$<%=h @details.params["order_total"].to_f %> </b></h3>
- <%= f.hidden_field :wish_list_id %>
-    <% if @confirmed %>
-    <h2> A successful transaction has already been completed for this token. </h2>
+   <% if @order.status == 'success' %>
+    <h2 class='paypal_confirm'> Thank you. Your paypal transaction id is <%= params['tx'] %>. Please confirm, your personal details provided below . </h2>
     <%else%>
-    <p> <!--* A small fee will be added towards handling charges-->
-    * This ammout is inclusive of handling charges.( <%= session[:points]%> + <%= @processing_fees %>)  </p> <br />
-    <div class="borders">
-     <h3> Please click the below button, to complete the payment process. </h3>
-    </div>
+      <h2 class='paypal_confirm'> Your transaction id is <%= params['tx'] %>. There was an error, while getting the transaction status. </h2>
     <%end%>
+
+    <h3><%=h @order.name %> </h3> 
+    <h3><%=h @order.street %> </h3>
+    <h3><%=h @order.city %></h3>
+    <h3><%=h @order.state %> </h3>
+    <h3><%=h @order.country %></h3>
+    <h3><%=h @order.postal_code %> </h3>
+<br />
+<h3> Payment : <b>$<%=h @order.amount.to_f + @order.processing_fee.to_f + @order.little_surprizes_fee.to_f %> </b></h3>
+<p> you have contributed <b>$<%= @order.amount.to_f%> </b> towards <%= @wish_list.name %> of <%= @wish_list.user.name %>
+<p class='small'> <!--* A small fee will be added towards handling charges-->
+    (* A small fee has been deducted towards handling charges.)  </p> <br />
+ <%= hidden_field_tag 'wish_list_id', @order.wish_list_id %>
+    
   
   <div class="clear"></div>
-  <br />
-    <% unless @confirmed %>
+ 
+  
+  
+    <% if @order.status == 'success' %>
+     <div class="borders">
+        <h3> Please click the below button to complete the payment process. </h3>
+     </div> <br />
+    
+    
     <%= f.submit "Confirm payment",:class => "large awesome" %> or
-    <%end%> <%= link_to 'Cancel', "/users/#{@reciver_user.id}/wish_lists",:class => "large awesome"  %>
+    <%end%> <%= link_to 'Cancel', "/users/#{@reciver_user.id}/wish_lists/#{@order.wish_list_id}",:class => "large awesome"  %>
  
   </div>
 <% end %>

@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   ensure_authenticated_to_facebook
   before_filter :set_current_user
   before_filter :find_reciver_user
-
+ # require 'mechanize'
 
   def index
     @orders = Order.all
@@ -24,22 +24,23 @@ class OrdersController < ApplicationController
 
 
   def new
-     @order = Order.new(:express_token => params[:token])
-     @order.wish_list_id = params[:wish_list_id]
-     @details = EXPRESS_GATEWAY.details_for(params[:token])
-     @confirmed = Order.find_by_express_token(params[:token]) ? true : false
-      
-      paypal = Setting.find_by_name("paypal_fee").value.to_f # paypal % value
-      process = Setting.find_by_name("processing_fee").value.to_f # processing fees in cents
-      little = Setting.find_by_name("little_surprizes_fee").value.to_f # little_surprizes_fee in cents
-      
-      paypal_fee = ((paypal * session[:points].to_f) / 100.0).to_f # paypal fees
-      processing_fee = (process/ 100.0)
-      little_surprizes_fee = (little/ 100.0)
-      @processing_fees = paypal_fee + processing_fee + little_surprizes_fee
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @order }
+    @order = Order.find_or_create_by_transaction_id(params[:tx])
+    @order.payer_id = user.id
+    @order.reciver_id = @reciver_user.id
+    @order.ip_address = request.remote_ip
+    @order.wish_list_id = params[:wish_list_id] 
+    @wish_list = WishList.find(@order.wish_list_id)
+    #We got the transaction id. Now checking the status of the transaction by posting it to PDT.
+    resp = pdt_post(params[:tx])
+    if resp.body =~ /SUCCESS/
+      split_response(resp.body)
+      @order.status = 'success'
+      @order.save
+      #redirect_to edit_order_path(@order.id)
+    else
+      @order.status = 'failure'
+      @order.save
+      #redirect_to root_url
     end
   end
 
@@ -50,49 +51,17 @@ class OrdersController < ApplicationController
 
 
   def create
-    @order = Order.new(params[:order])
-    @order.payer_id =  @facebook_user.id
-    @order.reciver_id =  @reciver_user.id
-    if @order.save && @order.purchase
-      
-       paypal = Setting.find_by_name("paypal_fee").value.to_f # paypal % value
-       process = Setting.find_by_name("processing_fee").value.to_f # processing fees in cents
-       little = Setting.find_by_name("little_surprizes_fee").value.to_f # little_surprizes_fee in cents
-      
-       @order.amount = session[:points].to_f
-       @order.paypal_fee = ((paypal * session[:points].to_f) / 100.0).to_f # paypal fees
-       @order.processing_fee = (process/ 100.0)
-       @order.little_surprizes_fee = (little/ 100.0)
-       
-       @order.save 
-       @reciver_user.points = (@reciver_user.points.to_f + session[:points].to_f)
-       @reciver_user.save_with_validation(false)
-       wish_list = WishList.find(@order.wish_list_id)
-       wish_list.points = (wish_list.points.to_f + session[:points].to_f)
-       wish_list.save
-       #session[:points] = 0.0
-       flash[:notice] = "Thank you for your
+    flash[:notice] = "Thank you for your
 contribution. Your friend will soon receive a surprise gift on your
-behalf"
-    else
-       flash[:notice] = "Failure: #{@order.transaction.message} "
-    end
-    redirect_to "/users/#{@reciver_user.id}/wish_lists/#{wish_list.id}"
+behalf" 
+    redirect_to "/users/#{@reciver_user.id}/wish_lists/#{params[:wish_list_id]}"
   end
 
   def update
-    @order = Order.find(params[:id])
-
-    respond_to do |format|
-      if @order.update_attributes(params[:order])
-        flash[:notice] = 'Order was successfully updated.'
-        format.html { redirect_to(@order) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @order.errors, :status => :unprocessable_entity }
-      end
-    end
+    flash[:notice] = "Thank you for your
+contribution. Your friend will soon receive a surprise gift on your
+behalf" 
+    redirect_to "/users/#{@reciver_user.id}/wish_lists/#{params[:wish_list_id]}"
   end
 
   def destroy
@@ -117,5 +86,28 @@ behalf"
     user ||= set_current_user
   end
 
+  def pdt_post(tx_value)
+    Mechanize.new.post("https://www.sandbox.paypal.com/cgi-bin/webscr", 'cmd' => '_notify-synch', 'tx'=> tx_value, 'at' => 'bqI07HFeJaBVaN0JzwW2FhqQ6iiuzKczpWyAXwO3acrvOjYKRoPJF8jk2N0')
+  end
+
+  def split_response(str_resp)
+    puts "ppppppppppp :#{str_resp}"
+    @order.paypal_payer_id = str_resp.split('payer_id=')[1].split(' ').first
+    first_name = str_resp.split('first_name=')[1].split(' ').first
+    last_name =  str_resp.split('last_name=')[1].split(' ').first
+    @order.name = "#{first_name} #{last_name}"
+    @order.email = str_resp.split('payer_email=')[1].split(' ').first.gsub(/%40/, '@')
+     
+    @order.processing_fee = str_resp.split('payment_fee=')[1].split(' ').first 
+    @order.little_surprizes_fee = Setting.find_by_name("little_surprizes_fee").value.to_f
+    @order.street = str_resp.split('address_street=')[1].split(' ').first.split('+').join(' ')
+    @order.city = str_resp.split('address_city=')[1].split(' ').first.split('+').join(' ')
+    @order.state = str_resp.split('address_state=')[1].split(' ').first
+    @order.country = str_resp.split('address_country=')[1].split(' ').first.split('+').join(' ')
+    @order.postal_code = str_resp.split('address_zip=')[1].split(' ').first
+    ammount = str_resp.split('payment_gross=')[1].split(' ').first.to_f - @order.processing_fee.to_f - @order.little_surprizes_fee.to_f
+    @order.amount = ammount.to_f
+    
+  end
 end
 

@@ -193,12 +193,12 @@ private
         :target_id => target ,
         :message => "has published a wishlist '#{wish_list.name}'.",
         :action_links => [ 'text' => "visit wishlist",
-                           'href' => "http://apps.facebook.com/littlesurprizes/users/#{user.id}/wish_lists/#{wish_list.id}"
+                           'href' => "#{FACEBOOK_URL}users/#{user.id}/wish_lists/#{wish_list.id}"
                          ],
           :attachment =>   { 'media' => [ 
                                        { 'type' => 'image',
                                          'src' => "#{SITE_URL}images/facebook_publish.jpg",
-                                         'href' => "http://apps.facebook.com/littlesurprizes"
+                                         'href' => "#{FACEBOOK_URL}"
                                        }
                                      ]
                           }.to_json   

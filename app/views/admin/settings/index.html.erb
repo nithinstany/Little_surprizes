@@ -17,7 +17,7 @@
        <% setting = Setting.find_by_name('little_surprizes_fee') %>
     <tr> 
        <th> Little Surprizes fee </th>
-       <td> <%= text_field_tag "settings[#{setting.id}]value", setting.value %> cents </td>
+       <td> <%= text_field_tag "settings[#{setting.id}]value", setting.value %> $ </td>
      </tr>
   
 
