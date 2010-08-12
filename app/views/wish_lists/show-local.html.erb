@@ -22,14 +22,15 @@ your friends can pitch-in and send you a gift. </h1>
     <h3><%=@wish_list.name %></h3>
   <div class="paypal">
        <p>Want to contribute for <%=fb_name(@wish_list.user.facebook_id, :linked => false)%> 's  <%= @wish_list.name%>?</p>
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-    <input type="hidden" name="cmd" value="_s-xclick">
-    <input type="hidden" name="hosted_button_id" value="TFJ99DAWKHHAW">
-    <input type="hidden" name="return" value="<%= FACEBOOK_URL%>users/<%= @facebook_user.id%>/orders/new?wish_list_id=<%= @wish_list.id %>">
-    <input type="hidden" name="cancel_ return" value="<%= FACEBOOK_URL%>users/<%= @from_mail_user.id%>/wish_lists/<%= @wish_list.id %>">
-    <input type="image" src="/images/btn_contribute.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-    <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
-</form>
+     <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+        <input type="hidden" name="cmd" value="_s-xclick">
+        <input type="hidden" name="hosted_button_id" value="Q2YZA2NUCBK24">
+        <input type="hidden" name="return" value="<%= FACEBOOK_URL%>users/<%= @facebook_user.id%>/orders/new?wish_list_id=<%= @wish_list.id %>">
+        <input type="hidden" name="cancel_ return" value="<%= FACEBOOK_URL%>users/<%= @from_mail_user.id%>/wish_lists/<%= @wish_list.id %>">
+
+        <input type="image" src="/images/btn_contribute.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+        <img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+      </form>
     </div>
      <div class="clear"></div>
      <br />

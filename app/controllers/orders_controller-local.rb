@@ -86,8 +86,8 @@ behalf"
     user ||= set_current_user
   end
 
-  def pdt_post(tx_value) 
-    Mechanize.new.post("https://www.paypal.com/cgi-bin/webscr", 'cmd' => '_notify-synch', 'tx'=> tx_value, 'at' => '80iLkMRyEQQhlY2VMkOf9bd3FjpBpAFWvZruB2pedslDYziPPa0fjO3gIgi')
+  def pdt_post(tx_value)
+    Mechanize.new.post("https://www.sandbox.paypal.com/cgi-bin/webscr", 'cmd' => '_notify-synch', 'tx'=> tx_value, 'at' => 'bqI07HFeJaBVaN0JzwW2FhqQ6iiuzKczpWyAXwO3acrvOjYKRoPJF8jk2N0')
   end
 
   def split_response(str_resp)

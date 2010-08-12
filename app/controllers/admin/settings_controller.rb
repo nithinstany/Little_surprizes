@@ -20,7 +20,7 @@ class Admin::SettingsController < ApplicationController
       params[:settings].each do |setting|
         Setting.find(setting[0]).update_attribute('value', setting[1]['value'] )
       end
-      flash[:notice] = "value are updated."
+      flash[:notice] = "values are updated."
     end
     redirect_to admin_settings_path
     
