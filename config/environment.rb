@@ -13,14 +13,14 @@ require File.join(File.dirname(__FILE__), 'boot')
 Rails::Initializer.run do |config|
 
   #SITE_URL = 'http://localhost:3000/'
- # FACEBOOK_URL = "http://apps.facebook.com/testlittlesurpize/" this for local setting
+  #FACEBOOK_URL = "http://apps.facebook.com/testlittlesurpize/" 
   
   SITE_URL = 'http://69.164.222.92:3000/'
   FACEBOOK_URL = "http://apps.facebook.com/littlesurprizes/"
 
   config.gem "authlogic"
 
-  
+  config.gem "mechanize", :lib => 'mechanize', :version => '1.0.0'
   config.time_zone = 'UTC'
 
   
