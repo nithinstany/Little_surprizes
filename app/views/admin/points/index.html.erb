@@ -9,21 +9,21 @@
    <tr>
      <th> Paypal user name </th>
      <th> Facebook user name </th>
-     <th> Express token  </th>
+     <th> Transaction id </th>
      <th> Payer id </th>
      <th> Date </th>
       <th>Wish list</th> 
-     <th class='last'> Amount </th>
+     <th class='last'> Ammount </th>
    </tr>
 
 <% @user.recived_gifts.each do |gift| -%>
 
 
    <tr class="<%= cycle('odd', 'even')%>">
-     <td> <%= "#{gift.first_name} #{gift.last_name}" %>  </td>
+     <td> <%= "#{gift.name}" %>  </td>
      <td> <%= User.find(gift.payer_id).name unless gift.payer_id.nil?%></td>
-     <td> <%= gift.express_token %> </td>
-     <td> <%= gift.express_payer_id %>  </td>
+     <td> <%= gift.transaction_id %> </td>
+     <td> <%= gift.paypal_payer_id %>  </td>
      <td> <%= Time.parse(gift.created_at.to_s).strftime('%d-%m-%y %H:%M').to_s%> </td>
      <td> <%= WishList.find(gift.wish_list_id).name %></td>
      <td class='last'> <%= "$ #{gift.amount}" %> </td>
