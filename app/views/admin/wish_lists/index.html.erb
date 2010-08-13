@@ -16,7 +16,7 @@
         <td> <%= wish_list.user.name %> </td>
          <td> <%= wish_list.name %> </td>
         <td> <%= "$ #{wish_list.points}" %> </td>
-         <td><%= Time.parse(wish_list.date.to_s).strftime('%d-%m-%Y')%></td>
+         <td><%= Time.parse(wish_list.date.to_s).strftime('%m-%d-%Y')%></td>
 <td>  <% if wish_list.points.to_f == 0.0 %>
                  No sufficient points. 
               <%else%>
