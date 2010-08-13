@@ -24,7 +24,9 @@ class OrdersController < ApplicationController
 
 
   def new
-    @order = Order.find_or_create_by_transaction_id(params[:tx])
+    @order = Order.find_by_transaction_id(params[:tx])
+    @order = @order.blank?? Order.new : @order
+    @order.transaction_id = params[:tx]
     @order.payer_id = user.id
     @order.reciver_id = @reciver_user.id
     @order.ip_address = request.remote_ip
@@ -35,12 +37,16 @@ class OrdersController < ApplicationController
     if resp.body =~ /SUCCESS/
       split_response(resp.body)
       @order.status = 'success'
-      @order.save
-      #redirect_to edit_order_path(@order.id)
+      if @order.new_record?
+        @order.save
+        @reciver_user.points = (@reciver_user.points.to_f + @order.amount.to_f)
+        @reciver_user.save_with_validation(false)
+        @wish_list.points = (@wish_list.points.to_f + @order.amount.to_f)
+        @wish_list.save
+      end  
     else
       @order.status = 'failure'
       @order.save
-      #redirect_to root_url
     end
   end
 
