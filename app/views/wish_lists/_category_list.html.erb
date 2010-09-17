@@ -2,7 +2,10 @@
   <%= image_tag category.avatar.url(:thumb) %>
    <%= check_box_tag("categories[]", category.id, category_id_include_in_params(category.id) ) %>
    <%= category.name %>
-   <span><%= text_field_tag "category_#{category.id}_custom_description", get_value_from_params(category.id)%></span>
+   
+   <span ><%= text_field_tag "category_#{category.id}_custom_description", get_value_from_params(category.id)%></span>
+   
+   <br /><span style="margin-left:160px; color:#000;">Optional: Add details (for ex: 'books', 'iPad' etc)</span>
    <% unless category.children.empty? %>
 	    <ul>
                

@@ -14,26 +14,27 @@
    })
   </script>
 <% end -%>
-<h2 class="sub_heading"> New wish list </h2> 
+<h2 class="sub_heading"> My wish list </h2> 
 <% form_for :wish_list, :url => wish_lists_path,:html => { :multipart => true }  do |f| %>
   <%= f.error_messages %>
 <div class="form">
     <table cellpadding="3px">
 
-    
+    <tr><label>&nbsp;</label><td>*required field </td> </tr>
         <tr>
-  		<td> <label>Wishlist Name </label> </td><td><%= f.text_field :name %> <span> * </span> </td>
+  		<td> <label>Name </label> </td><td><%= f.text_field :name %> <span> * </span> </td>
         </tr>
         <tr>
-          <td> <label>Wishlist Description </label> </td><td><%= f.text_field :description %></td>
+          <td> <label>Description </label> </td><td><%= f.text_field :description %></td>
         </tr> 
          
           <tr>
-          <td> <label>Date </label> </td><td><%= f.text_field :date,:value => (Date.today + 7).strftime('%m-%d-%Y').to_s ,:id => 'wish_list_date' %><span> * </span></td>
-        </tr
-          <tr>
+          <td> <label>Date </label> </td><td><%= f.text_field :date,:value => (Date.today + 7).strftime('%m-%d-%Y').to_s ,:id => 'wish_list_date' %><span> * </span> <span style="color:#000;">(Date of gift delivery)</span></td>
+        </tr>
+        
+          
 <td colspan="3">
-<h2>Category list</h2>
+<h2>Select one or more gifts. Gifts shall be randomly selected during delivery</h2>
       <ul id='tree'>
               				<%= render :partial => 'category_list', :collection => @parent, :as => :category ,:locals => { :f => f} %></ul></td></tr>
       <tr>
